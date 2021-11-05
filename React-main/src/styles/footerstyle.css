@@ -1,0 +1,28 @@
+.footer img {
+  width: 50%;
+  /* height: 70px; */
+  /* margin-top: 0px; */
+}
+.footer {
+  background-color: #1d3124;
+}
+.white {
+  color: #fff;
+}
+/* .footer h5 {
+  font-size: 2rem;
+} */
+.footer i {
+  margin-left: 20px;
+  margin-right: 30px;
+  margin-top: 30px;
+  font-size: 2rem;
+}
+@media screen and (max-width: 375px) {
+  .rocky-mobile {
+    display: none;
+  }
+  .rocky-center {
+    display: block;
+  }
+}

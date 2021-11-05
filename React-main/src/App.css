@@ -1,0 +1,72 @@
+body {
+  background-color: #f6f4e8;
+  overflow-x: hidden;
+}
+
+/* 輪播牆下方字的最上面部分 */
+.top-part {
+  text-align: center;
+  font-size: medium;
+  color: #1d3124;
+  margin: 20px;
+}
+
+/* 輪播牆下方字的中間部分 */
+.middle-part {
+  display: flex;
+  justify-content: space-evenly;
+  color: #1d3124;
+  margin: 30px;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+/* 輪播牆下方字的最下面部分 */
+.bottom-part {
+  color: #1d3124;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-weight: bold;
+}
+
+/* 輪播牆下方字上面的線 */
+.discover {
+  border-top: 2px #1d3124 solid;
+}
+
+/* 設計師列表 */
+.card-color {
+  background-color: #f6f4e8;
+  border: transparent;
+}
+
+/* 設計師姓名 */
+.card-text {
+  font-size: xx-small;
+  color: #1d3124;
+}
+
+/* 購物車顏色 */
+.cart-color {
+  color: #1d3124;
+}
+
+/* 隱藏字用的 */
+.hide {
+  color: #f6f4e8;
+}
+
+/* 最下面圖片置中 */
+.set-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* 超連結 */
+a {
+  color: #1d3124;
+}
+a:hover {
+  color: red;
+}

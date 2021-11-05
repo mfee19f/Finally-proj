@@ -1,0 +1,100 @@
+body {
+  background-color: #f6f4e8;
+}
+/* 輪播牆上的字 */
+.p-img {
+  position: relative;
+}
+.p-text {
+  position: absolute;
+  top: 65%;
+  left: 15%;
+}
+/* 推薦商品＆商品分類字串列 */
+.sorting {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+.sorting-op {
+  font-size: x-large;
+  font-weight: bold;
+  color: #1d3124;
+}
+/* 排序按鈕顏色控制 */
+#dropdown-basic-button {
+  background-color: #1d3124;
+}
+#rocky-order {
+  color: #1d3124;
+}
+/* 搜尋欄 */
+.rocky-form {
+  margin-left: 13px;
+}
+.rocky-button {
+  color: white;
+  border-color: #1d3124;
+  background-color: #1d3124;
+}
+.rocky-button:hover {
+  background-color: black;
+  border-color: transparent;
+}
+.rocky-search {
+  display: flex;
+}
+.rocky-little {
+  transform: translateY(0px);
+}
+.rocky-order {
+  border: 1px solid #cad0cc;
+}
+/* 商品欄的字 */
+.card-text {
+  font-size: small;
+  color: #1d3124;
+}
+/* 推薦商品＆商品分類欄位間隔 */
+.top-space {
+  margin-top: 30px;
+}
+/* 分頁按鈕控制 */
+.rocky-page {
+  margin-top: 30px;
+  margin-left: 15px;
+}
+.page-link {
+  color: #1d3124;
+}
+/* 購物車顏色 */
+.cart-color {
+  color: #1d3124;
+}
+/* 購物車下方的留白 */
+.bottom-space {
+  padding-bottom: 7px;
+}
+/* 分類圖上的字 */
+.category {
+  position: relative;
+}
+.category-word {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+}
+.category-bigtext {
+  font-size: 50px;
+  font-weight: bold;
+  color: #1d3124;
+}
+.category-smalltext {
+  color: white;
+}
+/* 點我看更多顏色控制 */
+.btn-color {
+  background-color: #1d3124;
+  border: 1px solid #1d3124;
+}
