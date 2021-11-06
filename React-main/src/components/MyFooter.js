@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 function MyFooter(props) {
   return (
     <>
-      <div className="footer d-flex pt-5 pb-2 mt-5">
+      <div className="footer d-flex pt-5 pb-2 mt-auto">
         <div className="col-4 align-self-center mb-5 rocky-mobile">
           <h5 className="text-center white">
             Secure Payment

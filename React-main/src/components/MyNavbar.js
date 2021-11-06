@@ -73,7 +73,12 @@ function MyNavbar(props) {
             </Nav.Link>
           </Nav>
           <Nav className="mt-3 mr-3">
-            <Nav.Link href="#deets">
+            <Nav.Link
+              as={NavLink}
+              to="/login"
+              eventKey={2}
+              href="#deets"
+            >
               <p>
                 <i className="far fa-user"></i>
               </p>
@@ -88,7 +93,12 @@ function MyNavbar(props) {
                 <p>{track ? track : 0}</p>
               </div>
             </div>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link
+              as={NavLink}
+              to="/order-steps"
+              eventKey={2}
+              href="#memes"
+            >
               <p>
                 <i className="fas fa-shopping-cart"></i>
               </p>

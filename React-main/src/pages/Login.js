@@ -1,225 +1,99 @@
+import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
 function Login(props) {
-  // console.log(props)
-
+  console.log(props)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const { auth, setAuth } = props
 
+  const login = () => {
+    const fd = new FormData(document.form1)
+    fetch('http://localhost:3001/login-jwt', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(fd).toString(),
+    })
+      .then((r) => r.json())
+      .then((obj) => {
+        console.log(JSON.stringify(obj, null, 4))
+        if (obj.success) {
+          localStorage.setItem('token', obj.token) // 儲存到 localStorage
+          localStorage.setItem(
+            'member',
+            JSON.stringify(obj.member)
+          ) // 儲存到 localStorage
+          alert('登入成功')
+        } else {
+          alert('登入失敗\n' + (obj.error || ''))
+        }
+      })
+    setAuth(true)
+  }
+  const logout = () => {
+    localStorage.removeItem('member')
+    alert('以登出')
+  }
+  console.log('auth', auth)
+  const handleSubmit = (e) => {
+    //阻擋FORM 預設送出行為
+    e.preventDefault()
+  }
   return (
     <>
-      <h1>Login</h1>
-      <button
-        onClick={() => {
-          setAuth(!auth)
-        }}
-      >
-        {auth ? '登出' : '登入'}
-      </button>
+      <div class="card-body">
+        <h5 class="card-title">登入 (JWT)</h5>
 
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
-      <p>
-        The term “history” and "history object" in this
-        documentation refers to the history package, which
-        is one of only 2 major dependencies of React Router
-        (besides React itself), and which provides several
-        different implementations for managing session
-        history in JavaScript in various environments.The
-        following terms are also used: “browser history” - A
-        DOM-specific implementation, useful in web browsers
-        that support the HTML5 history API “hash history” -
-        A DOM-specific implementation for legacy web
-        browsers “memory history” - An in-memory history
-        implementation, useful in testing and non-DOM
-        environments like React Native history objects
-        typically have the following properties and methods:
-        length - (number) The number of entries in the
-        history stack action - (string) The current action
-        (PUSH, REPLACE, or POP) location - (object) The
-        current location. May have the following properties:
-        pathname - (string) The path of the URL search -
-        (string) The URL query string hash - (string) The
-        URL hash fragment state - (object) location-specific
-        state that was provided to e.g. push(path, state)
-        when this location was pushed onto the stack. Only
-        available in browser and memory history. push(path,
-        [state]) - (function) Pushes a new entry onto the
-        history stack replace(path, [state]) - (function)
-        Replaces the current entry on the history stack
-        go(n) - (function) Moves the pointer in the history
-        stack by n entries goBack() - (function) Equivalent
-        to go(-1) goForward() - (function) Equivalent to
-        go(1) block(prompt) - (function) Prevents navigation
-        (see the history docs)
-      </p>
+        <form name="form1" onSubmit={handleSubmit}>
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              email
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">
+              密碼
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            onClick={login}
+          >
+            登入
+          </button>
+          <button class="btn btn-primary" onClick={logout}>
+            登出
+          </button>
+        </form>
+      </div>
     </>
   )
 }
 
-export default Login
+export default withRouter(Login)
