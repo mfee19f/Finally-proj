@@ -61,10 +61,10 @@ function App() {
             <Switch>
 
             <Route path="/edit/:id">
-                <Edit />
+                <Edit auth={auth}/>
               </Route>
-              <Route path="/add">
-                <Add />
+              <Route path="/add" >
+                <Add auth={auth}/>
               </Route>
               <Route path="/cart">
                 <Cart />

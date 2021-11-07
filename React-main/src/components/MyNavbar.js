@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import '../styles/navstyle.css'
 // 要使用能有active css效果的NavLink元件
@@ -6,7 +6,25 @@ import { NavLink } from 'react-router-dom'
 
 function MyNavbar(props) {
   const { auth, setAuth, track, cartCount } = props
+  const [member, setMember] = useState([])
 
+  function getMemberLocalStorage() {
+    // 開啟載入的指示圖示
+
+    const newMember = localStorage.getItem('member') || '[]'
+
+    // console.log(JSON.parse(newMember))
+
+    setMember(JSON.parse(newMember))
+  }
+  useEffect(() => {
+    getMemberLocalStorage()
+  }, [])
+  const id = member.id
+  console.log(
+    'member.idmember.idmember.idmember.id',
+    member.id
+  )
   return (
     <>
       <Navbar
@@ -73,6 +91,27 @@ function MyNavbar(props) {
             </Nav.Link>
           </Nav>
           <Nav className="mt-3 mr-3">
+            <Nav.Link
+              as={NavLink}
+              to="/add"
+              eventKey={2}
+              href="#memes"
+            >
+              <p>註冊</p>
+            </Nav.Link>
+
+            {auth ? (
+              <Nav.Link
+                as={NavLink}
+                to={'/edit/' + id}
+                eventKey={2}
+                href="#memes"
+              >
+                <p>修改</p>
+              </Nav.Link>
+            ) : (
+              ''
+            )}
             <Nav.Link
               as={NavLink}
               to="/login"
