@@ -21,11 +21,14 @@ import ProductDetail from './pages/ProductDetail'
 //購物車
 import Cart from './pages/cart/Cart'
 import Transport from './pages/cart/Transport'
-import Receive from './pages/cart/Receive'
+// import Receive from './pages/cart/Receive'
 import ReceiveCard from './pages/cart/ReceiveCard'
 import OrderList from './pages/cart/OrderList'
 import CheckOrder from './pages/cart/CheckOrder'
 import OrderStep from './pages/cart/OrderStep'
+//會員
+import Add from './pages/Add'
+import Edit from './pages/Edit'
 // 組合用元件
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
@@ -56,6 +59,13 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
+
+            <Route path="/edit/:id">
+                <Edit />
+              </Route>
+              <Route path="/add">
+                <Add />
+              </Route>
               <Route path="/cart">
                 <Cart />
               </Route>
@@ -72,9 +82,7 @@ function App() {
               <Route path="/receive-card">
                 <ReceiveCard />
               </Route>
-              <Route path="/receive">
-                <Receive />
-              </Route>
+
               <Route path="/transport">
                 <Transport />
               </Route>
