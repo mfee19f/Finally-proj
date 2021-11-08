@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import { withRouter } from 'react-router-dom'
+import dayjs from 'dayjs'
 import { withRouter, Link } from 'react-router-dom'
 import './Member_center.css'
 function Member_center(props) {
@@ -168,7 +169,9 @@ function Member_center(props) {
                   id="birthday"
                   name="birthday"
                   required
-                  value={memberData.birthday}
+                  value={dayjs(memberData.birthday).format(
+                    'YYYY-MM-DD'
+                  )}
                   onChange={handleFieldChange}
                 />
               </div>

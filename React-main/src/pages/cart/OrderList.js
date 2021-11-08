@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
 import { withRouter, Link } from 'react-router-dom'
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
 import './cartstyle.css'
 // import dayjs from 'dayjs'
 function OrderList(props) {
@@ -46,85 +46,141 @@ function OrderList(props) {
         {data[0]
           ? data.map((el, i) => {
               return (
-                <div class="row justify-content-center mb-5">
-                  <div class="borderstyle w875">
-                    <div class="rongorder2">
-                      訂單編號 :{' '}
-                      <span class="red">
-                        {el.order_sid}
-                      </span>
-                    </div>
-                    <table class="table table-bordered col ">
-                      <thead class="">
-                        <tr>
-                          <th
-                            scope="col"
-                            class="text-center"
-                          >
-                            訂購日期
-                          </th>
-                          <th
-                            scope="col"
-                            class="text-center"
-                          >
-                            訂單編號
-                          </th>
-                          <th
-                            scope="col"
-                            class="text-center"
-                          >
-                            付款方式
-                          </th>
-                          <th
-                            scope="col"
-                            class="text-center"
-                          >
-                            應付金額
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center">
-                          {dayjs(el.order_date).format('YYYY-MM-DD')}
-                          </td>
-                          <td class="text-center red">
+                <>
+                  <Accordion defaultActiveKey="0">
+                    <Card>
+                      <Accordion.Toggle
+                        as={Card.Header}
+                        eventKey="0"
+                      >
+                        <div class="">
+                          訂單編號 :{' '}
+                          <span class="red">
                             {el.order_sid}
-                          </td>
-                          <td class="text-center">
-                            {el.delivery}
-                          </td>
-                          <td class="text-center">
-                            {el.orderprice}
-                          </td>
-                        </tr>
-                        <div></div>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                          </span>
+                        </div>
+                      </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                        <table class="table table-bordered col ">
+                            <thead class="">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  class="text-center"
+                                >
+                                  訂購日期
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="text-center"
+                                >
+                                  訂單編號
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="text-center"
+                                >
+                                  付款方式
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="text-center"
+                                >
+                                  應付金額
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="text-center">
+                                  {dayjs(
+                                    el.order_date
+                                  ).format('YYYY-MM-DD')}
+                                </td>
+                                <td class="text-center red">
+                                  {el.order_sid}
+                                </td>
+                                <td class="text-center">
+                                  {el.delivery}
+                                </td>
+                                <td class="text-center">
+                                  {el.orderprice}
+                                </td>
+                              </tr>
+                              <div></div>
+                            </tbody>
+                          </table>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
+                  <div class="mt-5"></div>
+                  {/* <div class="row justify-content-center mb-5">
+                    <div class="borderstyle w875">
+                      <div class="rongorder2">
+                        訂單編號 :{' '}
+                        <span class="red">
+                          {el.order_sid}
+                        </span>
+                      </div>
+                      <table class="table table-bordered col ">
+                        <thead class="">
+                          <tr>
+                            <th
+                              scope="col"
+                              class="text-center"
+                            >
+                              訂購日期
+                            </th>
+                            <th
+                              scope="col"
+                              class="text-center"
+                            >
+                              訂單編號
+                            </th>
+                            <th
+                              scope="col"
+                              class="text-center"
+                            >
+                              付款方式
+                            </th>
+                            <th
+                              scope="col"
+                              class="text-center"
+                            >
+                              應付金額
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">
+                              {dayjs(el.order_date).format(
+                                'YYYY-MM-DD'
+                              )}
+                            </td>
+                            <td class="text-center red">
+                              {el.order_sid}
+                            </td>
+                            <td class="text-center">
+                              {el.delivery}
+                            </td>
+                            <td class="text-center">
+                              {el.orderprice}
+                            </td>
+                          </tr>
+                          <div></div>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div> */}
+                </>
               )
             })
           : ''}
-        <Accordion defaultActiveKey="0">
-          <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              Click me!
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>Hello! I'm the body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="1">
-              Click me!
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>Hello! I'm another body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-        <div class="row justify-content-center ">
+
+        {/* <div class="row justify-content-center ">
           <div class="borderstyle w875">
             <div class="row justify-content-center">
               <div class="borderstyle w875">
@@ -206,7 +262,7 @@ function OrderList(props) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div class="container mt-5 pt-4">
           <div class="row justify-content-center ">
