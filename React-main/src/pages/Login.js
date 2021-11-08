@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 function Login(props) {
   console.log(props)
   const [account, setAccount] = useState('')
@@ -132,7 +132,7 @@ function Login(props) {
               </div>
               <div className="registerButton">
                 <button className="register btn btn-success">
-                  註冊
+                <a className="white" href="/register">註冊</a>
                 </button>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { withRouter } from 'react-router-dom'
+import { Modal, Button } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
 import Cart from './Cart'
@@ -16,6 +17,7 @@ function OrderSteps(props) {
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
   const [mycartDisplay, setMycartDisplay] = useState([])
+
   console.log('mycartDisplay:', mycartDisplay)
   var temporderid = 0
   const cart = (
@@ -155,12 +157,12 @@ function OrderSteps(props) {
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
 
-//請先登入
-  useEffect(() => {
-    if (!auth) {
-      f()
-    }
-  }, [])
+  //請先登入
+  // useEffect(() => {
+  //   if (!auth) {
+  //     f()
+  //   }
+  // }, [])
   const switchStep = (step) => {
     switch (step) {
       case 1:
@@ -220,10 +222,31 @@ function OrderSteps(props) {
       </div>
     </>
   )
+  const alert = (
+    <>
+      <Modal show="true" backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>您未登錄</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>請先登入</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            onClick={() => {
+              props.history.push('/login')
+            }}
+          >
+            前往登入頁面
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  )
   const logout = (
     <>
+      {alert}
       <div className="mt-5 pt-5"></div>
-      <p>請先登入</p>
+
     </>
   )
   return auth ? login : logout

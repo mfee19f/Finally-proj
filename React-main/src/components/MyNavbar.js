@@ -128,14 +128,14 @@ function MyNavbar(props) {
               ''
             ) : (
               <>
-                <Nav.Link
+                {/* <Nav.Link
                   as={NavLink}
                   to="/register"
                   eventKey={2}
                   href="#memes"
                 >
                   <p>註冊</p>
-                </Nav.Link>
+                </Nav.Link> */}
 
                 <Nav.Link
                   as={NavLink}
