@@ -1,5 +1,4 @@
 import { withRouter, Link } from 'react-router-dom'
-import { Modal, Button } from 'react-bootstrap'
 import MultiLevelBreadCrumb from '../components/MultiLevelBreadCrumb'
 import '../styles/ProductDetail.css'
 import { useEffect, useState } from 'react'
@@ -16,35 +15,12 @@ function ProductDetail(props) {
     setBuyNumber,
     track,
     setTrack,
-   
   } = props
   const [data, setData] = useState({})
   const [displayData, setDisplayData] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [singleData, setSingleData] = useState({})
-  console.log(
-    'singleDatasingleDatasingleDatasingleData',
-    singleData
-  )
-  const [mycart, setMycart] = useState([])
-  const [show, setShow] = useState(false)
-  const [productName, setProductName] = useState('')
 
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-
-  const updateCartToLocalStorage = (value) => {
-    const currentCart =
-      JSON.parse(localStorage.getItem('cart')) || []
-
-    const newCart = [...currentCart, value]
-    localStorage.setItem('cart', JSON.stringify(newCart))
-
-    // 設定資料
-    setMycart(newCart)
-    setProductName(value.name)
-    handleShow()
-  }
   useEffect(() => {
     ;(async () => {
       const id = props.match.params.id
@@ -75,8 +51,6 @@ function ProductDetail(props) {
       await setDisplayData(obj)
     })()
   }, [pageNumber])
-  // console.log(pageNumber)
-  // console.log(singleData.sid)
 
   return (
     <>
@@ -156,13 +130,21 @@ function ProductDetail(props) {
               type="button"
               className="btn btn-dark btn-lg rocky-in"
               onClick={() => {
-                updateCartToLocalStorage({
-                  id: singleData.sid,
-                  name: singleData.name,
-                  amount: buyNumber,
-                  price: singleData.price,
-                  image: IMG_PATH + '/' + singleData.image,
-                })
+                // 加到localStorage
+                const myCart = localStorage.getItem('cart')
+                  ? JSON.parse(localStorage.getItem('cart'))
+                  : []
+
+                const newMyCart = [
+                  ...myCart,
+                  singleData,
+                  buyNumber,
+                ]
+                localStorage.setItem(
+                  'cart',
+                  JSON.stringify(newMyCart)
+                )
+
                 // 每次一按加入，選單列購物數量+1
                 setCartCount(cartCount + 1)
               }}

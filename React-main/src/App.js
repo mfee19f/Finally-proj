@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // 頁面用元件
 import Home from './pages/Home'
@@ -44,12 +44,25 @@ function App() {
   const [track, setTrack] = useState(0)
   const [cartCount, setCartCount] = useState(0)
   const [memberData, setMemberData] = useState({})
+  useEffect(() => {
+    // 問伺服器是否有會員登入
+    // 如果有登入，設定auth為true
+    //setAuth(true)
+
+    //請localstorage中的購物車數量
+    const myTrack = localStorage.getItem('track')
+      ? JSON.parse(localStorage.getItem('track'))
+      : []
+
+    // 設定為陣列的長度(成員數量)
+    setTrack(myTrack.length)
+  }, [])
   return (
     <Router>
       <>
         {/* LOGO+標題+導覽列+上方選單 */}
         <MyNavbar
-        setAuth={setAuth}
+          setAuth={setAuth}
           auth={auth}
           track={track}
           cartCount={cartCount}
@@ -63,11 +76,14 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
-            <Route path="/test">
+              <Route path="/test">
                 <Test auth={auth} />
               </Route>
               <Route path="/member_center/:id">
-                <Member_center auth={auth}  memberData={memberData}/>
+                <Member_center
+                  auth={auth}
+                  memberData={memberData}
+                />
               </Route>
               <Route path="/edit/:id">
                 <Edit auth={auth} />
@@ -125,7 +141,12 @@ function App() {
               </Route>
               <Route path="/login">
                 {/* 利用props傳入頁面元件狀態 */}
-                <Login auth={auth} setAuth={setAuth}  memberData={memberData} setMemberData={setMemberData}/>
+                <Login
+                  auth={auth}
+                  setAuth={setAuth}
+                  memberData={memberData}
+                  setMemberData={setMemberData}
+                />
               </Route>
               <Route path="/productcategory">
                 <ProductCategory />
