@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 // import { withRouter } from 'react-router-dom'
 import dayjs from 'dayjs'
+
 import { withRouter, Link } from 'react-router-dom'
 import './Member_center.css'
 function Member_center(props) {
   console.log(props)
   const [memberData, setMemberData] = useState({})
   const [password, setPassword] = useState({})
+
   console.log(
     'memberDatamemberDatamemberDatamemberDatamemberData',
     memberData
@@ -78,7 +80,7 @@ function Member_center(props) {
           <div className="personalArea">
             <img
               className="personalAreaPic"
-              src="./img/IMG_6685.PNG"
+              src="./image/IMG_6685.PNG"
               alt=""
             />
             <div>

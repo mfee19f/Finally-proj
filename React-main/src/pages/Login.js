@@ -60,7 +60,7 @@ function Login(props) {
     <>
       <div className="d-flex mt-5">
         <div className="loginLeft col-xl-6 d-none d-xl-block mt-5">
-          <img src="./img/login_left_pic.jpg" alt="" />
+          <img src="./image/login_left_pic.jpg" alt="" />
         </div>
         <div className="loginRight col-xl-6 col-12">
           <form name="form1" onSubmit={handleSubmit}>

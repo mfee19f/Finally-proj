@@ -62,7 +62,7 @@ function OrderList(props) {
                       </Accordion.Toggle>
                       <Accordion.Collapse eventKey="0">
                         <Card.Body>
-                        <table class="table table-bordered col ">
+                          <table class="table table-bordered col ">
                             <thead class="">
                               <tr>
                                 <th

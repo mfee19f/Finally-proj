@@ -41,7 +41,7 @@ function Register(props) {
     <>
       <div className="d-flex mt-5">
         <div className="loginLeft col-6">
-          <img src="./img/login_left_pic.jpg" alt="" />
+          <img src="./image/login_left_pic.jpg" alt="" />
         </div>
         <div className="loginRight col-6">
           <form onSubmit={handleSubmit} name="form1">
@@ -81,7 +81,6 @@ function Register(props) {
                 }}
               />
             </div>
-
 
             <div className="mb-3 form-check">
               <input

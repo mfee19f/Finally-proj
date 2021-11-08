@@ -44,7 +44,7 @@ function App() {
   const [track, setTrack] = useState(0)
   const [cartCount, setCartCount] = useState(0)
   const [memberData, setMemberData] = useState({})
-  
+
   useEffect(() => {
     // 問伺服器是否有會員登入
     // 如果有登入，設定auth為true
