@@ -57,10 +57,10 @@ class Member {
     }
     async save(){
         // 若有 PK 則表示要做修改
-        if(this.data.id){
-            const sid = this.data.id;
+        if(this.data.sid){
+            const sid = this.data.sid;
             const data = {...this.data};
-            delete data.id;
+            delete data.sid;
             const sql = `UPDATE ${tableName} SET ? WHERE ${pkField}=?`;
             const [r] = await db.query(sql, [data, sid]);
             return r;

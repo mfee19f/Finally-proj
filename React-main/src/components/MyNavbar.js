@@ -5,9 +5,9 @@ import '../styles/navstyle.css'
 import { NavLink } from 'react-router-dom'
 
 function MyNavbar(props) {
-  const { auth, setAuth, track, cartCount } = props
+  const { auth, setAuth, track, cartCount, memberData } =
+    props
   const [member, setMember] = useState([])
-  const [authout,setAuthout]=useState(true)
 
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
@@ -31,13 +31,10 @@ function MyNavbar(props) {
   useEffect(() => {
     getMemberLocalStorage()
   }, [])
-  const id = member.id
-  console.log(
-    'member.idmember.idmember.idmember.id',
-    member.id
-  )
+  const id = memberData.sid
+
   const logoout = () => {
-    setAuthout(false)
+    setAuth(false)
     deleteMemberLocalStorage()
   }
   return (
@@ -106,48 +103,53 @@ function MyNavbar(props) {
             </Nav.Link>
           </Nav>
           <Nav className="mt-3 mr-3">
-            <Nav.Link>
-              <p>你好 {member.nickname}</p>
-            </Nav.Link>
             {auth ? (
-              <Nav.Link href="#memes">
-                <p onClick={logoout}>登出</p>
-              </Nav.Link>
+              <>
+                <Nav.Link>
+                  <p>你好 {member.nickname}</p>
+                </Nav.Link>
+                <Nav.Link
+                  as={NavLink}
+                  to={'/member_center/' + id}
+                  eventKey={2}
+                  href="#memes"
+                >
+                  <p>會員中心</p>
+                </Nav.Link>
+                <Nav.Link href="#memes">
+                  <p onClick={logoout}>登出</p>
+                </Nav.Link>
+              </>
             ) : (
               ''
             )}
-            
-            <Nav.Link
-              as={NavLink}
-              to="/register"
-              eventKey={2}
-              href="#memes"
-            >
-              <p>註冊</p>
-            </Nav.Link>
 
             {auth ? (
-              <Nav.Link
-                as={NavLink}
-                to={'/edit/' + id}
-                eventKey={2}
-                href="#memes"
-              >
-                <p>修改</p>
-              </Nav.Link>
-            ) : (
               ''
+            ) : (
+              <>
+                <Nav.Link
+                  as={NavLink}
+                  to="/register"
+                  eventKey={2}
+                  href="#memes"
+                >
+                  <p>註冊</p>
+                </Nav.Link>
+
+                <Nav.Link
+                  as={NavLink}
+                  to="/login"
+                  eventKey={2}
+                  href="#deets"
+                >
+                  <p>
+                    <i className="far fa-user"></i>
+                  </p>
+                </Nav.Link>
+              </>
             )}
-            <Nav.Link
-              as={NavLink}
-              to="/login"
-              eventKey={2}
-              href="#deets"
-            >
-              <p>
-                <i className="far fa-user"></i>
-              </p>
-            </Nav.Link>
+
             <Nav.Link href="#deets">
               <p>
                 <i className="far fa-heart"></i>

@@ -4,8 +4,8 @@ function Login(props) {
   console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const { auth, setAuth } = props
-
+  const { auth, setAuth, memberData, setMemberData } = props
+  console.log('memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',memberData)
   const login = () => {
     const fd = new FormData(document.form1)
     fetch('http://localhost:3001/login-jwt', {
@@ -35,11 +35,23 @@ function Login(props) {
     localStorage.removeItem('member')
     alert('以登出')
   }
-  console.log('auth', auth)
+
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()
   }
+
+  function getMemberLocalStorage() {
+    const newMember = localStorage.getItem('member') || '[]'
+
+    // console.log(JSON.parse(newMember))
+
+    setMemberData(JSON.parse(newMember))
+  }
+  useEffect(() => {
+
+    getMemberLocalStorage()
+  }, [])
   return (
     <>
       <div className="d-flex mt-5">

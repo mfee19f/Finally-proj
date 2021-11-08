@@ -228,11 +228,11 @@ function CheckOrder(props) {
               <form class="ml-5 rongorderdetail">
                 <div class="form-group">
                   <label for="name">會員帳號 : </label>
-                  <span>{member.email}</span>
+                  <span>{member.account}</span>
                 </div>
                 <div class="form-group">
                   <label for="name">會員暱稱 : </label>
-                  <span>{member.nickname}</span>
+                  <span>{member.name}</span>
                 </div>
                 <div class="form-group">
                   <label for="name">訂單編號 : </label>
@@ -285,7 +285,7 @@ function CheckOrder(props) {
 
   return (
     <>
-      <h1>學生資料</h1>
+
       {dataLoading ? spinner : display}
     </>
   )

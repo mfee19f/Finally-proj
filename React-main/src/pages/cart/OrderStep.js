@@ -94,9 +94,9 @@ function OrderSteps(props) {
   }
   const fetchOrder = async () => {
     const dataObj = {
-      member_sid: member.id,
+      member_sid: member.sid,
       order_sid: datacard.order_id,
-      nickname: member.nickname,
+      nickname: member.name,
       mobile: datacard.mobile,
       orderprice: sum(mycartDisplay),
       delivery: paydata,

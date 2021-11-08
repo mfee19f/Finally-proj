@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import './Member_center.css'
 function Member_center(props) {
   console.log(props)
@@ -32,6 +33,7 @@ function Member_center(props) {
         }
       })
   }
+  const id = memberData.sid
 
   useEffect(() => {
     ;(async () => {
@@ -69,7 +71,7 @@ function Member_center(props) {
   }
   return (
     <>
-    <div className="member_center d-flex mt-5">
+      <div className="member_center d-flex mt-5">
         <div className="centerLeft col-2">
           <div className="personalArea">
             <img
@@ -78,7 +80,7 @@ function Member_center(props) {
               alt=""
             />
             <div>
-              <label for="">{memberData.account}</label>
+              <label for="">{memberData.name}</label>
               <br />
               <a href="">編輯個人資料</a>
             </div>
@@ -88,7 +90,11 @@ function Member_center(props) {
 
           <div className="functionList">
             <div className="orderTrack">
-              <label for="orderTrack">訂單查詢</label>
+              <label for="orderTrack">
+                <Link to={'/order-list/' + id}>
+                  訂單查詢
+                </Link>
+              </label>
             </div>
           </div>
         </div>
@@ -97,12 +103,14 @@ function Member_center(props) {
             <b>個人資料</b>
             <br />
             <div className="personalFormLine"></div>
-            <form>
+            <form name="form1" onSubmit={handleSubmit}>
               <div className="form-group account">
                 <label for="name">
                   帳號(Email address) :
                 </label>
-                <label name="email">TEST</label>
+                <label name="email">
+                  {memberData.account}
+                </label>
                 <small className="form-text text-muted">
                   此為您的登入帳號
                 </small>
@@ -111,9 +119,9 @@ function Member_center(props) {
               <div className="form-group password">
                 <label for="name">密碼 :</label>
                 <input
-                  type="password"
+                  type="text"
                   className="form-control col-4 inputstyle"
-                  placeholder="****"
+                  placeholder={memberData.password}
                 />
                 <small className="form-text text-muted">
                   We'll never share your password with
@@ -124,8 +132,13 @@ function Member_center(props) {
               <div className="form-group mobile">
                 <label for="mobile">手機 :</label>
                 <input
-                  type="tel"
-                  className="form-control col-4 inputstyle"
+                  type="text"
+                  class="form-control col-4 inputstyle"
+                  id="mobile"
+                  name="mobile"
+                  required
+                  value={memberData.mobile}
+                  onChange={handleFieldChange}
                 />
               </div>
 
@@ -133,7 +146,12 @@ function Member_center(props) {
                 <label for="birthday">生日 :</label>
                 <input
                   type="date"
-                  className="form-control col-4 inputstyle"
+                  class="form-control col-4 inputstyle"
+                  id="birthday"
+                  name="birthday"
+                  required
+                  value={memberData.birthday}
+                  onChange={handleFieldChange}
                 />
               </div>
 
@@ -156,10 +174,7 @@ function Member_center(props) {
               </div>
 
               <div className="avatar">
-                <label
-                  for="avatar"
-                  className="avatar"
-                >
+                <label for="avatar" className="avatar">
                   個人照片:
                 </label>
                 <br />
@@ -168,100 +183,16 @@ function Member_center(props) {
                   上傳
                 </button>
               </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onClick={add}
+              >
+                修改
+              </button>
             </form>
           </div>
         </div>
-      </div>
-    {/* .................... */}
-      <div class="card-body">
-        <h5 class="card-title">註冊 (JWT)</h5>
-        {/* email, password, mobile, address,birthday */}
-        <form name="form1" onSubmit={handleSubmit}>
-          <div class="mb-3">
-            <label for="email" class="form-label">
-              email
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              required
-              value={memberData.email}
-              onChange={handleFieldChange}
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              密碼
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              required
-              value={memberData.password}
-              onChange={handleFieldChange}
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="mobile" class="form-label">
-              mobile
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="mobile"
-              name="mobile"
-              required
-              value={memberData.mobile}
-              onChange={handleFieldChange}
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              address
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              name="address"
-              required
-              value={memberData.address}
-              onChange={handleFieldChange}
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              birthday
-            </label>
-            <input
-              type="date"
-              class="form-control"
-              id="birthday"
-              name="birthday"
-              required
-              value={memberData.birthday}
-              onChange={handleFieldChange}
-            />
-          </div>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            onClick={add}
-          >
-            修改
-          </button>
-          {/* <button class="btn btn-primary" onClick={logout}>
-            登出
-          </button> */}
-        </form>
       </div>
     </>
   )

@@ -37,20 +37,23 @@ import MainContent from './components/MainContent'
 import ScrollToTop from './components/ScrollToTop'
 //import BreadCrumb from './components/BreadCrumb'
 // import MultiLevelBreadcrumb from './components/MultiLevelBreadCrumb'
-
+import Test from './pages/Test'
 function App() {
   const [auth, setAuth] = useState(false)
   const [buyNumber, setBuyNumber] = useState(1)
   const [track, setTrack] = useState(0)
   const [cartCount, setCartCount] = useState(0)
+  const [memberData, setMemberData] = useState({})
   return (
     <Router>
       <>
         {/* LOGO+標題+導覽列+上方選單 */}
         <MyNavbar
+        setAuth={setAuth}
           auth={auth}
           track={track}
           cartCount={cartCount}
+          memberData={memberData}
         />
         {/* 主內容區 */}
         <MainContent>
@@ -60,8 +63,11 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
+            <Route path="/test">
+                <Test auth={auth} />
+              </Route>
               <Route path="/member_center/:id">
-                <Member_center auth={auth} />
+                <Member_center auth={auth}  memberData={memberData}/>
               </Route>
               <Route path="/edit/:id">
                 <Edit auth={auth} />
@@ -119,7 +125,7 @@ function App() {
               </Route>
               <Route path="/login">
                 {/* 利用props傳入頁面元件狀態 */}
-                <Login auth={auth} setAuth={setAuth} />
+                <Login auth={auth} setAuth={setAuth}  memberData={memberData} setMemberData={setMemberData}/>
               </Route>
               <Route path="/productcategory">
                 <ProductCategory />
