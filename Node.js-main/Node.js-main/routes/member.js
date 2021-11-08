@@ -4,14 +4,13 @@ const upload = require('./../modules/upload-images');
 const Product = require('./../models/Product');
 const Member = require('./../models/Member')
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 // 新增項目
 router.post('/', async (req, res) => {
-    // req.body.product_id
-    // req.body.quantity
-    // email, password, mobile, address,birthday
-    res.json( await Member.add(req.body.email,req.body.password,req.body.mobile,req.body.address,req.body.birthday));
-    // member_sid, name, mobile, orderprice, delivery, receiver, delivery_address, card
+    const hash = await bcrypt.hash(req.body.password, 10);
+    res.json( await Member.add(req.body.account,hash));
+
 });
 
 // 讀取單筆

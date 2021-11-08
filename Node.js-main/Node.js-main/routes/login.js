@@ -95,7 +95,7 @@ router.post('/login-jwt', async (req, res)=>{
     };
     // TODO: 欄位檢查
 
-    const [rs] = await db.query("SELECT * FROM members WHERE `email`=?", [req.body.email]);
+    const [rs] = await db.query("SELECT * FROM mymembers WHERE account=?", [req.body.account]);
 
     if(!rs.length){
         // 帳號錯誤
@@ -104,12 +104,12 @@ router.post('/login-jwt', async (req, res)=>{
 
     const success = await bcrypt.compare(req.body.password, rs[0].password);
     if(success){
-        const {id, email, nickname} = rs[0];
+        const {sid,name, account,mobile,birthday} = rs[0];
         // req.session.member = {id, email, nickname};
 
         output.success = true;
-        output.member = {id, email, nickname};
-        output.token = await jwt.sign({id, email, nickname}, process.env.JWT_SECRET);
+        output.member = {sid,name, account,mobile,birthday};
+        output.token = await jwt.sign({sid,name, account,mobile,birthday}, process.env.JWT_SECRET);
     }
     res.json(output);
 });

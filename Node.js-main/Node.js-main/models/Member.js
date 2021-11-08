@@ -1,7 +1,7 @@
 const db = require('../modules/connect-mysql');
 
-const tableName = 'members';
-const pkField = 'id';
+const tableName = 'mymembers';
+const pkField = 'sid';
 
 class Member {
 
@@ -11,15 +11,15 @@ class Member {
     }
 
     //註冊
-    static async add(email, password, mobile, address,birthday){
+    static async add(account, password){
         const output = {
             success: false,
             error: ''
         }
         
-
+ 
         const obj = {
-            email, password, mobile, address,birthday
+            account, password
         };
         const sql = `INSERT INTO ${tableName} SET ?`;
         const [r] = await db.query(sql, [obj]);
