@@ -159,7 +159,7 @@ function ProductDetail(props) {
                 updateCartToLocalStorage({
                   id: singleData.sid,
                   name: singleData.name,
-                  amount: 1,
+                  amount: buyNumber,
                   price: singleData.price,
                   image: IMG_PATH + '/' + singleData.image,
                 })

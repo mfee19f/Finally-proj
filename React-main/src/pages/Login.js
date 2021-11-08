@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 function Login(props) {
   console.log(props)
-  const [email, setEmail] = useState('')
+  const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const { auth, setAuth } = props
 
@@ -42,7 +42,89 @@ function Login(props) {
   }
   return (
     <>
-      <div class="card-body">
+      <div className="d-flex mt-5">
+        <div className="loginLeft col-xl-6 d-none d-xl-block mt-5">
+          <img src="./img/login_left_pic.jpg" alt="" />
+        </div>
+        <div className="loginRight col-xl-6 col-12">
+          <form name="form1" onSubmit={handleSubmit}>
+            <p>
+              歡迎!
+              <br />
+              登入帳戶
+            </p>
+            <div className="mb-3">
+              <label for="account" className="form-label">
+                帳號(Email address)
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                id="account"
+                name="account"
+                required
+                value={account}
+                onChange={(e) => {
+                  setAccount(e.target.value)
+                }}
+              />
+              <div id="emailHelp" className="form-text">
+                提示字
+              </div>
+            </div>
+            <div className="mb-3">
+              <label
+                for="exampleInputPassword1"
+                className="form-label"
+              >
+                密碼
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
+              />
+            </div>
+            <div className="mb-3 form-check">
+              <input
+                type="radio"
+                className="rememberAccount"
+              />
+              <label
+                className="form-check-label"
+                for="exampleCheck1"
+              >
+                記住帳號
+              </label>
+            </div>
+            <div className="loginButtonGroup">
+              <div className="loginButton">
+                <button
+                  type="submit"
+                  className="login btn btn-primary"
+                  variant="primary"
+                  onClick={login}
+                >
+                  登入
+                </button>
+              </div>
+              <div className="registerButton">
+                <button className="register btn btn-success">
+                  註冊
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      {/* ................ */}
+      {/* <div class="card-body">
         <h5 class="card-title">登入 (JWT)</h5>
 
         <form name="form1" onSubmit={handleSubmit}>
@@ -91,7 +173,9 @@ function Login(props) {
             登出
           </button>
         </form>
-      </div>
+      </div> */}
+
+      {/* .................. */}
     </>
   )
 }

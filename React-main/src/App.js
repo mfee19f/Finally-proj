@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import ProductBaby from './pages/ProductBaby'
-import ProductMen from './pages/ProductMen'
+
 import ProductWomen from './pages/ProductWomen'
 import NotFoundPage from './pages/NotFoundPage'
 import ProductCategory from './pages/ProductCategory'
@@ -27,8 +27,9 @@ import OrderList from './pages/cart/OrderList'
 import CheckOrder from './pages/cart/CheckOrder'
 import OrderStep from './pages/cart/OrderStep'
 //會員
-import Add from './pages/Add'
+import Register from './pages/Register'
 import Edit from './pages/Edit'
+import Member_center from './pages/Member_center'
 // 組合用元件
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
@@ -59,12 +60,14 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
-
-            <Route path="/edit/:id">
-                <Edit auth={auth}/>
+              <Route path="/member_center/:id">
+                <Member_center auth={auth} />
               </Route>
-              <Route path="/add" >
-                <Add auth={auth}/>
+              <Route path="/edit/:id">
+                <Edit auth={auth} />
+              </Route>
+              <Route path="/register">
+                <Register auth={auth} />
               </Route>
               <Route path="/cart">
                 <Cart />
@@ -109,9 +112,7 @@ function App() {
               <Route path="/product/women">
                 <ProductWomen />
               </Route>
-              <Route path="/product/men">
-                <ProductMen />
-              </Route>
+
               {/* 這裡要定義網址參數的屬性名稱 */}
               <Route path="/product/baby/:id?">
                 <ProductBaby />

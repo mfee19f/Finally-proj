@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="rect"></div>
+<body>
+
+    <script>
+        const rect = document.querySelector('#rect');
+        const people = [
+            { sid: 1, name: 'david', age: 25, id: 'A006' },
+            { sid: 1, name: 'bill', age: 27, id: 'A009' },
+            { sid: 1, name: 'peter', age: 23, id: 'A011' },
+            { sid: 2, name: 'aaa', age: 23, id: 'A001' },
+            { sid: 2, name: 'bbb', age: 24, id: 'A041' },
+        ];
+        var id=0
+        var str="<div class='box'>"
+        people.forEach(function (val, ind) {
+            if(id==0)
+            id=val.sid
+            if(id!=val.sid)
+            {
+                id=val.sid
+                str+="</div>"
+                str+="<div><label>"+val.name+"</label><label>"+val.age+"</label><label>"+val.id+"</label></div>"
+            }else{
+
+            
+            str+="<div><label>"+val.name+"</label><label>"+val.age+"</label><label>"+val.id+"</label></div>"
+            }
+
+
+            
+            rect.innerHTML =str
+        });
+    </script>
+</body>
+
+</html>

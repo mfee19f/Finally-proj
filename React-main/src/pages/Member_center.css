@@ -1,0 +1,49 @@
+body {
+  background-color: #f6f4e8;
+}
+.member_center {
+  height: 100vh;
+}
+.personalFormLine {
+  width: 70%;
+  border-bottom: 1px solid gray;
+}
+.centerLeft {
+  background-color: #e59560;
+  height: 100%;
+}
+.centerRight {
+  margin-top: 15px;
+  height: 100%;
+}
+.personalArea {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.personalArea img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.functionList {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.orderTrack {
+  align-items: center;
+}
+.avatar button {
+  color: #fff;
+  background-color: #1d3124;
+  border-color: #1d3124;
+}
+.picSize {
+  height: 200px;
+  width: 200px;
+}
+.account{
+  
+}

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
-function Add(props) {
+import './Register.css'
+function Register(props) {
   console.log(props)
-  const [email, setEmail] = useState('')
+  const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [birthday, setBirthday] = useState('')
-  const [address, setAddress] = useState('')
   const { auth, setAuth } = props
 
   const add = () => {
@@ -39,12 +37,80 @@ function Add(props) {
     e.preventDefault()
   }
 
-  
   return (
     <>
-      <div class="card-body">
+      <div className="d-flex mt-5">
+        <div className="loginLeft col-6">
+          <img src="./img/login_left_pic.jpg" alt="" />
+        </div>
+        <div className="loginRight col-6">
+          <form onSubmit={handleSubmit} name="form1">
+            <p>註冊個人帳戶</p>
+            <div className="mb-3">
+              <label for="email" className="form-label">
+                Email信箱
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="account"
+                required
+                value={account}
+                onChange={(e) => {
+                  setAccount(e.target.value)
+                }}
+              />
+              <div id="emailHelp" className="form-text">
+                提示字
+              </div>
+            </div>
+            <div className="mb-3">
+              <label for="password" className="form-label">
+                建立密碼
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
+              />
+            </div>
+
+
+            <div className="mb-3 form-check">
+              <input
+                type="radio"
+                className="rememberAccount"
+              />
+              <label
+                className="form-check-label"
+                for="exampleCheck1"
+              >
+                我同意XX條款
+              </label>
+            </div>
+            <div className="registerButton">
+              <button
+                className="register btn"
+                onClick={add}
+              >
+                註冊帳號
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* .............................. */}
+      {/* <div class="card-body">
         <h5 class="card-title">註冊 (JWT)</h5>
-        {/* email, password, mobile, address,birthday */}
+
         <form name="form1" onSubmit={handleSubmit}>
           <div class="mb-3">
             <label for="email" class="form-label">
@@ -136,14 +202,14 @@ function Add(props) {
             onClick={add}
           >
             註冊
-          </button>
-          {/* <button class="btn btn-primary" onClick={logout}>
+          </button> */}
+      {/* <button class="btn btn-primary" onClick={logout}>
             登出
           </button> */}
-        </form>
-      </div>
+      {/* </form>
+      </div> */}
     </>
   )
 }
 
-export default withRouter(Add)
+export default withRouter(Register)

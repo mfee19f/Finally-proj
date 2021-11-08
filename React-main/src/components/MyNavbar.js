@@ -7,11 +7,22 @@ import { NavLink } from 'react-router-dom'
 function MyNavbar(props) {
   const { auth, setAuth, track, cartCount } = props
   const [member, setMember] = useState([])
+  const [authout,setAuthout]=useState(true)
 
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
 
     const newMember = localStorage.getItem('member') || '[]'
+
+    // console.log(JSON.parse(newMember))
+
+    setMember(JSON.parse(newMember))
+  }
+  function deleteMemberLocalStorage() {
+    // 開啟載入的指示圖示
+
+    const newMember =
+      localStorage.removeItem('member') || '[]'
 
     // console.log(JSON.parse(newMember))
 
@@ -25,6 +36,10 @@ function MyNavbar(props) {
     'member.idmember.idmember.idmember.id',
     member.id
   )
+  const logoout = () => {
+    setAuthout(false)
+    deleteMemberLocalStorage()
+  }
   return (
     <>
       <Navbar
@@ -91,9 +106,20 @@ function MyNavbar(props) {
             </Nav.Link>
           </Nav>
           <Nav className="mt-3 mr-3">
+            <Nav.Link>
+              <p>你好 {member.nickname}</p>
+            </Nav.Link>
+            {auth ? (
+              <Nav.Link href="#memes">
+                <p onClick={logoout}>登出</p>
+              </Nav.Link>
+            ) : (
+              ''
+            )}
+            
             <Nav.Link
               as={NavLink}
-              to="/add"
+              to="/register"
               eventKey={2}
               href="#memes"
             >

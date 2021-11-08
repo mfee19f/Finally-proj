@@ -1,0 +1,23 @@
+body {
+  background-color: #f6f4e8;
+}
+
+.loginLeft img {
+  width: 100%;
+}
+.loginRight {
+  background-color: #fff;
+}
+.loginRight p {
+  margin-top: 15px;
+}
+input {
+  width: 30px;
+}
+.loginButtonGroup {
+  display: flex;
+}
+.loginButtonGroup button {
+  width: 150px;
+  margin-left: 10px;
+}

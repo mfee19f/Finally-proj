@@ -1,0 +1,19 @@
+body {
+    background-color: #f6f4e8;
+  }
+  
+  .loginLeft img {
+    width: 100%;
+  }
+  .loginRight {
+    background-color: #fff;
+  }
+  .loginRight p {
+    margin-top: 15px;
+  }
+  .registerButton button{
+      color: #fff;
+      background-color: #1D3124;
+      border-color: #1D3124;
+  }
+      
