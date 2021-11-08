@@ -5,7 +5,10 @@ function Login(props) {
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const { auth, setAuth, memberData, setMemberData } = props
-  console.log('memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',memberData)
+  console.log(
+    'memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',
+    memberData
+  )
   const login = () => {
     const fd = new FormData(document.form1)
     fetch('http://localhost:3001/login-jwt', {
@@ -25,6 +28,8 @@ function Login(props) {
             JSON.stringify(obj.member)
           ) // 儲存到 localStorage
           alert('登入成功')
+
+          props.history.push('/')
         } else {
           alert('登入失敗\n' + (obj.error || ''))
         }
@@ -49,7 +54,6 @@ function Login(props) {
     setMemberData(JSON.parse(newMember))
   }
   useEffect(() => {
-
     getMemberLocalStorage()
   }, [])
   return (

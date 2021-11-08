@@ -1,24 +1,29 @@
 import React from 'react'
-// import Alert from '@mui/material/Alert'
-// import Stack from '@mui/material/Stack'
-
+import { Accordion, Card } from 'react-bootstrap'
+import { Button } from '@material-ui/core';
 function Test(props) {
   return (
     <>
-{/* //       <Stack sx={{ width: '100%' }} spacing={2}>
-//         <Alert severity="error">
-//           This is an error alert — check it out!
-//         </Alert>
-//         <Alert severity="warning">
-//           This is a warning alert — check it out!
-//         </Alert>
-//         <Alert severity="info">
-//           This is an info alert — check it out!
-//         </Alert>
-//         <Alert severity="success">
-//           This is a success alert — check it out!
-//         </Alert>
-//       </Stack> */}
+      <Accordion defaultActiveKey="0">
+        <Card>
+          <Accordion.Toggle as={Card.Header} eventKey="0">
+            Click me!
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>Hello! I'm the body</Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Accordion.Toggle as={Card.Header} eventKey="1">
+            Click me!
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="1">
+            <Card.Body>Hello! I'm another body</Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
+
+      <Button color="primary">Hello World</Button>
     </>
   )
 }

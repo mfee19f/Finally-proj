@@ -16,7 +16,6 @@ function ProductDetail(props) {
     setBuyNumber,
     track,
     setTrack,
-   
   } = props
   const [data, setData] = useState({})
   const [displayData, setDisplayData] = useState({})
@@ -78,7 +77,36 @@ function ProductDetail(props) {
   // console.log(pageNumber)
   // console.log(singleData.sid)
 
-  return (
+  const messageModal = (
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>加入購物車訊息</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        產品：{productName} 已成功加入購物車
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          繼續購物
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/order-steps')
+          }}
+        >
+          前往購物車結帳
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+
+  const display = (
     <>
       {/* 麵包屑 */}
       <div className="container">
@@ -300,6 +328,12 @@ function ProductDetail(props) {
           </div>
         </div>
       </div>
+    </>
+  )
+  return (
+    <>
+      {messageModal}
+      {display}
     </>
   )
 }

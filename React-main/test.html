@@ -8,10 +8,11 @@
     <title>Document</title>
 </head>
 <div id="rect"></div>
+
 <body>
 
-    <script>
-        const rect = document.querySelector('#rect');
+<script>
+    const rect = document.querySelector('#rect');
         const people = [
             { sid: 1, name: 'david', age: 25, id: 'A006' },
             { sid: 1, name: 'bill', age: 27, id: 'A009' },
@@ -21,8 +22,25 @@
         ];
         var id=0
         var str="<div class='box'>"
-       re
-    </script>
+        people.forEach(function (val, ind) {
+            if(id==0)
+            id=val.sid
+            if(id!=val.sid)
+            {
+                id=val.sid
+               
+                str+="<div>+val.name+""+val.age+"+val.id+"</div>"
+            }else{
+
+            
+            str+="<div><label>"+val.name+"</label><label>"+val.age+"</label><label>"+val.id+"</label></div>"
+            }
+
+
+            
+            rect.innerHTML =str
+        });
+</script>
 </body>
 
 </html>

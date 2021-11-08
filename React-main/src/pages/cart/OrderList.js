@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Accordion, Card } from 'react-bootstrap'
 import { withRouter, Link } from 'react-router-dom'
 import './cartstyle.css'
 // import dayjs from 'dayjs'
@@ -84,7 +85,7 @@ function OrderList(props) {
                       <tbody>
                         <tr>
                           <td class="text-center">
-                          {el.order_date}
+                            {el.order_date}
                           </td>
                           <td class="text-center red">
                             {el.order_sid}
@@ -104,6 +105,24 @@ function OrderList(props) {
               )
             })
           : ''}
+        <Accordion defaultActiveKey="0">
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey="0">
+              Click me!
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>Hello! I'm the body</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey="1">
+              Click me!
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="1">
+              <Card.Body>Hello! I'm another body</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
         <div class="row justify-content-center ">
           <div class="borderstyle w875">
             <div class="row justify-content-center">
