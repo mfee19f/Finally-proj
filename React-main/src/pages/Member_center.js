@@ -5,6 +5,7 @@ import './Member_center.css'
 function Member_center(props) {
   console.log(props)
   const [memberData, setMemberData] = useState({})
+  const [password, setPassword] = useState({})
   console.log(
     'memberDatamemberDatamemberDatamemberDatamemberData',
     memberData
@@ -119,14 +120,31 @@ function Member_center(props) {
               <div className="form-group password">
                 <label for="name">密碼 :</label>
                 <input
-                  type="text"
+                  name="password"
+                  type="password"
                   className="form-control col-4 inputstyle"
-                  placeholder={memberData.password}
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                  // $2a$10$EueNGRr0woJujuwkQcrZDetEGg4unlPIFYKr1ElfZNinCXW4uh5MC
                 />
                 <small className="form-text text-muted">
                   We'll never share your password with
                   anyone else.
                 </small>
+              </div>
+              <div className="form-group mobile">
+                <label for="name">姓名 :</label>
+                <input
+                  type="text"
+                  class="form-control col-4 inputstyle"
+                  id="name"
+                  name="name"
+                  required
+                  value={memberData.name}
+                  onChange={handleFieldChange}
+                />
               </div>
 
               <div className="form-group mobile">

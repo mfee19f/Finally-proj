@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
-import {
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-} from '@material-ui/core'
+
 function Transport(props) {
   const [dataLoading, setDataLoading] = useState(false)
   const [mycart, setMycart] = useState([])
@@ -191,43 +185,7 @@ function Transport(props) {
           </div> */}
 
           <div className="rongproducttype d-flex .select rongradiostyle">
-            <div>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="gender"
-                  name="pay"
-                  value={pay}
-                  onChange={(e) => {
-                    setPay(e.target.value)
-                  }}
-                >
-                  <div className="d-flex">
-                    <FormControlLabel
-                      value="宅配到貨付款"
-                      checked={pay === '宅配到貨付款'}
-                      control={<Radio />}
-                      label="宅配到貨付款 "
-                    />{' '}
-                    <p className="mt-2 h6">
-                      全館消費可享免運(特價商品金額不列入免運優惠計算)
-                    </p>
-                  </div>
-                  <FormControlLabel
-                    value="7-11超商取貨"
-                    checked={pay === '7-11超商取貨'}
-                    control={<Radio />}
-                    label="7-11超商取貨"
-                  />
-                  <FormControlLabel
-                    value="信用卡"
-                    checked={pay === '信用卡'}
-                    control={<Radio />}
-                    label="信用卡"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </div>
-            {/* <input
+            <input
               className="mt-2"
               type="radio"
               name="delivery"
@@ -245,9 +203,9 @@ function Transport(props) {
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
-            </label> */}
+            </label>
           </div>
-          {/* <div className="rongproducttype d-flex .select rongradiostyle">
+          <div className="rongproducttype d-flex .select rongradiostyle">
             <input
               className="mt-2"
               type="radio"
@@ -288,7 +246,7 @@ function Transport(props) {
                 </span>
               </p>
             </label>
-          </div> */}
+          </div>
         </div>
         <div className="container mt-5 pt-5">
           <div className="d-flex justify-content-center">

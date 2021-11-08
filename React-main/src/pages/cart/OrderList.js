@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
 import { withRouter, Link } from 'react-router-dom'
+import dayjs from 'dayjs';
 import './cartstyle.css'
 // import dayjs from 'dayjs'
 function OrderList(props) {
@@ -85,7 +86,7 @@ function OrderList(props) {
                       <tbody>
                         <tr>
                           <td class="text-center">
-                            {el.order_date}
+                          {dayjs(el.order_date).format('YYYY-MM-DD')}
                           </td>
                           <td class="text-center red">
                             {el.order_sid}
