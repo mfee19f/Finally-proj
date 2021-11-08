@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { withRouter, Link } from 'react-router-dom'
 // import './cartstyle.css'
 function Cart() {
   const [mycart, setMycart] = useState([])
@@ -99,7 +100,7 @@ function Cart() {
     )
     currentCart.splice(index, 1)
     // console.log('index', index)
-  
+
     localStorage.setItem(
       'cart',
       JSON.stringify(currentCart)
@@ -133,8 +134,17 @@ function Cart() {
       <div className="container mt-5 pt-5 mb-5 pb-5 ">
         <div className="row">
           <p className="ml-3">
-            {' '}
-            HOME / 商品 / 確認購買明細
+            <Link to="/" className="mr-1">
+              HOME{' '}
+            </Link>
+            /
+            <Link to="/" className="mr-1 ml-1">
+              商品{' '}
+            </Link>{' '}
+            /{' '}
+            <span className="myfontcolor">
+              確認購買明細
+            </span>
           </p>
         </div>
       </div>
@@ -190,59 +200,75 @@ function Cart() {
                   return (
                     <>
                       <tr>
-                        <td className="d-flex">
+                        <td className="d-flex ">
                           <div>
-                            <img
-                              src={item.image}
-                              alt=""
-                            />
+                            <img src={item.image} alt="" />
                           </div>
-                          <div className="ml-5">
+                          <div className="ml-5 mt-4">
                             {item.name}
                           </div>
                         </td>
                         <td className="text-center">
-                          黃 over 100cm{' '}
+                          <div className=" mt-4">
+                            {item.size}
+                          </div>
                         </td>
                         <td className="text-center">
-                          {' '}
-                          <button
-                            onClick={() => {
-                              if (item.amount === 1) return
-                              updateCartToLocalStorage(
-                                item,
-                                false
-                              )
-                            }}
-                          >
-                            -
-                          </button>
-                          {item.amount}
-                          <button
-                            onClick={() =>
-                              updateCartToLocalStorage(
-                                item,
-                                true
-                              )
-                            }
-                          >
-                            +
-                          </button>
+                          <div className=" mt-4">
+                            <i
+                              style={{
+                                'font-size': '0.5rem',
+                                'margin-right': '10px',
+                              }}
+                              onClick={() => {
+                                if (item.amount === 1)
+                                  return
+                                updateCartToLocalStorage(
+                                  item,
+                                  false
+                                )
+                              }}
+                              class="fas fa-minus"
+                            ></i>
+
+                            {item.amount}
+                            <i
+                              style={{
+                                'font-size': '0.5rem',
+                                'margin-left': '10px',
+                              }}
+                              onClick={() =>
+                                updateCartToLocalStorage(
+                                  item,
+                                  true
+                                )
+                              }
+                              class="fas fa-plus"
+                            ></i>
+                          </div>
+                        </td>
+                        <td className="text-center mt-4">
+                          <div className=" mt-4">
+                            {item.price}
+                          </div>
                         </td>
                         <td className="text-center">
-                          {item.price}
+                          <div className=" mt-4">
+                            {item.amount * item.price}
+                          </div>
                         </td>
                         <td className="text-center">
-                          {item.amount * item.price}
-                        </td>
-                        <td className="text-center">
-                          <button
-                            onClick={() =>
-                              deleteCartToLocalStorage(item)
-                            }
-                          >
-                            <i className="fas fa-trash"></i>
-                          </button>
+                          <div className=" mt-4">
+                            <i
+                              style={{ color: 'red' }}
+                              onClick={() =>
+                                deleteCartToLocalStorage(
+                                  item
+                                )
+                              }
+                              className="fas fa-trash"
+                            ></i>
+                          </div>
                         </td>
                         {/* {console.log(localStorage)} */}
                       </tr>

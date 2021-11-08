@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Address from './Address'
+import { withRouter, Link } from 'react-router-dom'
 
 import './cartstyle.css'
 
@@ -88,8 +89,8 @@ function Receive(props) {
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
           <p className="ml-3">
-            {' '}
-            HOME / 商品 / 填寫收件資料
+          <Link to="/" className="mr-1">HOME </Link>/
+            <Link to="/" className="mr-1 ml-1">商品 </Link> / <span className="myfontcolor">填寫收件資料</span>
           </p>
         </div>
       </div>

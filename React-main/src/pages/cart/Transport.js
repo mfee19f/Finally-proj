@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
+import { withRouter, Link } from 'react-router-dom'
 
 function Transport(props) {
   const [dataLoading, setDataLoading] = useState(false)
@@ -121,7 +122,20 @@ function Transport(props) {
     <>
       <div className="container mt-5 pt-5 mb-5 pb-5">
         <div className="row">
-          <p> HOME / 商品 / 配送與付款方式</p>
+          <p>
+            {' '}
+            <Link to="/" className="mr-1">
+              HOME{' '}
+            </Link>
+            /
+            <Link to="/" className="mr-1 ml-1">
+              商品{' '}
+            </Link>{' '}
+            /{' '}
+            <span className="myfontcolor">
+              配送與付款方式
+            </span>
+          </p>
         </div>
       </div>
       <div className="container">
@@ -143,7 +157,7 @@ function Transport(props) {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>SHOPPING & PAYMENT 配送與付款方式</p>
+            <p>Delivery 配送與付款方式</p>
           </div>
         </div>
       </div>
@@ -288,22 +302,29 @@ function Transport(props) {
                                 alt=""
                               />
                             </div>
-                            <div className="ml-5">
+                            <div className="ml-5 mt-4">
                               {item.name}
                             </div>
                           </td>
                           <td className="text-center">
-                            黃 over 100cm{' '}
+                            <div className=" mt-4">
+                              {item.size}
+                            </div>
                           </td>
                           <td className="text-center">
-                            {' '}
-                            {item.amount}
+                            <div className=" mt-4">
+                              {item.amount}
+                            </div>
+                          </td>
+                          <td className="text-center mt-4">
+                            <div className=" mt-4">
+                              {item.price}
+                            </div>
                           </td>
                           <td className="text-center">
-                            {item.price}
-                          </td>
-                          <td className="text-center">
-                            {item.amount * item.price}
+                            <div className=" mt-4">
+                              {item.amount * item.price}
+                            </div>
                           </td>
                           {/* {console.log(localStorage)} */}
                         </tr>

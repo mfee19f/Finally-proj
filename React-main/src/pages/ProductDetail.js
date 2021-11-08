@@ -142,7 +142,7 @@ function ProductDetail(props) {
               分類：{singleData.tags}
             </div>
             <div className="rocky-size rocky-color">
-              尺寸：50 X 43cm
+              尺寸：{singleData.size}
             </div>
             <div className="rocky-price rocky-color">
               單價：{singleData.price}元
@@ -189,6 +189,7 @@ function ProductDetail(props) {
                   name: singleData.name,
                   amount: buyNumber,
                   price: singleData.price,
+                  size: singleData.size,
                   image: IMG_PATH + '/' + singleData.image,
                 })
                 // 每次一按加入，選單列購物數量+1

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
+import { withRouter, Link } from 'react-router-dom'
+
 function CheckOrder(props) {
   // const [isLoading, setIsLoading] = useState(true)
 
@@ -128,7 +130,17 @@ function CheckOrder(props) {
     <>
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
-          <p className="ml-3"> HOME / 商品 / 確認訂單</p>
+          <p className="ml-3">
+            {' '}
+            <Link to="/" className="mr-1">
+              HOME{' '}
+            </Link>
+            /
+            <Link to="/" className="mr-1 ml-1">
+              商品{' '}
+            </Link>{' '}
+            / <span className="myfontcolor">確認訂單</span>
+          </p>
         </div>
       </div>
       <div class="container">
@@ -163,10 +175,13 @@ function CheckOrder(props) {
                 <tr>
                   <th scope="col">商品資訊</th>
                   <th scope="col" class="text-center">
-                    商品數量
+                    尺寸
                   </th>
                   <th scope="col" class="text-center">
-                    商品單價
+                    數量
+                  </th>
+                  <th scope="col" class="text-center">
+                    單價
                   </th>
                   <th scope="col" class="text-center">
                     小計
@@ -181,17 +196,28 @@ function CheckOrder(props) {
                         <div>
                           <img src={item.image} alt="" />
                         </div>
-                        <div class="ml-5">{item.name}</div>
-                      </td>
-                      <td class="text-center">
-                        {item.amount}
-                      </td>
-                      <td class="text-center">
-                        {item.price}
+                        <div class="ml-5 mt-4">{item.name}</div>
                       </td>
                       <td className="text-center">
-                        {item.amount * item.price}
-                      </td>
+                            <div className=" mt-4">
+                              {item.size}
+                            </div>
+                          </td>
+                          <td className="text-center">
+                            <div className=" mt-4">
+                              {item.amount}
+                            </div>
+                          </td>
+                          <td className="text-center mt-4">
+                            <div className=" mt-4">
+                              {item.price}
+                            </div>
+                          </td>
+                          <td className="text-center">
+                            <div className=" mt-4">
+                              {item.amount * item.price}
+                            </div>
+                          </td>
                     </tr>
                   )
                 })}
@@ -283,12 +309,7 @@ function CheckOrder(props) {
     </>
   )
 
-  return (
-    <>
-
-      {dataLoading ? spinner : display}
-    </>
-  )
+  return <>{dataLoading ? spinner : display}</>
 }
 
 export default CheckOrder
