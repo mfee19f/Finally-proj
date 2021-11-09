@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import '../styles/navstyle.css'
 // 要使用能有active css效果的NavLink元件
-import { NavLink } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 
 function MyNavbar(props) {
   const { auth, setAuth, track, cartCount, memberData } =
@@ -20,7 +20,7 @@ function MyNavbar(props) {
   }
   function deleteMemberLocalStorage() {
     // 開啟載入的指示圖示
-
+    localStorage.removeItem('token')
     const newMember =
       localStorage.removeItem('member') || '[]'
 
@@ -30,12 +30,13 @@ function MyNavbar(props) {
   }
   useEffect(() => {
     getMemberLocalStorage()
-  }, [])
-  const id = memberData.sid
+  }, [member])
+  const id = member.sid
 
   const logoout = () => {
     setAuth(false)
     deleteMemberLocalStorage()
+    props.history.push('/')
   }
   return (
     <>
@@ -106,7 +107,7 @@ function MyNavbar(props) {
             {auth ? (
               <>
                 <Nav.Link>
-                  <p>你好 {member.nickname}</p>
+                  <p>你好 {member.name}</p>
                 </Nav.Link>
                 <Nav.Link
                   as={NavLink}
@@ -116,7 +117,7 @@ function MyNavbar(props) {
                 >
                   <p>會員中心</p>
                 </Nav.Link>
-                <Nav.Link href="#memes">
+                <Nav.Link >
                   <p onClick={logoout}>登出</p>
                 </Nav.Link>
               </>
@@ -182,4 +183,4 @@ function MyNavbar(props) {
   )
 }
 
-export default MyNavbar
+export default withRouter(MyNavbar)

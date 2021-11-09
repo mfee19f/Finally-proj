@@ -222,7 +222,7 @@ function OrderSteps(props) {
       </div>
     </>
   )
-  const alert = (
+  const myalert = (
     <>
       <Modal show="true" backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
@@ -242,11 +242,31 @@ function OrderSteps(props) {
       </Modal>
     </>
   )
+
+  const ths = (
+    <>
+      <Modal show="true" backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>訂購完成</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>謝謝惠顧</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            onClick={() => {
+              props.history.push('/login')
+            }}
+          >
+            前往首頁
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  )
   const logout = (
     <>
-      {alert}
+      {myalert}
       <div className="mt-5 pt-5"></div>
-
     </>
   )
   return auth ? login : logout
