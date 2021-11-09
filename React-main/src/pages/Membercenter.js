@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 
 import { withRouter, Link } from 'react-router-dom'
-import './Member_center.css'
+import './Membercenter.css'
 function Member_center(props) {
   console.log(props)
   const [memberData, setMemberData] = useState({})

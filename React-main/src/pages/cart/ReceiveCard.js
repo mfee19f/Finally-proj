@@ -89,8 +89,17 @@ function Receive(props) {
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
           <p className="ml-3">
-          <Link to="/" className="mr-1">HOME </Link>/
-            <Link to="/" className="mr-1 ml-1">商品 </Link> / <span className="myfontcolor">填寫收件資料</span>
+            <Link to="/" className="mr-1">
+              HOME
+            </Link>
+            /
+            <Link to="/" className="mr-1 ml-1">
+              商品
+            </Link>
+            /
+            <span className="myfontcolor">
+              填寫收件資料
+            </span>
           </p>
         </div>
       </div>
@@ -199,7 +208,6 @@ function Receive(props) {
           </div>
         </div>
       </div>
-
       <div class="container pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 ">
@@ -218,7 +226,10 @@ function Receive(props) {
                   type="radio"
                   placeholder="姓名"
                 />
-                <img src="./image/unionpaylogo.jfif" alt="" />
+                <img
+                  src="./image/unionpaylogo.jfif"
+                  alt=""
+                />
                 <div>
                   <label for="name">信用卡號 :</label>
                   <input
@@ -263,7 +274,6 @@ function Receive(props) {
           </div>
         </div>
       </div>
-
       <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 borderbottom">
@@ -271,7 +281,6 @@ function Receive(props) {
           </div>
         </div>
       </div>
-
       <div class="container pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 ">
@@ -299,20 +308,17 @@ function Receive(props) {
                 class="ml-5"
                 type="radio"
                 placeholder="姓名"
-                value="公司索取電子發票證明聯"
-                checked={
-                  receipt === '公司索取電子發票證明聯'
-                }
+                value="三聯式發票/收據"
+                checked={receipt === '三聯式發票/收據'}
                 onChange={(e) => {
                   setReceipt(e.target.value)
                 }}
               />
-              <label for="">公司索取電子發票證明聯</label>
+              <label for="">三聯式發票/收據</label>
             </div>
           </div>
         </div>
       </div>
-
       <div class="container mt-5 pt-4">
         {/* <div class="row justify-content-center ">
         <button class="btn">
@@ -327,7 +333,6 @@ function Receive(props) {
         </button>
       </div> */}
       </div>
-
       <div className="mb-5"></div>
     </>
   )

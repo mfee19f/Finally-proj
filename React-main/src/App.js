@@ -5,17 +5,10 @@ import {
   Switch,
 } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-
 // 頁面用元件
 import Home from './pages/Home'
 import Login from './pages/Login'
-import ProductBaby from './pages/ProductBaby'
-
-import ProductWomen from './pages/ProductWomen'
 import NotFoundPage from './pages/NotFoundPage'
-import ProductCategory from './pages/ProductCategory'
-import Member from './pages/Member'
-import Student from './pages/Student'
 import Product from './pages/Product'
 import ProductDetail from './pages/ProductDetail'
 //購物車
@@ -29,7 +22,7 @@ import OrderStep from './pages/cart/OrderStep'
 //會員
 import Register from './pages/Register'
 import Edit from './pages/Edit'
-import Member_center from './pages/Member_center'
+import Membercenter from './pages/Membercenter'
 // 組合用元件
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
@@ -37,7 +30,6 @@ import MainContent from './components/MainContent'
 import ScrollToTop from './components/ScrollToTop'
 //import BreadCrumb from './components/BreadCrumb'
 // import MultiLevelBreadcrumb from './components/MultiLevelBreadCrumb'
-import Test from './pages/Test'
 function App() {
   const [auth, setAuth] = useState(false)
   const [buyNumber, setBuyNumber] = useState(1)
@@ -49,15 +41,18 @@ function App() {
     // 問伺服器是否有會員登入
     // 如果有登入，設定auth為true
     //setAuth(true)
-
     //請localstorage中的購物車數量
+    const myCart = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart'))
+      : []
     const myTrack = localStorage.getItem('track')
       ? JSON.parse(localStorage.getItem('track'))
       : []
-
     // 設定為陣列的長度(成員數量)
     setTrack(myTrack.length)
+    setCartCount(myCart.length)
   }, [])
+
   return (
     <Router>
       <>
@@ -77,11 +72,8 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
-              <Route path="/test">
-                <Test auth={auth} />
-              </Route>
               <Route path="/member_center/:id">
-                <Member_center
+                <Membercenter
                   auth={auth}
                   memberData={memberData}
                 />
@@ -95,7 +87,6 @@ function App() {
               <Route path="/cart">
                 <Cart />
               </Route>
-
               <Route path="/order-steps">
                 <OrderStep auth={auth} />
               </Route>
@@ -108,7 +99,6 @@ function App() {
               <Route path="/receive-card">
                 <ReceiveCard />
               </Route>
-
               <Route path="/transport">
                 <Transport />
               </Route>
@@ -129,17 +119,6 @@ function App() {
               <Route exact path="/product">
                 <Product auth={auth} />
               </Route>
-              <Route path="/student">
-                <Student />
-              </Route>
-              <Route path="/product/women">
-                <ProductWomen />
-              </Route>
-
-              {/* 這裡要定義網址參數的屬性名稱 */}
-              <Route path="/product/baby/:id?">
-                <ProductBaby />
-              </Route>
               <Route path="/login">
                 {/* 利用props傳入頁面元件狀態 */}
                 <Login
@@ -148,12 +127,6 @@ function App() {
                   memberData={memberData}
                   setMemberData={setMemberData}
                 />
-              </Route>
-              <Route path="/productcategory">
-                <ProductCategory />
-              </Route>
-              <Route path="/member">
-                <Member auth={auth} />
               </Route>
               {/* 一定要放在所有的Route最後面 */}
               <Route path="*">

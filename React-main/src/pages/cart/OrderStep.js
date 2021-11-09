@@ -27,7 +27,6 @@ function OrderSteps(props) {
       <Cart />
     </>
   )
-
   const transport = (
     <>
       {/* <h2>運送表單</h2> */}
@@ -37,14 +36,12 @@ function OrderSteps(props) {
       />
     </>
   )
-
   const receiveCard = (
     <>
       {/* <h2>付款表單</h2> */}
       <ReceiveCard setDatacard={setDatacard} />
     </>
   )
-
   const orderDetail = (
     <>
       {/* <h2>訂購詳細</h2> */}
@@ -55,7 +52,6 @@ function OrderSteps(props) {
       />
     </>
   )
-
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
 
@@ -73,14 +69,6 @@ function OrderSteps(props) {
     // console.log(JSON.parse(newCart))
 
     setMycart(JSON.parse(newCart))
-  }
-  // 計算總價用的函式
-  const sum = (items) => {
-    let total = 0
-    for (let i = 0; i < items.length; i++) {
-      total += items[i].amount * items[i].price
-    }
-    return total
   }
   useEffect(() => {
     getCartFromLocalStorage()
@@ -128,13 +116,7 @@ function OrderSteps(props) {
     fetchOrderDetail()
     localStorage.removeItem('cart')
     alert('謝謝惠顧')
-    props.history.push('/about')
-  }
-  const f = () => {
-    {
-      alert('請先登入')
-      props.history.push('/login')
-    }
+    props.history.push('/')
   }
   useEffect(() => {
     // mycartDisplay運算
@@ -164,13 +146,6 @@ function OrderSteps(props) {
     // console.log(newMycartDisplay)
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
-
-  //請先登入
-  // useEffect(() => {
-  //   if (!auth) {
-  //     f()
-  //   }
-  // }, [])
   const switchStep = (step) => {
     switch (step) {
       case 1:
@@ -185,14 +160,10 @@ function OrderSteps(props) {
         return cart
     }
   }
-  {
-    // console.log('datacard:', datacard)
-  }
   const changeStep = (isAdded = true) => {
     if (isAdded && step < 4) setStep(step + 1)
     if (!isAdded && step > 1) setStep(step - 1)
   }
-
   const login = (
     <>
       <div className="mt-5 "></div>
@@ -220,7 +191,7 @@ function OrderSteps(props) {
                 下一步
               </button>
             )}
-            {step == 4 && (
+            {step === 4 && (
               <button className="btn" onClick={onSubmit}>
                 送出
               </button>
@@ -250,7 +221,6 @@ function OrderSteps(props) {
       </Modal>
     </>
   )
-
   const ths = (
     <>
       <Modal show="true" backdrop="static" keyboard={false}>
@@ -271,13 +241,7 @@ function OrderSteps(props) {
       </Modal>
     </>
   )
-  const logout = (
-    <>
-      {myalert}
-      <div className="mt-5 pt-5"></div>
-    </>
-  )
-  return auth ? login : logout
+  return auth ? login : myalert
 }
 
 export default withRouter(OrderSteps)

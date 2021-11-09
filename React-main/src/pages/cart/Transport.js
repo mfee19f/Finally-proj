@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Transport(props) {
   const [dataLoading, setDataLoading] = useState(false)
@@ -95,25 +95,12 @@ function Transport(props) {
     return total
   }
 
-  const spinner = (
+  const loading = (
     <>
-      <div
-        className="spinner-grow text-primary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     </>
   )
@@ -123,15 +110,14 @@ function Transport(props) {
       <div className="container mt-5 pt-5 mb-5 pb-5">
         <div className="row">
           <p>
-            {' '}
             <Link to="/" className="mr-1">
-              HOME{' '}
+              HOME
             </Link>
             /
             <Link to="/" className="mr-1 ml-1">
-              商品{' '}
-            </Link>{' '}
-            /{' '}
+              商品
+            </Link>
+            /
             <span className="myfontcolor">
               配送與付款方式
             </span>
@@ -211,9 +197,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                宅配到貨付款{' '}
+                宅配到貨付款
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -232,9 +217,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                7-11超商取貨付款{' '}
+                7-11超商取貨付款
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -253,9 +237,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                信用卡線上刷卡{' '}
+                信用卡線上刷卡
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -377,7 +360,7 @@ function Transport(props) {
       <div className="mb-5"></div>
     </>
   )
-  return <>{dataLoading ? spinner : display}</>
+  return <>{dataLoading ? loading : display}</>
 }
 
 export default Transport

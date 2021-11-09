@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 function Login(props) {
-  console.log(props)
+  // console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const { auth, setAuth, memberData, setMemberData } = props
-  console.log(
-    'memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',
-    memberData
-  )
+  // console.log(
+  //   'memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',
+  //   memberData
+  // )
   const login = () => {
     const fd = new FormData(document.form1)
     fetch('http://localhost:3001/login-jwt', {
@@ -132,7 +132,9 @@ function Login(props) {
               </div>
               <div className="registerButton">
                 <button className="register btn btn-success">
-                <a className="white" href="/register">註冊</a>
+                  <a className="white" href="/register">
+                    註冊
+                  </a>
                 </button>
               </div>
             </div>

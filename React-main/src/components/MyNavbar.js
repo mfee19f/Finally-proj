@@ -2,42 +2,35 @@ import React, { useState, useEffect } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import '../styles/navstyle.css'
 // 要使用能有active css效果的NavLink元件
-import { NavLink,withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 function MyNavbar(props) {
   const { auth, setAuth, track, cartCount, memberData } =
     props
   const [member, setMember] = useState([])
+  const id = member.sid
+  const logout = () => {
+    setAuth(false)
+    deleteMemberLocalStorage()
+    props.history.push('/')
+  }
 
   function getMemberLocalStorage() {
-    // 開啟載入的指示圖示
-
     const newMember = localStorage.getItem('member') || '[]'
-
     // console.log(JSON.parse(newMember))
-
     setMember(JSON.parse(newMember))
   }
   function deleteMemberLocalStorage() {
-    // 開啟載入的指示圖示
     localStorage.removeItem('token')
     const newMember =
       localStorage.removeItem('member') || '[]'
-
     // console.log(JSON.parse(newMember))
-
     setMember(JSON.parse(newMember))
   }
   useEffect(() => {
     getMemberLocalStorage()
   }, [member])
-  const id = member.sid
 
-  const logoout = () => {
-    setAuth(false)
-    deleteMemberLocalStorage()
-    props.history.push('/')
-  }
   return (
     <>
       <Navbar
@@ -55,7 +48,6 @@ function MyNavbar(props) {
             />
           </div>
         </Navbar.Brand>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto mt-3">
@@ -74,7 +66,7 @@ function MyNavbar(props) {
               <p>設計師</p>
             </Nav.Link>
             {/* 作品集 */}
-            <Nav.Link as={NavLink} exact to="/product">
+            <Nav.Link as={NavLink} to="/product">
               <p>作品集</p>
             </Nav.Link>
             {/* 聯繫我們 */}
@@ -106,19 +98,14 @@ function MyNavbar(props) {
           <Nav className="mt-3 mr-3">
             {auth ? (
               <>
-                <Nav.Link>
-                  <p>你好 {member.name}</p>
-                </Nav.Link>
                 <Nav.Link
                   as={NavLink}
                   to={'/member_center/' + id}
-                  eventKey={2}
-                  href="#memes"
                 >
                   <p>會員中心</p>
                 </Nav.Link>
-                <Nav.Link >
-                  <p onClick={logoout}>登出</p>
+                <Nav.Link>
+                  <p onClick={logout}>登出</p>
                 </Nav.Link>
               </>
             ) : (
@@ -129,21 +116,7 @@ function MyNavbar(props) {
               ''
             ) : (
               <>
-                {/* <Nav.Link
-                  as={NavLink}
-                  to="/register"
-                  eventKey={2}
-                  href="#memes"
-                >
-                  <p>註冊</p>
-                </Nav.Link> */}
-
-                <Nav.Link
-                  as={NavLink}
-                  to="/login"
-                  eventKey={2}
-                  href="#deets"
-                >
+                <Nav.Link as={NavLink} to="/login">
                   <p>
                     <i className="far fa-user"></i>
                   </p>
@@ -161,12 +134,7 @@ function MyNavbar(props) {
                 <p>{track ? track : 0}</p>
               </div>
             </div>
-            <Nav.Link
-              as={NavLink}
-              to="/order-steps"
-              eventKey={2}
-              href="#memes"
-            >
+            <Nav.Link as={NavLink} to="/order-steps">
               <p>
                 <i className="fas fa-shopping-cart"></i>
               </p>

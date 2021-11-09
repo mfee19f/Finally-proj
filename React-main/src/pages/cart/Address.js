@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { ZipCodeTW } from 'zipcode-tw-react'
 
 class Address extends React.Component {
@@ -18,7 +17,6 @@ class Address extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
-
   // 變更地址資訊
   handleZipCodeChange = (e) => {
     const {
@@ -37,11 +35,9 @@ class Address extends React.Component {
   }
 
   render() {
-
     return (
       <>
         <div className="form-group">
-          
           <div className="form-inline">
             <ZipCodeTW
               displayType={this.state.displayType}
@@ -58,21 +54,6 @@ class Address extends React.Component {
                 this.handleZipCodeNotExists
               }
             />
-            {/* <label style={{ marginLeft: '15px' }}>
-              address
-            </label>
-            <input
-              name="address"
-              value={this.state.address}
-              className="form-control"
-              placeholder="輸入地址"
-              style={{
-                marginLeft: '5px',
-                width: '300px',
-                display: addressShow,
-              }}
-              onChange={this.handleChange}
-            /> */}
           </div>
         </div>
       </>

@@ -72,19 +72,19 @@ function Home(props) {
         <div className="top-part">發現您的下一件設計品</div>
         <div className="middle-part">
           <div className="top">
-            <a href="/#" className="a-size">
+            <Link to="/#" className="a-size">
               設計師
-            </a>
+            </Link>
           </div>
           <div className="middle">
-            <a href="/#" className="a-size">
+            <Link to="/#" className="a-size">
               作品集
-            </a>
+            </Link>
           </div>
-          <div className="bottom">
-            <a href="/#" className="a-size">
+          <div className="bottom a-size">
+            <Link to="/#" className="a-size">
               想邀約
-            </a>
+            </Link>
           </div>
         </div>
         <div className="bottom-part">
@@ -202,9 +202,9 @@ function Home(props) {
         <div className="middle-part">
           <div className="top"></div>
           <div className="middle">
-            <a href="/#" className="a-size">
+            <Link to="/#" className="a-size">
               看更多設計師
-            </a>
+            </Link>
           </div>
           <div className="bottom"></div>
         </div>
@@ -259,10 +259,8 @@ function Home(props) {
         <div className="middle-part">
           <div className="top"></div>
           <div className="middle">
-            <Link to="./product">
-              <a href="/#" className="a-size">
-                看更多作品
-              </a>
+            <Link to="./product" className="a-size">
+              看更多作品
             </Link>
           </div>
           <div className="bottom"></div>
