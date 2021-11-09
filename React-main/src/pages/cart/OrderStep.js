@@ -14,12 +14,13 @@ function OrderSteps(props) {
   const [member, setMember] = useState([])
   const [datacard, setDatacard] = useState({})
   const [paydata, setPaydata] = useState()
+  const [totalMoney, setTotalMoney] = useState()
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
   const [mycartDisplay, setMycartDisplay] = useState([])
 
   console.log('mycartDisplay:', mycartDisplay)
-  var temporderid = 0
+
   const cart = (
     <>
       {/* <h2>購物車</h2> */}
@@ -27,14 +28,17 @@ function OrderSteps(props) {
     </>
   )
 
-  const shippingForm = (
+  const transport = (
     <>
       {/* <h2>運送表單</h2> */}
-      <Transport setPaydata={setPaydata} />
+      <Transport
+        setPaydata={setPaydata}
+        setTotalMoney={setTotalMoney}
+      />
     </>
   )
 
-  const paymentForm = (
+  const receiveCard = (
     <>
       {/* <h2>付款表單</h2> */}
       <ReceiveCard setDatacard={setDatacard} />
@@ -44,7 +48,11 @@ function OrderSteps(props) {
   const orderDetail = (
     <>
       {/* <h2>訂購詳細</h2> */}
-      <CheckOrder paydata={paydata} datacard={datacard} />
+      <CheckOrder
+        paydata={paydata}
+        datacard={datacard}
+        totalMoney={totalMoney}
+      />
     </>
   )
 
@@ -100,7 +108,7 @@ function OrderSteps(props) {
       order_sid: datacard.order_id,
       nickname: member.name,
       mobile: datacard.mobile,
-      orderprice: sum(mycartDisplay),
+      orderprice: totalMoney,
       delivery: paydata,
       receiver: datacard.receiver,
       delivery_address: datacard.delivery_address,
@@ -168,9 +176,9 @@ function OrderSteps(props) {
       case 1:
         return cart
       case 2:
-        return shippingForm
+        return transport
       case 3:
-        return paymentForm
+        return receiveCard
       case 4:
         return orderDetail
       default:

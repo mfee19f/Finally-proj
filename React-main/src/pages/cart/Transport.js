@@ -356,6 +356,7 @@ function Transport(props) {
                 <span
                   onClick={() => {
                     props.setPaydata(pay)
+                    props.setTotalMoney(sum(mycartDisplay))
                   }}
                 >
                   NT.{sum(mycartDisplay)}

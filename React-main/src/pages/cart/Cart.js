@@ -118,7 +118,7 @@ function Cart() {
     }
     return total
   }
-
+//運費
   const loading = (
     <>
       <div className="d-flex justify-content-center">
