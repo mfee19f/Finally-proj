@@ -111,7 +111,7 @@ function OrderSteps(props) {
       orderprice: totalMoney,
       delivery: paydata,
       receiver: datacard.receiver,
-      delivery_address: datacard.delivery_address,
+      delivery_address: "新北市板橋區"+datacard.delivery_address,
       card: datacard.card,
     }
     const r = await fetch('http://localhost:3001/order', {

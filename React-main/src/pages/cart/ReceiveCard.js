@@ -28,7 +28,7 @@ function Receive(props) {
   const [fields, setFields] = useState({
     receiver: '',
     mobile: '',
-    delivery_address: '台北市',
+    delivery_address: '',
     card: '',
     date: date,
     order_id: date2 + rnd,
@@ -89,8 +89,17 @@ function Receive(props) {
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
           <p className="ml-3">
-          <Link to="/" className="mr-1">HOME </Link>/
-            <Link to="/" className="mr-1 ml-1">商品 </Link> / <span className="myfontcolor">填寫收件資料</span>
+            <Link to="/" className="mr-1">
+              HOME{' '}
+            </Link>
+            /
+            <Link to="/" className="mr-1 ml-1">
+              商品{' '}
+            </Link>{' '}
+            /{' '}
+            <span className="myfontcolor">
+              填寫收件資料
+            </span>
           </p>
         </div>
       </div>
@@ -218,7 +227,10 @@ function Receive(props) {
                   type="radio"
                   placeholder="姓名"
                 />
-                <img src="./image/unionpaylogo.jfif" alt="" />
+                <img
+                  src="./image/unionpaylogo.jfif"
+                  alt=""
+                />
                 <div>
                   <label for="name">信用卡號 :</label>
                   <input

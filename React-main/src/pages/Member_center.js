@@ -7,7 +7,7 @@ import './Member_center.css'
 function Member_center(props) {
   console.log(props)
   const [memberData, setMemberData] = useState({})
-  const [password, setPassword] = useState({})
+  const [password, setPassword] = useState('')
 
   console.log(
     'memberDatamemberDatamemberDatamemberDatamemberData',
@@ -126,7 +126,7 @@ function Member_center(props) {
                   name="password"
                   type="password"
                   className="form-control col-4 inputstyle"
-                  value={password}
+                  value="$2a$10$Ur601.zytpHQgfvCASbQXONbLf7SXgIsmGu4bykPUbk6QSzCmrP3O"
                   onChange={(e) => {
                     setPassword(e.target.value)
                   }}
