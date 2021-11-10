@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function CheckOrder(props) {
-  // const [isLoading, setIsLoading] = useState(true)
-
   const [dataLoading, setDataLoading] = useState(false)
   const [member, setMember] = useState([])
   const [mycart, setMycart] = useState([])
   const [mycartDisplay, setMycartDisplay] = useState([])
-  // console.log('member', member)
+
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
@@ -20,7 +18,6 @@ function CheckOrder(props) {
 
     setMember(JSON.parse(newMember))
   }
-
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
@@ -73,25 +70,13 @@ function CheckOrder(props) {
     }
     return total
   }
-  const spinner = (
+
+  const loading = (
     <>
-      <div
-        className="spinner-grow text-primary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     </>
   )
@@ -280,7 +265,7 @@ function CheckOrder(props) {
     </>
   )
 
-  return <>{dataLoading ? spinner : display}</>
+  return <>{dataLoading ? loading : display}</>
 }
 
 export default CheckOrder

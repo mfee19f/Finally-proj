@@ -10,6 +10,7 @@ function Transport(props) {
   const [pay, setPay] = useState('')
   // 下拉選單 運送地區
   const [selectedOption, setSelectedOption] = useState('')
+
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
@@ -24,6 +25,7 @@ function Transport(props) {
   useEffect(() => {
     getCartFromLocalStorage()
   }, [])
+
   useEffect(() => {
     setTimeout(() => setDataLoading(false), 1000)
 
@@ -111,11 +113,11 @@ function Transport(props) {
         <div className="row">
           <p>
             <Link to="/" className="mr-1">
-              HOME
+              首頁
             </Link>
             /
-            <Link to="/" className="mr-1 ml-1">
-              商品
+            <Link to="/product" className="mr-1 ml-1">
+              產品
             </Link>
             /
             <span className="myfontcolor">
@@ -143,7 +145,7 @@ function Transport(props) {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>Delivery 配送與付款方式</p>
+            <p>Delivery and Payment 配送與付款方式</p>
           </div>
         </div>
       </div>
@@ -183,7 +185,6 @@ function Transport(props) {
               </p>
             </label>
           </div> */}
-
           <div className="rongproducttype d-flex .select rongradiostyle">
             <input
               className="mt-2"
@@ -248,7 +249,7 @@ function Transport(props) {
         <div className="container mt-5 pt-5">
           <div className="d-flex justify-content-center">
             <div className="w875 borderbottom">
-              <p>CHECK YOUR ORDER 確認購買明細</p>
+              <p>Check Your Order 確認購買明細</p>
             </div>
           </div>
         </div>
@@ -301,15 +302,14 @@ function Transport(props) {
                           </td>
                           <td className="text-center mt-4">
                             <div className=" mt-4">
-                              {item.price}
+                              NT$ {item.price}
                             </div>
                           </td>
                           <td className="text-center">
                             <div className=" mt-4">
-                              {item.amount * item.price}
+                              NT$ {item.amount * item.price}
                             </div>
                           </td>
-                          {/* {console.log(localStorage)} */}
                         </tr>
                       </>
                     )
@@ -326,9 +326,9 @@ function Transport(props) {
                 <p>購物金</p>
               </div>
               <div className="ml-5">
-                <p>NT.{sum(mycartDisplay)}</p>
-                <p>NT.0</p>
-                <p>NT.0</p>
+                <p>NT$ {sum(mycartDisplay)}</p>
+                <p>NT$ 0</p>
+                <p>NT$ 0</p>
               </div>
             </div>
             <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney">
@@ -342,19 +342,11 @@ function Transport(props) {
                     props.setTotalMoney(sum(mycartDisplay))
                   }}
                 >
-                  NT.{sum(mycartDisplay)}
+                  NT$ {sum(mycartDisplay)}
                 </span>
               </div>
             </div>
           </div>
-
-          {/* <div className="container mt-5 pt-4">
-          <div className="row justify-content-center ">
-            <button className="btn">
-              <span>下一步</span>
-            </button>
-          </div>
-        </div> */}
         </div>
       </div>
       <div className="mb-5"></div>

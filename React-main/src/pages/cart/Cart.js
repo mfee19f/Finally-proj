@@ -97,7 +97,6 @@ function Cart() {
     setMycart(currentCart)
   }
 
-  //運費
   const loading = (
     <>
       <div className="d-flex justify-content-center">
@@ -146,7 +145,7 @@ function Cart() {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>CHECK YOUR ORDER 確認購買明細</p>
+            <p>Check Your Order 確認購買明細</p>
           </div>
         </div>
       </div>
@@ -209,7 +208,6 @@ function Cart() {
                               }}
                               class="fas fa-minus"
                             ></i>
-
                             {item.amount}
                             <i
                               style={{
@@ -228,12 +226,12 @@ function Cart() {
                         </td>
                         <td className="text-center mt-4">
                           <div className=" mt-4">
-                            {item.price}元
+                            NT$ {item.price}
                           </div>
                         </td>
                         <td className="text-center">
                           <div className=" mt-4">
-                            {item.amount * item.price}元
+                            NT$ {item.amount * item.price}
                           </div>
                         </td>
                         <td className="text-center">

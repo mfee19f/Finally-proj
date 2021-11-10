@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom'
+import { Modal, Button } from 'react-bootstrap'
+
 function Login(props) {
   // console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const { auth, setAuth, memberData, setMemberData } = props
-  // console.log(
-  //   'memberDatapppp@kkkk.compppp@kkkk.compppp@kkkk.compppp@kkkk.com',
-  //   memberData
-  // )
+  // alert需要的狀態
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   const login = () => {
     const fd = new FormData(document.form1)
     fetch('http://localhost:3001/login-jwt', {
@@ -26,19 +29,13 @@ function Login(props) {
           localStorage.setItem(
             'member',
             JSON.stringify(obj.member)
-          ) // 儲存到 localStorage
-          alert('登入成功')
-
-          props.history.push('/')
+          )
+          handleShow()
         } else {
           alert('登入失敗\n' + (obj.error || ''))
         }
       })
     setAuth(true)
-  }
-  const logout = () => {
-    localStorage.removeItem('member')
-    alert('以登出')
   }
 
   const handleSubmit = (e) => {
@@ -56,8 +53,34 @@ function Login(props) {
   useEffect(() => {
     getMemberLocalStorage()
   }, [])
+
+  // 登入提示訊息
+  const messageModal = (
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>登入成功</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>你好</Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/')
+          }}
+        >
+          前往首頁
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
   return (
     <>
+      {messageModal}
       <div className="d-flex mt-5">
         <div className="loginLeft col-xl-6 d-none d-xl-block mt-5">
           <img src="./image/login_left_pic.jpg" alt="" />
@@ -78,7 +101,6 @@ function Login(props) {
                 class="form-control"
                 id="account"
                 name="account"
-                required
                 value={account}
                 onChange={(e) => {
                   setAccount(e.target.value)
@@ -100,7 +122,6 @@ function Login(props) {
                 class="form-control"
                 id="password"
                 name="password"
-                required
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value)
@@ -141,59 +162,6 @@ function Login(props) {
           </form>
         </div>
       </div>
-      {/* ................ */}
-      {/* <div class="card-body">
-        <h5 class="card-title">登入 (JWT)</h5>
-
-        <form name="form1" onSubmit={handleSubmit}>
-          <div class="mb-3">
-            <label for="email" class="form-label">
-              email
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              required
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              密碼
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              required
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value)
-              }}
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-primary"
-            onClick={login}
-          >
-            登入
-          </button>
-          <button class="btn btn-primary" onClick={logout}>
-            登出
-          </button>
-        </form>
-      </div> */}
-
-      {/* .................. */}
     </>
   )
 }

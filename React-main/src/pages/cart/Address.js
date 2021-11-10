@@ -4,13 +4,11 @@ import { ZipCodeTW } from 'zipcode-tw-react'
 class Address extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       displayType: 'text',
-      county: '台北市',
-      district: '中山區',
-      zipCode: '104',
-      address: '敬業三路20號',
+      county: '新北市',
+      district: '板橋區',
+      zipCode: '220',
     }
   }
 

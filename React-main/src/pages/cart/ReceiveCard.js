@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Address from './Address'
-import { withRouter, Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import './cartstyle.css'
 
 function Receive(props) {
@@ -10,30 +9,30 @@ function Receive(props) {
   //載入
   const [isLoading, setIsLoading] = useState(true)
   // 使用物件值作為狀態值，儲存所有欄位的值
-  var Today = new Date()
-  var date =
+  let Today = new Date()
+  let date =
     Today.getFullYear() +
     '-' +
     (Today.getMonth() + 1) +
     '-' +
     Today.getDate()
-  var date2 =
+  let date2 =
     Today.getFullYear() +
     '' +
     (Today.getMonth() + 1) +
     '' +
     Today.getDate() +
     ''
-  var rnd = Math.floor(Math.random() * 1000)
+  let rnd = Math.floor(Math.random() * 1000)
   const [fields, setFields] = useState({
     receiver: '',
     mobile: '',
-    delivery_address: '台北市',
+    delivery_address: '',
     card: '',
     date: date,
     order_id: date2 + rnd,
   })
-  // console.log()
+
   // 專門用來處理每個欄位的輸入用
   const handleFieldChange = (e) => {
     // 1. 從原本的狀態物件拷貝新物件
@@ -51,50 +50,33 @@ function Receive(props) {
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true)
-
-    // 模擬和伺服器要資料
-    // 最後設定到狀態中
-    // setStudents(data)
-
     // 3秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+    }, 1000)
   }, [])
 
-  const spinner = (
+  const loading = (
     <>
-      <div
-        className="spinner-grow text-primary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     </>
   )
+
   const display = (
     <>
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
-              HOME
+              首頁
             </Link>
             /
             <Link to="/" className="mr-1 ml-1">
-              商品
+              產品
             </Link>
             /
             <span className="myfontcolor">
@@ -122,7 +104,7 @@ function Receive(props) {
       <div class="container mt-5 pt-5">
         <div class="row justify-content-center">
           <div class="w875 borderbottom">
-            <p>DELIVERY INFORMATION 請填寫收件資料</p>
+            <p>Delivery Information 請填寫收件資料</p>
           </div>
         </div>
       </div>
@@ -142,7 +124,6 @@ function Receive(props) {
                   required
                 />
               </div>
-
               <div class="form-group">
                 <label for="exampleInputEmail1">
                   手機號碼 :
@@ -157,7 +138,6 @@ function Receive(props) {
                   required
                 />
               </div>
-
               <div class="form-group">
                 <label for="exampleInputEmail1">
                   收貨地址 :
@@ -165,14 +145,6 @@ function Receive(props) {
                 <div className="form-inline"></div>
                 <div class="d-flex">
                   <Address />
-                  {/* <select class="form-control col-4 mr-4 ">
-                    <option selected>-請選擇縣市-</option>
-                    <option>...</option>
-                  </select>
-                  <select class="form-control col-4 ml-5">
-                    <option selected>-請選擇區域-</option>
-                    <option>...</option>
-                  </select> */}
                 </div>
                 <input
                   class="form-control col-9 mt-3"
@@ -204,7 +176,7 @@ function Receive(props) {
       <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 borderbottom">
-            <p>PAYMENT OPTIONS 請選擇卡別</p>
+            <p>Payment Options 請選擇卡別</p>
           </div>
         </div>
       </div>
@@ -214,18 +186,10 @@ function Receive(props) {
             <div class="form-group ml-5 visa">
               <form name="form2">
                 <label for="name">信用卡: </label>
-                <input
-                  class="ml-5"
-                  type="radio"
-                  placeholder="姓名"
-                />
+                <input class="ml-5" type="radio" />
                 <img src="./image/visa_PNG36.png" alt="" />
                 <img src="./image/JCBLOGO.jfif" alt="" />
-                <input
-                  class="ml-5 mr-2"
-                  type="radio"
-                  placeholder="姓名"
-                />
+                <input class="ml-5 mr-2" type="radio" />
                 <img
                   src="./image/unionpaylogo.jfif"
                   alt=""
@@ -277,7 +241,7 @@ function Receive(props) {
       <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 borderbottom">
-            <p>RECEIPT 請選擇發票格式</p>
+            <p>Invoice 請選擇發票格式</p>
           </div>
         </div>
       </div>
@@ -285,14 +249,7 @@ function Receive(props) {
         <div class="d-flex justify-content-center">
           <div class="w875 ">
             <div class="form-group ml-5">
-              <label
-                for="name"
-                onClick={() => {
-                  props.setDatacard(fields)
-                }}
-              >
-                發票資訊 :{' '}
-              </label>
+              <label for="name">發票資訊 :</label>
               <input
                 class="ml-5"
                 type="radio"
@@ -301,6 +258,9 @@ function Receive(props) {
                 checked={receipt === '電子發票'}
                 onChange={(e) => {
                   setReceipt(e.target.value)
+                }}
+                onClick={() => {
+                  props.setDatacard(fields)
                 }}
               />
               <label for="">電子發票</label>
@@ -313,30 +273,20 @@ function Receive(props) {
                 onChange={(e) => {
                   setReceipt(e.target.value)
                 }}
+                onClick={() => {
+                  props.setDatacard(fields)
+                }}
               />
               <label for="">三聯式發票/收據</label>
             </div>
           </div>
         </div>
       </div>
-      <div class="container mt-5 pt-4">
-        {/* <div class="row justify-content-center ">
-        <button class="btn">
-          <span>
-            重新選擇
-            <br />
-            付款方式
-          </span>
-        </button>
-        <button class="btn">
-          <span>確認購買</span>
-        </button>
-      </div> */}
-      </div>
+      <div class="container mt-5 pt-4"></div>
       <div className="mb-5"></div>
     </>
   )
-  return <>{isLoading ? spinner : display}</>
+  return <>{isLoading ? loading : display}</>
 }
 
 export default Receive
