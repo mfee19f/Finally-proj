@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-function Cart() {
+function Cart(props) {
+  const { cartCount, setCartCount } = props
   const [mycart, setMycart] = useState([])
   const [dataLoading, setDataLoading] = useState(false)
   const [mycartDisplay, setMycartDisplay] = useState([])
@@ -95,6 +96,7 @@ function Cart() {
 
     // 設定資料
     setMycart(currentCart)
+    setCartCount(cartCount - 1)
   }
 
   const loading = (

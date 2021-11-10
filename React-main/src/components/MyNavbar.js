@@ -5,31 +5,21 @@ import '../styles/navstyle.css'
 import { NavLink, withRouter } from 'react-router-dom'
 
 function MyNavbar(props) {
-  const { auth, setAuth, track, cartCount, memberData } =
-    props
+  const { auth, setAuth, track, cartCount, id } = props
   const [member, setMember] = useState([])
-  const id = member.sid
+
   const logout = () => {
     setAuth(false)
     deleteMemberLocalStorage()
     props.history.push('/')
   }
 
-  function getMemberLocalStorage() {
-    const newMember = localStorage.getItem('member') || '[]'
-    // console.log(JSON.parse(newMember))
-    setMember(JSON.parse(newMember))
-  }
   function deleteMemberLocalStorage() {
     localStorage.removeItem('token')
     const newMember =
       localStorage.removeItem('member') || '[]'
-    // console.log(JSON.parse(newMember))
     setMember(JSON.parse(newMember))
   }
-  useEffect(() => {
-    getMemberLocalStorage()
-  }, [])
 
   return (
     <>
@@ -100,7 +90,7 @@ function MyNavbar(props) {
               <>
                 <Nav.Link
                   as={NavLink}
-                  to={'/member_center/' + id}
+                  to={'/member_center/' + id.sid}
                 >
                   <p>會員中心</p>
                 </Nav.Link>

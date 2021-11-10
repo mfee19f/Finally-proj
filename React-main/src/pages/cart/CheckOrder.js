@@ -232,7 +232,8 @@ function CheckOrder(props) {
                 <div class="form-group">
                   <label for="name">收件人地址 : </label>
                   <span>
-                    {props.datacard.delivery_address}
+                    {'新北市板橋區' +
+                      props.datacard.delivery_address}
                   </span>
                 </div>
                 <div class="form-group">

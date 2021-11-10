@@ -14,11 +14,11 @@ import ProductDetail from './pages/ProductDetail'
 //購物車
 import Cart from './pages/cart/Cart'
 import Transport from './pages/cart/Transport'
-// import Receive from './pages/cart/Receive'
 import ReceiveCard from './pages/cart/ReceiveCard'
 import OrderList from './pages/cart/OrderList'
 import CheckOrder from './pages/cart/CheckOrder'
 import OrderStep from './pages/cart/OrderStep'
+import OrderListJOIN from './pages/cart/OrderListJOIN'
 //會員
 import Register from './pages/Register'
 import Edit from './pages/Edit'
@@ -36,6 +36,7 @@ function App() {
   const [track, setTrack] = useState(0)
   const [cartCount, setCartCount] = useState(0)
   const [memberData, setMemberData] = useState({})
+  const [id, setID] = useState(0)
 
   useEffect(() => {
     // 問伺服器是否有會員登入
@@ -52,6 +53,18 @@ function App() {
     setTrack(myTrack.length)
     setCartCount(myCart.length)
   }, [])
+  useEffect(() => {
+    // 問伺服器是否有會員登入
+    // 如果有登入，設定auth為true
+    //setAuth(true)
+    //請localstorage中的購物車數量
+    const myAuth = localStorage.getItem('member')
+      ? JSON.parse(localStorage.getItem('member'))
+      : []
+    // 設定為陣列的長度(成員數量)
+    setAuth(true)
+    setID(myAuth)
+  }, [])
 
   return (
     <Router>
@@ -63,6 +76,7 @@ function App() {
           track={track}
           cartCount={cartCount}
           memberData={memberData}
+          id={id}
         />
         {/* 主內容區 */}
         <MainContent>
@@ -72,6 +86,10 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
+              <Route path="/list/:id">
+                <OrderListJOIN auth={auth} />
+              </Route>
+
               <Route path="/member_center/:id">
                 <Membercenter
                   auth={auth}
@@ -88,7 +106,11 @@ function App() {
                 <Cart />
               </Route>
               <Route path="/order-steps">
-                <OrderStep auth={auth} />
+                <OrderStep
+                  auth={auth}
+                  setCartCount={setCartCount}
+                  cartCount={cartCount}
+                />
               </Route>
               <Route path="/check-order">
                 <CheckOrder />
@@ -126,6 +148,7 @@ function App() {
                   setAuth={setAuth}
                   memberData={memberData}
                   setMemberData={setMemberData}
+                  setAuth={setAuth}
                 />
               </Route>
               {/* 一定要放在所有的Route最後面 */}

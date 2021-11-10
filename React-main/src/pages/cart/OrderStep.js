@@ -8,7 +8,7 @@ import ReceiveCard from './ReceiveCard'
 import CheckOrder from './CheckOrder'
 
 function OrderSteps(props) {
-  const { auth } = props
+  const { auth, cartCount, setCartCount } = props
   const [member, setMember] = useState([])
   const [datacard, setDatacard] = useState({})
   const [paydata, setPaydata] = useState()
@@ -25,7 +25,10 @@ function OrderSteps(props) {
   const cart = (
     <>
       {/* <h2>購物車</h2> */}
-      <Cart />
+      <Cart
+        cartCount={cartCount}
+        setCartCount={setCartCount}
+      />
     </>
   )
   const transport = (
