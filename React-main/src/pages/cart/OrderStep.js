@@ -142,7 +142,7 @@ function OrderSteps(props) {
           <div class="row justify-content-center">
             {step !== 1 && (
               <button
-                className="btn"
+                className="myobtn"
                 onClick={() => {
                   changeStep(false)
                 }}
@@ -152,7 +152,7 @@ function OrderSteps(props) {
             )}
             {step !== 4 && (
               <button
-                className="btn"
+                className="myobtn ml-3"
                 onClick={() => {
                   changeStep(true)
                 }}
@@ -161,7 +161,7 @@ function OrderSteps(props) {
               </button>
             )}
             {step === 4 && (
-              <button className="btn" onClick={onSubmit}>
+              <button className="myobtn  ml-3" onClick={onSubmit}>
                 送出
               </button>
             )}
