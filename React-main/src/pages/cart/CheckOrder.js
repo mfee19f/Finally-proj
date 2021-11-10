@@ -11,21 +11,13 @@ function CheckOrder(props) {
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-
     const newMember = localStorage.getItem('member') || '[]'
-
-    // console.log(JSON.parse(newMember))
-
     setMember(JSON.parse(newMember))
   }
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-
     const newCart = localStorage.getItem('cart') || '[]'
-
-    // console.log(JSON.parse(newCart))
-
     setMycart(JSON.parse(newCart))
   }
   useEffect(() => {
@@ -87,11 +79,11 @@ function CheckOrder(props) {
         <div class="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
-              HOME
+              首頁
             </Link>
             /
             <Link to="/" className="mr-1 ml-1">
-              商品
+              產品
             </Link>
             / <span className="myfontcolor">確認訂單</span>
           </p>
@@ -116,7 +108,7 @@ function CheckOrder(props) {
       <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-center">
           <div class="w875 borderbottom">
-            <p>CHECK YOUR ORDER 詳細訂單</p>
+            <p>Check Your Order 詳細訂單</p>
           </div>
         </div>
       </div>
@@ -166,12 +158,12 @@ function CheckOrder(props) {
                       </td>
                       <td className="text-center mt-4">
                         <div className=" mt-4">
-                          {item.price}
+                          NT$ {item.price}
                         </div>
                       </td>
                       <td className="text-center">
                         <div className=" mt-4">
-                          {item.amount * item.price}
+                          NT$ {item.amount * item.price}
                         </div>
                       </td>
                     </tr>
@@ -187,8 +179,8 @@ function CheckOrder(props) {
                   <p class="rong mr-1">運費</p>
                 </div>
                 <div class="ml-5 mr-2">
-                  <p>NT.{sum(mycartDisplay)}</p>
-                  <p>NT.{props.freight}</p>
+                  <p>NT$ {sum(mycartDisplay)}</p>
+                  <p>NT$ {props.freight}</p>
                 </div>
               </div>
               <div class="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-5">
@@ -196,7 +188,7 @@ function CheckOrder(props) {
                   <p>應付金額</p>
                 </div>
                 <div class="ml-5  rongsettotal">
-                  <span>NT.{props.totalMoney}</span>
+                  <span>NT$ {props.totalMoney}</span>
                 </div>
               </div>
             </div>

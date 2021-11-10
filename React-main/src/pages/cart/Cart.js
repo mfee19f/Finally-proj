@@ -109,7 +109,7 @@ function Cart() {
 
   const display = (
     <>
-      <div className="container mt-5 pt-5 mb-5 pb-5 ">
+      <div className="container mb-5">
         <div className="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
@@ -132,20 +132,22 @@ function Cart() {
             <p className="rongtextcolor">確認購買明細</p>
           </div>
           <div className="rongboxborder">
-            <p> 配送與付款方式</p>
+            <p className="rocky-fix2"> 配送與付款方式</p>
           </div>
           <div className="rongboxborder">
-            <p>填寫收件資料</p>
+            <p className="rocky-fix2">填寫收件資料</p>
           </div>
           <div className="rongboxborder">
-            <p>確認訂單</p>
+            <p className="rocky-fix2">確認訂單</p>
           </div>
         </div>
       </div>
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>Check Your Order 確認購買明細</p>
+            <p className="rocky-fix2">
+              Check Your Order 確認購買明細
+            </p>
           </div>
         </div>
       </div>
@@ -153,7 +155,7 @@ function Cart() {
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex">
             <table className="table  col ">
-              <thead className="table-dark">
+              <thead className="table-dark rocky-fix3">
                 <tr>
                   <th scope="col">商品名稱</th>
                   <th scope="col" className="text-center">
@@ -182,11 +184,11 @@ function Cart() {
                           <div>
                             <img src={item.image} alt="" />
                           </div>
-                          <div className="ml-5 mt-4">
+                          <div className="ml-5 mt-4 rocky-fix2">
                             {item.name}
                           </div>
                         </td>
-                        <td className="text-center">
+                        <td className="text-center rocky-fix2">
                           <div className=" mt-4">
                             {item.size}
                           </div>
@@ -197,6 +199,7 @@ function Cart() {
                               style={{
                                 'font-size': '0.5rem',
                                 'margin-right': '10px',
+                                color: '#1d3124',
                               }}
                               onClick={() => {
                                 if (item.amount === 1)
@@ -206,13 +209,16 @@ function Cart() {
                                   false
                                 )
                               }}
-                              class="fas fa-minus"
+                              class="fas fa-caret-square-left"
                             ></i>
-                            {item.amount}
+                            <span className="rocky-fix2">
+                              {item.amount}
+                            </span>
                             <i
                               style={{
                                 'font-size': '0.5rem',
                                 'margin-left': '10px',
+                                color: '#1d3124',
                               }}
                               onClick={() =>
                                 updateCartToLocalStorage(
@@ -220,24 +226,24 @@ function Cart() {
                                   true
                                 )
                               }
-                              class="fas fa-plus"
+                              class="fas fa-caret-square-right"
                             ></i>
                           </div>
                         </td>
                         <td className="text-center mt-4">
-                          <div className=" mt-4">
+                          <div className=" mt-4 rocky-fix2">
                             NT$ {item.price}
                           </div>
                         </td>
                         <td className="text-center">
-                          <div className=" mt-4">
+                          <div className=" mt-4 rocky-fix2">
                             NT$ {item.amount * item.price}
                           </div>
                         </td>
                         <td className="text-center">
                           <div className=" mt-4">
                             <i
-                              style={{ color: 'red' }}
+                              style={{ color: '#e59560' }}
                               onClick={() =>
                                 deleteCartToLocalStorage(
                                   item

@@ -208,3 +208,13 @@ table img {
 .myfontcolor {
   color: rgb(151, 151, 151);
 }
+/* 美化用 */
+.rocky-fix {
+  color: white;
+}
+.rocky-fix2 {
+  color: #1d3124;
+}
+.rocky-fix3 {
+  background-color: #1d3124;
+}

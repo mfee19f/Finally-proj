@@ -230,7 +230,7 @@ function Home(props) {
                           alt="..."
                         />
                         <div className="card-body">
-                          <div className="card-text name-large">
+                          <div className="card-text name-large iii">
                             {v.name}
                           </div>
                           <div className="card-text">

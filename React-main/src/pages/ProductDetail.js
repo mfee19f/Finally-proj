@@ -138,7 +138,7 @@ function ProductDetail(props) {
               尺寸：{singleData.size}
             </div>
             <div className="rocky-price rocky-color">
-              單價：NT${singleData.price}
+              單價：NT$ {singleData.price}
             </div>
           </div>
           <div className="product-num">
@@ -169,7 +169,7 @@ function ProductDetail(props) {
               </div>
             </div>
             <div className="total-price rocky-color">
-              總價：NT${singleData.price * buyNumber}
+              總價：NT$ {singleData.price * buyNumber}
             </div>
           </div>
           <div className="shopping-btn">
