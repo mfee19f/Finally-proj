@@ -28,7 +28,8 @@ function MyNavbar(props) {
     setMember(JSON.parse(newMember))
   }
   useEffect(() => {
-    getMemberLocalStorage()
+    return ()=>{getMemberLocalStorage()}
+    
   }, [member])
 
   return (
