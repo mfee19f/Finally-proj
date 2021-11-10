@@ -6,7 +6,7 @@ import { IMG_PATH } from '../road'
 import { Link } from 'react-router-dom'
 
 function Home(props) {
-  // const { auth, cartCount, setCartCount } = props
+  const { track, setTrack, cartCount, setCartCount } = props
   let [data, setData] = useState({})
   // {
   //   id: '1',
@@ -18,6 +18,22 @@ function Home(props) {
   //   track: 'false',
   //   created_at: '2021.10.26 22:00:00',
   // },
+  useEffect(() => {
+    // 問伺服器是否有會員登入
+    // 如果有登入，設定auth為true
+    //setAuth(true)
+    //請localstorage中的購物車數量
+    const myCart = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart'))
+      : []
+    const myTrack = localStorage.getItem('track')
+      ? JSON.parse(localStorage.getItem('track'))
+      : []
+    // 設定為陣列的長度(成員數量)
+    setTrack(myTrack.length)
+    setCartCount(myCart.length)
+  }, [])
+
   useEffect(() => {
     ;(async () => {
       const r = await fetch(CONNECT)

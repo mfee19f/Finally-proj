@@ -35,7 +35,9 @@ function OrderSteps(props) {
     <>
       {/* <h2>運送表單</h2> */}
       <Transport
+        paydata={paydata}
         setPaydata={setPaydata}
+        totalMoney={totalMoney}
         setTotalMoney={setTotalMoney}
         freight={freight}
         setFreight={setFreight}

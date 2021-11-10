@@ -54,14 +54,9 @@ function App() {
     setCartCount(myCart.length)
   }, [])
   useEffect(() => {
-    // 問伺服器是否有會員登入
-    // 如果有登入，設定auth為true
-    //setAuth(true)
-    //請localstorage中的購物車數量
     const myAuth = localStorage.getItem('member')
       ? JSON.parse(localStorage.getItem('member'))
       : []
-    // 設定為陣列的長度(成員數量)
     setAuth(true)
     setID(myAuth)
   }, [])
@@ -125,7 +120,13 @@ function App() {
                 <Transport />
               </Route>
               <Route exact path="/">
-                <Home auth={auth} />
+                <Home
+                  auth={auth}
+                  cartCount={cartCount}
+                  setCartCount={setCartCount}
+                  track={track}
+                  setTrack={setTrack}
+                />
               </Route>
               <Route exact path="/product/detail/:id?">
                 <ProductDetail
@@ -139,7 +140,13 @@ function App() {
                 />
               </Route>
               <Route exact path="/product">
-                <Product auth={auth} />
+                <Product
+                  auth={auth}
+                  cartCount={cartCount}
+                  setCartCount={setCartCount}
+                  track={track}
+                  setTrack={setTrack}
+                />
               </Route>
               <Route path="/login">
                 {/* 利用props傳入頁面元件狀態 */}

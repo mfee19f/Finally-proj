@@ -67,7 +67,7 @@ body {
 } */
 /* ----------------配送----- */
 .rongbodybg {
-  background-color: #f6f4e8;
+  background-color: white;
 }
 .rongbodybg option {
   font-size: 14px;
@@ -87,13 +87,13 @@ body {
   /* border:  1px solid black; */
 }
 .rongsettotal p {
-  /* font-size: 24px; */
+  font-size: medium;
   font-weight: bold;
 }
 .rongsettotal span {
-  /* font-size: 24px; */
+  font-size: medium;
   font-weight: bold;
-  color: red;
+  color: #1d3124;
 }
 .rong {
   margin-left: 15px;

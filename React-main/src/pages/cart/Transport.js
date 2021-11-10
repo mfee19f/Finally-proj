@@ -3,12 +3,19 @@ import './cartstyle.css'
 import { Link } from 'react-router-dom'
 
 function Transport(props) {
+  const {
+    paydata,
+    setPaydata,
+    totalMoney,
+    setTotalMoney,
+    freight,
+    setFreight,
+  } = props
   const [dataLoading, setDataLoading] = useState(false)
   const [mycart, setMycart] = useState([])
+  // 多餘的狀態
   const [mycartDisplay, setMycartDisplay] = useState([])
-  // 付款方式
-  const [pay, setPay] = useState('')
-  // 下拉選單 運送地區
+  // 運送地區下拉選單
   const [selectedOption, setSelectedOption] = useState('')
 
   function getCartFromLocalStorage() {
@@ -50,6 +57,18 @@ function Transport(props) {
     // console.log(newMycartDisplay)
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
+  useEffect(() => {
+    const sum = (items) => {
+      let total = 0
+      for (let i = 0; i < items.length; i++) {
+        total += items[i].amount * items[i].price
+      }
+      return total
+    }
+    setTotalMoney(
+      parseInt(sum(mycartDisplay)) + parseInt(freight)
+    )
+  }, [mycartDisplay, freight, setTotalMoney])
 
   // 計算總價用的函式
   const sum = (items) => {
@@ -72,7 +91,7 @@ function Transport(props) {
 
   const display = (
     <>
-      <div className="container mt-5 pt-5 mb-5 pb-5">
+      <div className="container mb-5 pb-5">
         <div className="row">
           <p>
             <Link to="/" className="mr-1">
@@ -91,16 +110,16 @@ function Transport(props) {
       </div>
       <div className="container">
         <div className="d-flex justify-content-between ">
-          <div className="rongboxborder ">
+          <div className="rongboxborder rocky-fix2">
             <p>確認購買明細</p>
           </div>
           <div className="rongboxborder rongboxbg">
             <p className="rongtextcolor"> 配送與付款方式</p>
           </div>
-          <div className="rongboxborder">
+          <div className="rongboxborder rocky-fix2">
             <p>填寫收件資料</p>
           </div>
-          <div className="rongboxborder">
+          <div className="rongboxborder rocky-fix2">
             <p>確認訂單</p>
           </div>
         </div>
@@ -108,14 +127,16 @@ function Transport(props) {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>Delivery and Payment 配送與付款方式</p>
+            <p className="rocky-fix2">
+              Delivery and Payment 配送與付款方式
+            </p>
           </div>
         </div>
       </div>
       <div className="container">
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex .select">
-            <p className="mt-1">運送區域 : </p>
+            <p className="mt-1 rocky-fix2">運送區域 : </p>
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
@@ -130,13 +151,13 @@ function Transport(props) {
               <option value="韓國">韓國</option>
               <option value="中國大陸">中國大陸</option>
             </select>
-            <p className="ml-5 mt-1">運費 : </p>
+            <p className="ml-5 mt-1 rocky-fix2">運費 : </p>
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
-              value={props.freight}
+              value={freight}
               onChange={(e) => {
-                props.setFreight(e.target.value)
+                setFreight(e.target.value)
               }}
             >
               <option value="">請選擇</option>
@@ -144,39 +165,22 @@ function Transport(props) {
               <option value="250">快遞 $250</option>
             </select>
           </div>
-          {/* <div className="rongproducttype d-flex .select rongradiostyle">
-            <input
-              className="mt-2"
-              type="radio"
-              name="delivery"
-              value="購物金全額折抵"
-            />
-            <label for="">
-              <p>
-                購物金全額折抵{' '}
-                <span>
-                  {' '}
-                  全館消費可享免運(特價商品金額不列入免運優惠計算)
-                </span>
-              </p>
-            </label>
-          </div> */}
           <div className="rongproducttype d-flex .select rongradiostyle">
             <input
               className="mt-2"
               type="radio"
               name="delivery"
               value="宅配到貨付款"
-              checked={pay === '宅配到貨付款'}
+              checked={paydata === '宅配到貨付款'}
               onChange={(e) => {
-                setPay(e.target.value)
+                setPaydata(e.target.value)
               }}
             />
             <label for="">
-              <p>
+              <p className="rocky-fix2">
                 宅配到貨付款
                 <span>
-                  全館消費可享免運(特價商品金額不列入免運優惠計算)
+                  (特價商品金額不列入免運優惠計算)
                 </span>
               </p>
             </label>
@@ -187,16 +191,16 @@ function Transport(props) {
               type="radio"
               name="delivery"
               value="7-11超商取貨"
-              checked={pay === '7-11超商取貨'}
+              checked={paydata === '7-11超商取貨'}
               onChange={(e) => {
-                setPay(e.target.value)
+                setPaydata(e.target.value)
               }}
             />
             <label for="">
-              <p>
+              <p className="rocky-fix2">
                 7-11超商取貨付款
                 <span>
-                  全館消費可享免運(特價商品金額不列入免運優惠計算)
+                  (特價商品金額不列入免運優惠計算)
                 </span>
               </p>
             </label>
@@ -207,16 +211,16 @@ function Transport(props) {
               type="radio"
               name="delivery"
               value="信用卡"
-              checked={pay === '信用卡'}
+              checked={paydata === '信用卡'}
               onChange={(e) => {
-                setPay(e.target.value)
+                setPaydata(e.target.value)
               }}
             />
             <label for="">
-              <p>
+              <p className="rocky-fix2">
                 信用卡線上刷卡
                 <span>
-                  全館消費可享免運(特價商品金額不列入免運優惠計算)
+                  (特價商品金額不列入免運優惠計算)
                 </span>
               </p>
             </label>
@@ -225,7 +229,9 @@ function Transport(props) {
         <div className="container mt-5 pt-5">
           <div className="d-flex justify-content-center">
             <div className="w875 borderbottom">
-              <p>Check Your Order 確認購買明細</p>
+              <p className="rocky-fix2">
+                Check Your Order 確認購買明細
+              </p>
             </div>
           </div>
         </div>
@@ -233,7 +239,7 @@ function Transport(props) {
           <div className="row justify-content-center">
             <div className="rongproducttype d-flex">
               <table className="table  col ">
-                <thead className="table-dark">
+                <thead className="table-dark rocky-fix3">
                   <tr>
                     <th scope="col">商品名稱</th>
                     <th scope="col" className="text-center">
@@ -262,26 +268,26 @@ function Transport(props) {
                                 alt=""
                               />
                             </div>
-                            <div className="ml-5 mt-4">
+                            <div className="ml-5 mt-4 rocky-fix2">
                               {item.name}
                             </div>
                           </td>
-                          <td className="text-center">
+                          <td className="text-center rocky-fix2">
                             <div className=" mt-4">
                               {item.size}
                             </div>
                           </td>
-                          <td className="text-center">
+                          <td className="text-center rocky-fix2">
                             <div className=" mt-4">
                               {item.amount}
                             </div>
                           </td>
-                          <td className="text-center mt-4">
+                          <td className="text-center mt-4 rocky-fix2">
                             <div className=" mt-4">
                               NT$ {item.price}
                             </div>
                           </td>
-                          <td className="text-center">
+                          <td className="text-center rocky-fix2">
                             <div className=" mt-4">
                               NT$ {item.amount * item.price}
                             </div>
@@ -297,33 +303,25 @@ function Transport(props) {
           <div className="container mt-5 pt-4 w875 ">
             <div className="row justify-content-end rongtotal">
               <div className="mr-5  pr-2">
-                <p className>總金額</p>
-                <p className="rong mr-1">運費</p>
-                <p>購物金</p>
+                <p className="rocky-fix2">總金額</p>
+                <p className="rocky-fix2">運費</p>
               </div>
               <div className="ml-5 mr-2">
-                <p>NT$ {sum(mycartDisplay)}</p>
-                <p>NT$ {props.freight}</p>
-                <p>NT$ 0</p>
+                <p className="rocky-fix2">
+                  NT$ {sum(mycartDisplay)}
+                </p>
+                <p className="rocky-fix2">NT$ {freight}</p>
               </div>
             </div>
             <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney">
-              <div className="mr-5 rongsettotal ">
-                <p>應付金額</p>
+              <div className="mr-3 rongsettotal">
+                <p className="rocky-fix2">總計</p>
               </div>
-              <div className="ml-5  rongsettotal">
-                <span
-                  onClick={() => {
-                    props.setPaydata(pay)
-                    props.setTotalMoney(
-                      parseInt(sum(mycartDisplay)) +
-                        parseInt(props.freight)
-                    )
-                  }}
-                >
+              <div className="rongsettotal">
+                <span>
                   NT$
                   {parseInt(sum(mycartDisplay)) +
-                    parseInt(props.freight)}
+                    parseInt(freight)}
                 </span>
               </div>
             </div>
