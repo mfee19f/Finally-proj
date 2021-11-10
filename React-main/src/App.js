@@ -36,6 +36,7 @@ function App() {
   const [track, setTrack] = useState(0)
   const [cartCount, setCartCount] = useState(0)
   const [memberData, setMemberData] = useState({})
+  const [id, setID] = useState(0)
 
   useEffect(() => {
     // 問伺服器是否有會員登入
@@ -52,6 +53,19 @@ function App() {
     setTrack(myTrack.length)
     setCartCount(myCart.length)
   }, [])
+  useEffect(() => {
+    // 問伺服器是否有會員登入
+    // 如果有登入，設定auth為true
+    //setAuth(true)
+    //請localstorage中的購物車數量
+    const myAuth = localStorage.getItem('member')
+      ? JSON.parse(localStorage.getItem('member'))
+      : []
+  
+    // 設定為陣列的長度(成員數量)
+    setAuth(true)
+    setID(myAuth)
+  }, [])
 
   return (
     <Router>
@@ -63,6 +77,7 @@ function App() {
           track={track}
           cartCount={cartCount}
           memberData={memberData}
+          id={id}
         />
         {/* 主內容區 */}
         <MainContent>
@@ -130,6 +145,7 @@ function App() {
                   setAuth={setAuth}
                   memberData={memberData}
                   setMemberData={setMemberData}
+                  setAuth={setAuth}
                 />
               </Route>
               {/* 一定要放在所有的Route最後面 */}

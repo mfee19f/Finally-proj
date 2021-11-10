@@ -37,8 +37,7 @@ function Member_center(props) {
         }
       })
   }
-  const id = memberData.sid
-
+  const id = props.match.params.id
   useEffect(() => {
     ;(async () => {
       const id = props.match.params.id
