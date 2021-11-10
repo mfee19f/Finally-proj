@@ -29,7 +29,7 @@ function MyNavbar(props) {
   }
   useEffect(() => {
     getMemberLocalStorage()
-  }, [member])
+  }, [])
 
   return (
     <>
