@@ -54,17 +54,15 @@ function App() {
     setCartCount(myCart.length)
   }, [])
   useEffect(() => {
-    // 問伺服器是否有會員登入
-    // 如果有登入，設定auth為true
-    //setAuth(true)
-    //請localstorage中的購物車數量
-    const myAuth = localStorage.getItem('member')
-      ? JSON.parse(localStorage.getItem('member'))
-      : []
-  
-    // 設定為陣列的長度(成員數量)
-    setAuth(true)
-    setID(myAuth)
+    if (localStorage.getItem('member')) {
+      const myAuth = localStorage.getItem('member')
+        ? JSON.parse(localStorage.getItem('member'))
+        : []
+
+      // 設定為陣列的長度(成員數量)
+      setAuth(true)
+      setID(myAuth)
+    }
   }, [])
 
   return (
@@ -104,10 +102,14 @@ function App() {
                 <Register auth={auth} />
               </Route>
               <Route path="/cart">
-                <Cart  />
+                <Cart />
               </Route>
               <Route path="/order-steps">
-                <OrderStep auth={auth}  setCartCount={setCartCount} cartCount={cartCount}/>
+                <OrderStep
+                  auth={auth}
+                  setCartCount={setCartCount}
+                  cartCount={cartCount}
+                />
               </Route>
               <Route path="/check-order">
                 <CheckOrder />

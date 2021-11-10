@@ -14,12 +14,7 @@ function MyNavbar(props) {
     deleteMemberLocalStorage()
     props.history.push('/')
   }
-console.log('membermembermembermembermembermember',id);
-  function getMemberLocalStorage() {
-    const newMember = localStorage.getItem('member') || '[]'
-    // console.log(JSON.parse(newMember))
-    setMember(JSON.parse(newMember))
-  }
+
   function deleteMemberLocalStorage() {
     localStorage.removeItem('token')
     const newMember =
@@ -27,10 +22,7 @@ console.log('membermembermembermembermembermember',id);
     // console.log(JSON.parse(newMember))
     setMember(JSON.parse(newMember))
   }
-  //錯誤在這裡 [member]
-  useEffect(() => {
-    getMemberLocalStorage()
-  }, [])
+ 
 
   return (
     <>
