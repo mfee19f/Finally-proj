@@ -138,37 +138,37 @@ function OrderSteps(props) {
 
   const login = (
     <>
-      <div className="mt-5 "></div>
+      <div className="mt-4 "></div>
       <div className="mb-5">
         {switchStep(step)}
         <div class="container">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center mt-5">
             {step !== 1 && (
               <button
-                className="myobtn"
+                className="btn bg-primary mr-4"
                 onClick={() => {
                   changeStep(false)
                 }}
               >
-                上一步
+                <div className="rocky-fix">上一步</div>
               </button>
             )}
             {step !== 4 && (
               <button
-                className="myobtn ml-3"
+                className="btn  bg-primary"
                 onClick={() => {
                   changeStep(true)
                 }}
               >
-                下一步
+                <div className="rocky-fix">下一步</div>
               </button>
             )}
             {step === 4 && (
               <button
-                className="myobtn  ml-3"
+                className="btn bg-primary"
                 onClick={onSubmit}
               >
-                送出
+                <div className="rocky-fix">送出訂單</div>
               </button>
             )}
           </div>

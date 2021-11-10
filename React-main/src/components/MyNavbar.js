@@ -5,10 +5,9 @@ import '../styles/navstyle.css'
 import { NavLink, withRouter } from 'react-router-dom'
 
 function MyNavbar(props) {
-  const { auth, setAuth, track, cartCount, memberData,id } =
-    props
+  const { auth, setAuth, track, cartCount, id } = props
   const [member, setMember] = useState([])
-  
+
   const logout = () => {
     setAuth(false)
     deleteMemberLocalStorage()
@@ -19,10 +18,8 @@ function MyNavbar(props) {
     localStorage.removeItem('token')
     const newMember =
       localStorage.removeItem('member') || '[]'
-    // console.log(JSON.parse(newMember))
     setMember(JSON.parse(newMember))
   }
- 
 
   return (
     <>

@@ -54,6 +54,7 @@ function App() {
     setCartCount(myCart.length)
   }, [])
   useEffect(() => {
+    //如果LocalStorage有資料
     if (localStorage.getItem('member')) {
       const myAuth = localStorage.getItem('member')
         ? JSON.parse(localStorage.getItem('member'))

@@ -208,12 +208,13 @@ table img {
 .myfontcolor {
   color: rgb(151, 151, 151);
 }
-
-.myobtn {
-  width: 100px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: #fff;
+/* 美化用 */
+.rocky-fix {
+  color: white;
+}
+.rocky-fix2 {
+  color: #1d3124;
+}
+.rocky-fix3 {
   background-color: #1d3124;
-  padding: 5px 15px;
 }
