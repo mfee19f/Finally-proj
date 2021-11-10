@@ -14,12 +14,12 @@ function OrderSteps(props) {
   const [member, setMember] = useState([])
   const [datacard, setDatacard] = useState({})
   const [paydata, setPaydata] = useState()
-  const [totalMoney, setTotalMoney] = useState()
+  const [totalMoney, setTotalMoney] = useState(0)
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
   const [mycartDisplay, setMycartDisplay] = useState([])
-
-  console.log('mycartDisplay:', mycartDisplay)
+  //運費
+  const [freight, setFreight] = useState(0)
 
   const cart = (
     <>
@@ -34,6 +34,8 @@ function OrderSteps(props) {
       <Transport
         setPaydata={setPaydata}
         setTotalMoney={setTotalMoney}
+        freight={freight}
+        setFreight={setFreight}
       />
     </>
   )
@@ -52,6 +54,7 @@ function OrderSteps(props) {
         paydata={paydata}
         datacard={datacard}
         totalMoney={totalMoney}
+        freight={freight}
       />
     </>
   )
@@ -111,7 +114,8 @@ function OrderSteps(props) {
       orderprice: totalMoney,
       delivery: paydata,
       receiver: datacard.receiver,
-      delivery_address: "新北市板橋區"+datacard.delivery_address,
+      delivery_address:
+        '新北市板橋區' + datacard.delivery_address,
       card: datacard.card,
     }
     const r = await fetch('http://localhost:3001/order', {

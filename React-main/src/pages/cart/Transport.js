@@ -164,7 +164,7 @@ function Transport(props) {
       <div className="container">
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex .select">
-            <p>運送區域 : </p>
+            <p className="mt-1">運送區域 : </p>
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
@@ -178,6 +178,19 @@ function Transport(props) {
               <option value="日本">日本</option>
               <option value="韓國">韓國</option>
               <option value="中國大陸">中國大陸</option>
+            </select>
+            <p className="ml-5 mt-1">運費 : </p>
+            <select
+              className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
+              aria-label=".form-select-lg example"
+              value={props.freight}
+              onChange={(e) => {
+                props.setFreight(e.target.value)
+              }}
+            >
+              <option value="">請選擇</option>
+              <option value="200">郵局 $200</option>
+              <option value="250">快遞 $250</option>
             </select>
           </div>
           {/* <div className="rongproducttype d-flex .select rongradiostyle">
@@ -337,14 +350,14 @@ function Transport(props) {
           </div>
           <div className="container mt-5 pt-4 w875 ">
             <div className="row justify-content-end rongtotal">
-              <div className="mr-5 ">
-                <p>總金額</p>
-                <p className="rong">運費</p>
+              <div className="mr-5  pr-2">
+                <p className>總金額</p>
+                <p className="rong mr-1">運費</p>
                 <p>購物金</p>
               </div>
-              <div className="ml-5">
+              <div className="ml-5 mr-2">
                 <p>NT.{sum(mycartDisplay)}</p>
-                <p>NT.0</p>
+                <p>NT.{props.freight}</p>
                 <p>NT.0</p>
               </div>
             </div>
@@ -356,10 +369,15 @@ function Transport(props) {
                 <span
                   onClick={() => {
                     props.setPaydata(pay)
-                    props.setTotalMoney(sum(mycartDisplay))
+                    props.setTotalMoney(
+                      parseInt(sum(mycartDisplay)) +
+                        parseInt(props.freight)
+                    )
                   }}
                 >
-                  NT.{sum(mycartDisplay)}
+                  NT.
+                  {parseInt(sum(mycartDisplay)) +
+                    parseInt(props.freight)}
                 </span>
               </div>
             </div>
