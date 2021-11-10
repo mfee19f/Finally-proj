@@ -17,9 +17,58 @@ function OrderSteps(props) {
   const [step, setStep] = useState(1)
   const [mycartDisplay, setMycartDisplay] = useState([])
   const [show, setShow] = useState(false)
-
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  //運費
+  const [freight, setFreight] = useState(0)
+
+  const cart = (
+    <>
+      {/* <h2>購物車</h2> */}
+      <Cart />
+    </>
+  )
+  const transport = (
+    <>
+      {/* <h2>運送表單</h2> */}
+      <Transport
+        setPaydata={setPaydata}
+        setTotalMoney={setTotalMoney}
+        freight={freight}
+        setFreight={setFreight}
+      />
+    </>
+  )
+  const receiveCard = (
+    <>
+      {/* <h2>付款表單</h2> */}
+      <ReceiveCard setDatacard={setDatacard} />
+    </>
+  )
+  const orderDetail = (
+    <>
+      {/* <h2>訂購詳細</h2> */}
+      <CheckOrder
+        paydata={paydata}
+        datacard={datacard}
+        totalMoney={totalMoney}
+        freight={freight}
+      />
+    </>
+  )
+
+  function getMemberLocalStorage() {
+    const newMember = localStorage.getItem('member') || '[]'
+    setMember(JSON.parse(newMember))
+  }
+  function getCartFromLocalStorage() {
+    const newCart = localStorage.getItem('cart') || '[]'
+    setMycart(JSON.parse(newCart))
+  }
+  useEffect(() => {
+    getCartFromLocalStorage()
+    getMemberLocalStorage()
+  }, [])
   const fetchOrderDetail = async () => {
     const r = await fetch(
       'http://localhost:3001/order_detail',
@@ -84,89 +133,6 @@ function OrderSteps(props) {
     if (!isAdded && step > 1) setStep(step - 1)
   }
 
-  function getMemberLocalStorage() {
-    // 開啟載入的指示圖示
-
-    const newMember = localStorage.getItem('member') || '[]'
-
-    // console.log(JSON.parse(newMember))
-
-    setMember(JSON.parse(newMember))
-  }
-  function getCartFromLocalStorage() {
-    // 開啟載入的指示圖示
-
-    const newCart = localStorage.getItem('cart') || '[]'
-
-    // console.log(JSON.parse(newCart))
-
-    setMycart(JSON.parse(newCart))
-  }
-  useEffect(() => {
-    getCartFromLocalStorage()
-    getMemberLocalStorage()
-    handleClose()
-  }, [])
-  useEffect(() => {
-    // mycartDisplay運算
-    let newMycartDisplay = []
-
-    //尋找mycartDisplay
-    for (let i = 0; i < mycart.length; i++) {
-      //尋找mycartDisplay中有沒有此mycart[i].id
-      //有找到會返回陣列成員的索引值
-      //沒找到會返回-1
-      const index = newMycartDisplay.findIndex(
-        (value) => value.id === mycart[i].id
-      )
-      //有的話就數量+1
-      if (index !== -1) {
-        //每次只有加1個數量
-        //newMycartDisplay[index].amount++
-        //假設是加數量的
-        newMycartDisplay[index].amount += mycart[i].amount
-      } else {
-        //沒有的話就把項目加入，數量為1
-        const newItem = { ...mycart[i] }
-        newMycartDisplay = [...newMycartDisplay, newItem]
-      }
-    }
-
-    // console.log(newMycartDisplay)
-    setMycartDisplay(newMycartDisplay)
-  }, [mycart])
-
-  const cart = (
-    <>
-      {/* <h2>購物車</h2> */}
-      <Cart />
-    </>
-  )
-  const transport = (
-    <>
-      {/* <h2>運送表單</h2> */}
-      <Transport
-        setPaydata={setPaydata}
-        setTotalMoney={setTotalMoney}
-      />
-    </>
-  )
-  const receiveCard = (
-    <>
-      {/* <h2>付款表單</h2> */}
-      <ReceiveCard setDatacard={setDatacard} />
-    </>
-  )
-  const orderDetail = (
-    <>
-      {/* <h2>訂購詳細</h2> */}
-      <CheckOrder
-        paydata={paydata}
-        datacard={datacard}
-        totalMoney={totalMoney}
-      />
-    </>
-  )
   const login = (
     <>
       <div className="mt-5 "></div>
@@ -255,6 +221,7 @@ function OrderSteps(props) {
       </Modal.Footer>
     </Modal>
   )
+
   return (
     <>
       {auth ? login : myalert}

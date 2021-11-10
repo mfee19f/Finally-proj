@@ -180,17 +180,15 @@ function CheckOrder(props) {
               </tbody>
             </table>
             <div class="borderbottom"></div>
-            <div class="container mt-3   w875 ">
+            <div class="container    w875 mt-5 mb-5 mr-3">
               <div class="row justify-content-end rongtotal pr-5">
-                <div class="mr-5 ">
+                <div class="mr-5  pr-2">
                   <p>總金額</p>
-                  <p class="rong">運費</p>
-                  <p>購物金</p>
+                  <p class="rong mr-1">運費</p>
                 </div>
-                <div class="ml-5 ">
+                <div class="ml-5 mr-2">
                   <p>NT.{sum(mycartDisplay)}</p>
-                  <p>NT.0</p>
-                  <p>NT.0</p>
+                  <p>NT.{props.freight}</p>
                 </div>
               </div>
               <div class="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-5">
@@ -198,7 +196,7 @@ function CheckOrder(props) {
                   <p>應付金額</p>
                 </div>
                 <div class="ml-5  rongsettotal">
-                  <span>NT.{sum(mycartDisplay)}</span>
+                  <span>NT.{props.totalMoney}</span>
                 </div>
               </div>
             </div>
