@@ -32,12 +32,12 @@ function Login(props) {
           )
           handleShow()
         } else {
-          alert('登入失敗\n' + (obj.error || ''))
+          alert('帳號或密碼錯誤\n' + (obj.error || ''))
         }
       })
     setAuth(true)
   }
-
+  
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()

@@ -107,7 +107,7 @@ function MyNavbar(props) {
             {auth ? (
               <>
                 <Nav.Link>
-                  <p>你好 {member.name}</p>
+                  <p>Hi , {member.name}</p>
                 </Nav.Link>
                 <Nav.Link
                   as={NavLink}

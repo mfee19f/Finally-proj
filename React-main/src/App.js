@@ -21,11 +21,11 @@ import ProductDetail from './pages/ProductDetail'
 //購物車
 import Cart from './pages/cart/Cart'
 import Transport from './pages/cart/Transport'
-// import Receive from './pages/cart/Receive'
 import ReceiveCard from './pages/cart/ReceiveCard'
 import OrderList from './pages/cart/OrderList'
 import CheckOrder from './pages/cart/CheckOrder'
 import OrderStep from './pages/cart/OrderStep'
+import OrderListJOIN from './pages/cart/OrderListJOIN'
 //會員
 import Register from './pages/Register'
 import Edit from './pages/Edit'
@@ -77,6 +77,9 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
+              <Route path="/list/:id">
+                <OrderListJOIN auth={auth} />
+              </Route>
               <Route path="/test">
                 <Test auth={auth} />
               </Route>

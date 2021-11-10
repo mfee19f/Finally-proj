@@ -68,20 +68,10 @@ function Receive(props) {
         className="spinner-grow text-primary"
         role="status"
       >
+      <img src="./image/wait2.jpg" alt=""/>
         <span className="sr-only">Loading...</span>
       </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
+     
     </>
   )
   const display = (
