@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Link } from 'react-router-dom'
-// import './cartstyle.css'
+import { Link } from 'react-router-dom'
+
 function Cart() {
   const [mycart, setMycart] = useState([])
   const [dataLoading, setDataLoading] = useState(false)
@@ -9,17 +9,7 @@ function Cart() {
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-
     const newCart = localStorage.getItem('cart') || '[]'
-
-    // console.log(JSON.parse(newCart))
-
-    // const newCart = localStorage.getItem('cart') || '[]'
-    // console.log('newCart[0]:',newCart[0]);
-    // console.log('JSON.parse(newCart):',JSON.parse(newCart))
-    // var cartArr=JSON.parse(newCart)
-    // setMycart(JSON.parse(newCart))
-
     setMycart(JSON.parse(newCart))
   }
 
@@ -31,7 +21,6 @@ function Cart() {
   // componentDidUpdate
   useEffect(() => {
     setTimeout(() => setDataLoading(false), 1000)
-
     // mycartDisplay運算
     let newMycartDisplay = []
 
@@ -55,7 +44,6 @@ function Cart() {
         newMycartDisplay = [...newMycartDisplay, newItem]
       }
     }
-
     // console.log(newMycartDisplay)
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
@@ -90,7 +78,6 @@ function Cart() {
     // 設定資料
     setMycart(currentCart)
   }
-
   const deleteCartToLocalStorage = (item) => {
     const currentCart =
       JSON.parse(localStorage.getItem('cart')) || []
@@ -110,15 +97,6 @@ function Cart() {
     setMycart(currentCart)
   }
 
-  // 計算總價用的函式
-  const sum = (items) => {
-    let total = 0
-    for (let i = 0; i < items.length; i++) {
-      total += items[i].amount * items[i].price
-    }
-    return total
-  }
-//運費
   const loading = (
     <>
       <div className="d-flex justify-content-center">
@@ -135,13 +113,13 @@ function Cart() {
         <div className="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
-              HOME{' '}
+              首頁
             </Link>
             /
-            <Link to="/" className="mr-1 ml-1">
-              商品{' '}
-            </Link>{' '}
-            /{' '}
+            <Link to="/product" className="mr-1 ml-1">
+              產品
+            </Link>
+            /
             <span className="myfontcolor">
               確認購買明細
             </span>
@@ -167,7 +145,7 @@ function Cart() {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>CHECK YOUR ORDER 確認購買明細</p>
+            <p>Check Your Order 確認購買明細</p>
           </div>
         </div>
       </div>
@@ -230,7 +208,6 @@ function Cart() {
                               }}
                               class="fas fa-minus"
                             ></i>
-
                             {item.amount}
                             <i
                               style={{
@@ -249,12 +226,12 @@ function Cart() {
                         </td>
                         <td className="text-center mt-4">
                           <div className=" mt-4">
-                            {item.price}
+                            NT$ {item.price}
                           </div>
                         </td>
                         <td className="text-center">
                           <div className=" mt-4">
-                            {item.amount * item.price}
+                            NT$ {item.amount * item.price}
                           </div>
                         </td>
                         <td className="text-center">
@@ -270,7 +247,6 @@ function Cart() {
                             ></i>
                           </div>
                         </td>
-                        {/* {console.log(localStorage)} */}
                       </tr>
                     </>
                   )
@@ -281,8 +257,8 @@ function Cart() {
         </div>
       </div>
       <div className="container mt-5 pt-4">
-        <div className="row justify-content-center">
-          <p>小計金額 : {sum(mycartDisplay)}</p>
+        <div className="row justify-content-end">
+          {/* <p>小計金額 : {sum(mycartDisplay)}</p> */}
         </div>
       </div>
       <div className="mb-5"></div>

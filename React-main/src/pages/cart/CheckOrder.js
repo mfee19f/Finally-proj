@@ -1,45 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function CheckOrder(props) {
-  // const [isLoading, setIsLoading] = useState(true)
-
   const [dataLoading, setDataLoading] = useState(false)
   const [member, setMember] = useState([])
   const [mycart, setMycart] = useState([])
   const [mycartDisplay, setMycartDisplay] = useState([])
-  useEffect(() => {
-    setTimeout(() => setDataLoading(false), 1000)
 
-    // mycartDisplay運算
-    let newMycartDisplay = []
-
-    //尋找mycartDisplay
-    for (let i = 0; i < mycart.length; i++) {
-      //尋找mycartDisplay中有沒有此mycart[i].id
-      //有找到會返回陣列成員的索引值
-      //沒找到會返回-1
-      const index = newMycartDisplay.findIndex(
-        (value) => value.id === mycart[i].id
-      )
-      //有的話就數量+1
-      if (index !== -1) {
-        //每次只有加1個數量
-        //newMycartDisplay[index].amount++
-        //假設是加數量的
-        newMycartDisplay[index].amount += mycart[i].amount
-      } else {
-        //沒有的話就把項目加入，數量為1
-        const newItem = { ...mycart[i] }
-        newMycartDisplay = [...newMycartDisplay, newItem]
-      }
-    }
-    // console.log('props.paydata', props.paydata)
-    // console.log(newMycartDisplay)
-    setMycartDisplay(newMycartDisplay)
-  }, [mycart])
-  // console.log('member', member)
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
@@ -50,7 +18,6 @@ function CheckOrder(props) {
 
     setMember(JSON.parse(newMember))
   }
-
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
@@ -103,25 +70,13 @@ function CheckOrder(props) {
     }
     return total
   }
-  const spinner = (
+
+  const loading = (
     <>
-      <div
-        className="spinner-grow text-primary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     </>
   )
@@ -131,14 +86,13 @@ function CheckOrder(props) {
       <div class="container mt-5 pt-5 mb-5 pb-5">
         <div class="row">
           <p className="ml-3">
-            {' '}
             <Link to="/" className="mr-1">
-              HOME{' '}
+              HOME
             </Link>
             /
             <Link to="/" className="mr-1 ml-1">
-              商品{' '}
-            </Link>{' '}
+              商品
+            </Link>
             / <span className="myfontcolor">確認訂單</span>
           </p>
         </div>
@@ -196,28 +150,30 @@ function CheckOrder(props) {
                         <div>
                           <img src={item.image} alt="" />
                         </div>
-                        <div class="ml-5 mt-4">{item.name}</div>
+                        <div class="ml-5 mt-4">
+                          {item.name}
+                        </div>
                       </td>
                       <td className="text-center">
-                            <div className=" mt-4">
-                              {item.size}
-                            </div>
-                          </td>
-                          <td className="text-center">
-                            <div className=" mt-4">
-                              {item.amount}
-                            </div>
-                          </td>
-                          <td className="text-center mt-4">
-                            <div className=" mt-4">
-                              {item.price}
-                            </div>
-                          </td>
-                          <td className="text-center">
-                            <div className=" mt-4">
-                              {item.amount * item.price}
-                            </div>
-                          </td>
+                        <div className=" mt-4">
+                          {item.size}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <div className=" mt-4">
+                          {item.amount}
+                        </div>
+                      </td>
+                      <td className="text-center mt-4">
+                        <div className=" mt-4">
+                          {item.price}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <div className=" mt-4">
+                          {item.amount * item.price}
+                        </div>
+                      </td>
                     </tr>
                   )
                 })}
@@ -307,7 +263,7 @@ function CheckOrder(props) {
     </>
   )
 
-  return <>{dataLoading ? spinner : display}</>
+  return <>{dataLoading ? loading : display}</>
 }
 
 export default CheckOrder

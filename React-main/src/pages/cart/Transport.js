@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Transport(props) {
   const [dataLoading, setDataLoading] = useState(false)
@@ -10,17 +10,13 @@ function Transport(props) {
   const [pay, setPay] = useState('')
   // 下拉選單 運送地區
   const [selectedOption, setSelectedOption] = useState('')
+
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-
     const newCart = localStorage.getItem('cart') || '[]'
-
-    // console.log(JSON.parse(newCart))
-
     setMycart(JSON.parse(newCart))
   }
-
   useEffect(() => {
     getCartFromLocalStorage()
   }, [])
@@ -55,37 +51,6 @@ function Transport(props) {
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
 
-  // 更新購物車中的商品數量
-  const updateCartToLocalStorage = (
-    item,
-    isAdded = true
-  ) => {
-    // console.log(item, isAdded)
-    const currentCart =
-      JSON.parse(localStorage.getItem('cart')) || []
-
-    // find if the product in the localstorage with its id
-    const index = currentCart.findIndex(
-      (v) => v.id === item.id
-    )
-
-    // console.log('index', index)
-    // found: index! == -1
-    if (index > -1) {
-      isAdded
-        ? currentCart[index].amount++
-        : currentCart[index].amount--
-    }
-
-    localStorage.setItem(
-      'cart',
-      JSON.stringify(currentCart)
-    )
-
-    // 設定資料
-    setMycart(currentCart)
-  }
-
   // 計算總價用的函式
   const sum = (items) => {
     let total = 0
@@ -95,25 +60,12 @@ function Transport(props) {
     return total
   }
 
-  const spinner = (
+  const loading = (
     <>
-      <div
-        className="spinner-grow text-primary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-secondary"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-      <div
-        className="spinner-grow text-success"
-        role="status"
-      >
-        <span className="sr-only">Loading...</span>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     </>
   )
@@ -123,15 +75,14 @@ function Transport(props) {
       <div className="container mt-5 pt-5 mb-5 pb-5">
         <div className="row">
           <p>
-            {' '}
             <Link to="/" className="mr-1">
-              HOME{' '}
+              首頁
             </Link>
             /
-            <Link to="/" className="mr-1 ml-1">
-              商品{' '}
-            </Link>{' '}
-            /{' '}
+            <Link to="/product" className="mr-1 ml-1">
+              產品
+            </Link>
+            /
             <span className="myfontcolor">
               配送與付款方式
             </span>
@@ -157,7 +108,7 @@ function Transport(props) {
       <div className="container mt-5 pt-5">
         <div className="d-flex justify-content-center">
           <div className="w875 borderbottom">
-            <p>Delivery 配送與付款方式</p>
+            <p>Delivery and Payment 配送與付款方式</p>
           </div>
         </div>
       </div>
@@ -210,7 +161,6 @@ function Transport(props) {
               </p>
             </label>
           </div> */}
-
           <div className="rongproducttype d-flex .select rongradiostyle">
             <input
               className="mt-2"
@@ -224,9 +174,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                宅配到貨付款{' '}
+                宅配到貨付款
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -245,9 +194,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                7-11超商取貨付款{' '}
+                7-11超商取貨付款
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -266,9 +214,8 @@ function Transport(props) {
             />
             <label for="">
               <p>
-                信用卡線上刷卡{' '}
+                信用卡線上刷卡
                 <span>
-                  {' '}
                   全館消費可享免運(特價商品金額不列入免運優惠計算)
                 </span>
               </p>
@@ -278,7 +225,7 @@ function Transport(props) {
         <div className="container mt-5 pt-5">
           <div className="d-flex justify-content-center">
             <div className="w875 borderbottom">
-              <p>CHECK YOUR ORDER 確認購買明細</p>
+              <p>Check Your Order 確認購買明細</p>
             </div>
           </div>
         </div>
@@ -331,15 +278,14 @@ function Transport(props) {
                           </td>
                           <td className="text-center mt-4">
                             <div className=" mt-4">
-                              {item.price}
+                              NT$ {item.price}
                             </div>
                           </td>
                           <td className="text-center">
                             <div className=" mt-4">
-                              {item.amount * item.price}
+                              NT$ {item.amount * item.price}
                             </div>
                           </td>
-                          {/* {console.log(localStorage)} */}
                         </tr>
                       </>
                     )
@@ -356,9 +302,9 @@ function Transport(props) {
                 <p>購物金</p>
               </div>
               <div className="ml-5 mr-2">
-                <p>NT.{sum(mycartDisplay)}</p>
-                <p>NT.{props.freight}</p>
-                <p>NT.0</p>
+                <p>NT$ {sum(mycartDisplay)}</p>
+                <p>NT$ {props.freight}</p>
+                <p>NT$ 0</p>
               </div>
             </div>
             <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney">
@@ -375,27 +321,19 @@ function Transport(props) {
                     )
                   }}
                 >
-                  NT.
+                  NT$
                   {parseInt(sum(mycartDisplay)) +
                     parseInt(props.freight)}
                 </span>
               </div>
             </div>
           </div>
-
-          {/* <div className="container mt-5 pt-4">
-          <div className="row justify-content-center ">
-            <button className="btn">
-              <span>下一步</span>
-            </button>
-          </div>
-        </div> */}
         </div>
       </div>
       <div className="mb-5"></div>
     </>
   )
-  return <>{dataLoading ? spinner : display}</>
+  return <>{dataLoading ? loading : display}</>
 }
 
 export default Transport

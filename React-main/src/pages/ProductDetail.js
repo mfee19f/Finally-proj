@@ -9,7 +9,6 @@ import { IMG_PATH } from '../road'
 function ProductDetail(props) {
   // console.log(props)
   const {
-    auth,
     cartCount,
     setCartCount,
     buyNumber,
@@ -21,29 +20,23 @@ function ProductDetail(props) {
   const [displayData, setDisplayData] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [singleData, setSingleData] = useState({})
-  console.log(
-    'singleDatasingleDatasingleDatasingleData',
-    singleData
-  )
   const [mycart, setMycart] = useState([])
   const [show, setShow] = useState(false)
   const [productName, setProductName] = useState('')
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-
   const updateCartToLocalStorage = (value) => {
     const currentCart =
       JSON.parse(localStorage.getItem('cart')) || []
-
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
-
     // 設定資料
     setMycart(newCart)
     setProductName(value.name)
     handleShow()
   }
+
   useEffect(() => {
     ;(async () => {
       const id = props.match.params.id
@@ -145,7 +138,7 @@ function ProductDetail(props) {
               尺寸：{singleData.size}
             </div>
             <div className="rocky-price rocky-color">
-              單價：{singleData.price}元
+              單價：NT${singleData.price}
             </div>
           </div>
           <div className="product-num">
@@ -176,7 +169,7 @@ function ProductDetail(props) {
               </div>
             </div>
             <div className="total-price rocky-color">
-              總價：{singleData.price * buyNumber}元
+              總價：NT${singleData.price * buyNumber}
             </div>
           </div>
           <div className="shopping-btn">
@@ -331,6 +324,7 @@ function ProductDetail(props) {
       </div>
     </>
   )
+
   return (
     <>
       {messageModal}

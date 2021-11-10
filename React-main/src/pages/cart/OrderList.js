@@ -7,7 +7,7 @@ import './cartstyle.css'
 function OrderList(props) {
   const [data, setData] = useState({})
   const [singleData, setSingleData] = useState({})
-  console.log('datadatadatadatadatadatadatadatadata', data)
+  // console.log('datadatadatadatadatadatadatadatadata', data)
   useEffect(() => {
     ;(async () => {
       const id = props.match.params.id
@@ -20,7 +20,7 @@ function OrderList(props) {
         await setSingleData(obj.data)
         await setData(obj.data)
 
-        console.log('obj================data', obj.data)
+        // console.log('obj================data', obj.data)
       } else {
         const r = await fetch(
           'http://localhost:3001/order/' + 3

@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 
 function Login(props) {
-  console.log(props)
+  // console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const { auth, setAuth, memberData, setMemberData } = props
