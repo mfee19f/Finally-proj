@@ -27,9 +27,9 @@ function MyNavbar(props) {
     // console.log(JSON.parse(newMember))
     setMember(JSON.parse(newMember))
   }
+  //錯誤在這裡
   useEffect(() => {
-    return ()=>{getMemberLocalStorage()}
-    
+    getMemberLocalStorage()
   }, [member])
 
   return (

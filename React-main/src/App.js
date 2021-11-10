@@ -89,10 +89,10 @@ function App() {
                 <Register auth={auth} />
               </Route>
               <Route path="/cart">
-                <Cart />
+                <Cart  />
               </Route>
               <Route path="/order-steps">
-                <OrderStep auth={auth} />
+                <OrderStep auth={auth}  setCartCount={setCartCount} cartCount={cartCount}/>
               </Route>
               <Route path="/check-order">
                 <CheckOrder />
