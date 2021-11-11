@@ -74,6 +74,7 @@ function OrderSteps(props) {
     getCartFromLocalStorage()
     getMemberLocalStorage()
   }, [])
+  console.log('mycartDisplaymycartDisplaymycartDisplaymycartDisplay',mycartDisplay,datacard.order_id)
   const fetchOrderDetail = async () => {
     const r = await fetch(
       'http://localhost:3001/order_detail',
@@ -90,6 +91,17 @@ function OrderSteps(props) {
     )
     const orderDetail = await r.json()
   }
+  console.log(
+    member.sid,
+    datacard.order_id,
+    member.name,
+    datacard.mobile,
+    totalMoney,
+    paydata,
+    datacard.receiver,
+    '新北市板橋區' + datacard.delivery_address,
+    datacard.card
+  )
   const fetchOrder = async () => {
     const dataObj = {
       member_sid: member.sid,

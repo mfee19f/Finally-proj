@@ -213,7 +213,7 @@ function Cart(props) {
                               }}
                               class="fas fa-caret-square-left"
                             ></i>
-                            <span className="rocky-fix2">
+                            <span className="">
                               {item.amount}
                             </span>
                             <i
