@@ -121,7 +121,8 @@ body {
   float: right;
 }
 .rongorder {
-  background-color: #ccc;
+  background-color: #1d3124;
+  color: white;
   padding: 10px;
   text-align: center;
   font-size: 1.4rem;
@@ -140,10 +141,10 @@ body {
 }
 .rongorderdetail div {
   font-size: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 2px;
 }
 .rongorderdetail span {
-  margin-left: 20px;
+  margin-left: 8px;
 }
 .red {
   color: red;
@@ -217,4 +218,21 @@ table img {
 }
 .rocky-fix3 {
   background-color: #1d3124;
+}
+.rocky-fix4 {
+  margin-left: 8px;
+}
+.rocky-fix5 {
+  padding-right: 20px;
+  font-weight: bold;
+}
+.rocky-fix6 {
+  font-size: medium;
+  /* background-color: white; */
+  border: 1px solid transparent;
+  /* padding: 10px; */
+  font-weight: bold;
+}
+.rocky-fix7 {
+  font-size: medium;
 }

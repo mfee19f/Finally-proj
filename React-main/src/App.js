@@ -54,24 +54,11 @@ function App() {
     setCartCount(myCart.length)
   }, [])
   useEffect(() => {
-<<<<<<< HEAD
     const myAuth = localStorage.getItem('member')
       ? JSON.parse(localStorage.getItem('member'))
       : []
     setAuth(true)
     setID(myAuth)
-=======
-    //如果LocalStorage有資料
-    if (localStorage.getItem('member')) {
-      const myAuth = localStorage.getItem('member')
-        ? JSON.parse(localStorage.getItem('member'))
-        : []
-
-      // 設定為陣列的長度(成員數量)
-      setAuth(true)
-      setID(myAuth)
-    }
->>>>>>> 9798a4ade13ea00efee7db1f073a956498ba3346
   }, [])
 
   return (
