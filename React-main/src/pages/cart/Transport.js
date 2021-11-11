@@ -176,7 +176,7 @@ function Transport(props) {
                 setPaydata(e.target.value)
               }}
             />
-            <label for="">
+            <label htmlFor="">
               <p className="rocky-fix2">
                 宅配到貨付款
                 <span>
@@ -196,7 +196,7 @@ function Transport(props) {
                 setPaydata(e.target.value)
               }}
             />
-            <label for="">
+            <label htmlFor="">
               <p className="rocky-fix2">
                 7-11超商取貨付款
                 <span>
@@ -216,7 +216,7 @@ function Transport(props) {
                 setPaydata(e.target.value)
               }}
             />
-            <label for="">
+            <label htmlFor="">
               <p className="rocky-fix2">
                 信用卡線上刷卡
                 <span>

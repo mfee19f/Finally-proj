@@ -68,17 +68,17 @@ function Edit(props) {
   }
   return (
     <>
-      <div class="card-body">
-        <h5 class="card-title">註冊 (JWT)</h5>
+      <div className="card-body">
+        <h5 className="card-title">註冊 (JWT)</h5>
         {/* email, password, mobile, address,birthday */}
         <form name="form1" onSubmit={handleSubmit}>
-          <div class="mb-3">
-            <label for="email" class="form-label">
+          <div className="mb-3">
+            <label for="email" className="form-label">
               email
             </label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="email"
               name="email"
               required
@@ -87,13 +87,13 @@ function Edit(props) {
             />
           </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">
+          <div className="mb-3">
+            <label for="password" className="form-label">
               密碼
             </label>
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="password"
               name="password"
               required
@@ -102,13 +102,13 @@ function Edit(props) {
             />
           </div>
 
-          <div class="mb-3">
-            <label for="mobile" class="form-label">
+          <div className="mb-3">
+            <label for="mobile" className="form-label">
               mobile
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="mobile"
               name="mobile"
               required
@@ -117,13 +117,13 @@ function Edit(props) {
             />
           </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">
+          <div className="mb-3">
+            <label for="password" className="form-label">
               address
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="address"
               name="address"
               required
@@ -132,13 +132,13 @@ function Edit(props) {
             />
           </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">
+          <div className="mb-3">
+            <label for="password" className="form-label">
               birthday
             </label>
             <input
               type="date"
-              class="form-control"
+              className="form-control"
               id="birthday"
               name="birthday"
               required
@@ -148,12 +148,12 @@ function Edit(props) {
           </div>
           <button
             type="submit"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={add}
           >
             修改
           </button>
-          {/* <button class="btn btn-primary" onClick={logout}>
+          {/* <button className="btn btn-primary" onClick={logout}>
             登出
           </button> */}
         </form>

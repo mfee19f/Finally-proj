@@ -98,7 +98,7 @@ function Login(props) {
               </label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="account"
                 name="account"
                 value={account}
@@ -119,7 +119,7 @@ function Login(props) {
               </label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
                 name="password"
                 value={password}

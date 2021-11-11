@@ -156,7 +156,7 @@ function Cart(props) {
       <div className="container">
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex">
-            <table className="table  col ">
+            <table className="table col">
               <thead className="table-dark rocky-fix3">
                 <tr>
                   <th scope="col">商品名稱</th>
@@ -178,11 +178,11 @@ function Cart(props) {
                 </tr>
               </thead>
               <tbody>
-                {mycartDisplay.map((item, index) => {
+                {mycartDisplay.map((item, i) => {
                   return (
                     <>
                       <tr>
-                        <td className="d-flex ">
+                        <td className="d-flex">
                           <div>
                             <img src={item.image} alt="" />
                           </div>
@@ -199,8 +199,8 @@ function Cart(props) {
                           <div className=" mt-4">
                             <i
                               style={{
-                                'font-size': '0.5rem',
-                                'margin-right': '10px',
+                                fontSize: '0.5rem',
+                                marginRight: '10px',
                                 color: '#1d3124',
                               }}
                               onClick={() => {
@@ -211,15 +211,15 @@ function Cart(props) {
                                   false
                                 )
                               }}
-                              class="fas fa-caret-square-left"
+                              className="fas fa-caret-square-left"
                             ></i>
                             <span className="">
                               {item.amount}
                             </span>
                             <i
                               style={{
-                                'font-size': '0.5rem',
-                                'margin-left': '10px',
+                                fontSize: '0.5rem',
+                                marginLeft: '10px',
                                 color: '#1d3124',
                               }}
                               onClick={() =>
@@ -228,7 +228,7 @@ function Cart(props) {
                                   true
                                 )
                               }
-                              class="fas fa-caret-square-right"
+                              className="fas fa-caret-square-right"
                             ></i>
                           </div>
                         </td>

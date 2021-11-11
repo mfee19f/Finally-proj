@@ -83,7 +83,7 @@ function Register(props) {
               </label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="email"
                 name="account"
                 required
@@ -102,7 +102,7 @@ function Register(props) {
               </label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
                 name="password"
                 required

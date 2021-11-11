@@ -58,6 +58,8 @@ function OrderSteps(props) {
         datacard={datacard}
         totalMoney={totalMoney}
         freight={freight}
+        mycartDisplay={mycartDisplay}
+        setMycartDisplay={setMycartDisplay}
       />
     </>
   )
@@ -143,8 +145,8 @@ function OrderSteps(props) {
       <div className="mt-4 "></div>
       <div className="mb-5">
         {switchStep(step)}
-        <div class="container">
-          <div class="row justify-content-center mt-5">
+        <div className="container">
+          <div className="row justify-content-center mt-5">
             {step !== 1 && (
               <button
                 className="btn bg-primary mr-4"
@@ -180,7 +182,7 @@ function OrderSteps(props) {
   )
   const myalert = (
     <>
-      <Modal show="true" backdrop="static" keyboard={false}>
+      <Modal show={true} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>您未登錄</Modal.Title>
         </Modal.Header>

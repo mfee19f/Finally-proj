@@ -140,7 +140,7 @@ function Member_center(props) {
                 <label for="name">姓名 :</label>
                 <input
                   type="text"
-                  class="form-control col-4 inputstyle"
+                  className="form-control col-4 inputstyle"
                   id="name"
                   name="name"
                   required
@@ -153,7 +153,7 @@ function Member_center(props) {
                 <label for="mobile">手機 :</label>
                 <input
                   type="text"
-                  class="form-control col-4 inputstyle"
+                  className="form-control col-4 inputstyle"
                   id="mobile"
                   name="mobile"
                   required
@@ -166,7 +166,7 @@ function Member_center(props) {
                 <label for="birthday">生日 :</label>
                 <input
                   type="date"
-                  class="form-control col-4 inputstyle"
+                  className="form-control col-4 inputstyle"
                   id="birthday"
                   name="birthday"
                   required
@@ -207,7 +207,7 @@ function Member_center(props) {
               </div>
               <button
                 type="submit"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={add}
               >
                 修改
