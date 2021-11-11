@@ -28,6 +28,7 @@ import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
 import MainContent from './components/MainContent'
 import ScrollToTop from './components/ScrollToTop'
+import Upload from './pages/Upload'
 //import BreadCrumb from './components/BreadCrumb'
 // import MultiLevelBreadcrumb from './components/MultiLevelBreadCrumb'
 function App() {
@@ -54,11 +55,16 @@ function App() {
     setCartCount(myCart.length)
   }, [])
   useEffect(() => {
-    const myAuth = localStorage.getItem('member')
-      ? JSON.parse(localStorage.getItem('member'))
-      : []
-    setAuth(true)
-    setID(myAuth)
+    //如果LocalStorage有資料
+    if (localStorage.getItem('member')) {
+      const myAuth = localStorage.getItem('member')
+        ? JSON.parse(localStorage.getItem('member'))
+        : []
+
+      // 設定為陣列的長度(成員數量)
+      setAuth(true)
+      setID(myAuth)
+    }
   }, [])
 
   return (
@@ -81,6 +87,9 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
+            <Route path="/upload">
+                <Upload  />
+              </Route>
               <Route path="/list/:id">
                 <OrderListJOIN auth={auth} />
               </Route>
