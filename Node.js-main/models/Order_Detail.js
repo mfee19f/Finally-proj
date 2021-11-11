@@ -103,5 +103,3 @@ class Order_Detail {
 }
 
 module.exports = Order_Detail;
-
-
