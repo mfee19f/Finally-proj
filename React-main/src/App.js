@@ -29,6 +29,7 @@ import MyFooter from './components/MyFooter'
 import MainContent from './components/MainContent'
 import ScrollToTop from './components/ScrollToTop'
 import Upload from './pages/Upload'
+import Error from './pages/Error'
 //import BreadCrumb from './components/BreadCrumb'
 // import MultiLevelBreadcrumb from './components/MultiLevelBreadCrumb'
 function App() {
@@ -87,8 +88,11 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
-            <Route path="/upload">
-                <Upload  />
+            <Route path="/error">
+                <Error />
+              </Route>
+              <Route path="/upload">
+                <Upload />
               </Route>
               <Route path="/list/:id">
                 <OrderListJOIN auth={auth} />

@@ -15,7 +15,6 @@ function OrderSteps(props) {
   const [totalMoney, setTotalMoney] = useState(0)
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
-  const [mycartDisplay, setMycartDisplay] = useState([])
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -99,18 +98,14 @@ function OrderSteps(props) {
     getCartFromLocalStorage()
     getMemberLocalStorage()
   }, [])
-  console.log(
-    'mycartDisplaymycartDisplaymycartDisplaymycartDisplay',
-    mycartDisplay,
-    datacard.order_id
-  )
+
   const fetchOrderDetail = async () => {
     const r = await fetch(
       'http://localhost:3001/order_detail',
       {
         method: 'POST',
         body: JSON.stringify({
-          orderDetail: mycartDisplay,
+          orderDetail: mycart,
           order_id: fields.order_id,
         }),
         headers: {
