@@ -4,34 +4,12 @@ import { Link } from 'react-router-dom'
 import './cartstyle.css'
 
 function Receive(props) {
+  const { datacard, setDatacard } = props
   // 發票資訊
   const [receipt, setReceipt] = useState('')
   //載入
   const [isLoading, setIsLoading] = useState(true)
   // 使用物件值作為狀態值，儲存所有欄位的值
-  let Today = new Date()
-  let date =
-    Today.getFullYear() +
-    '-' +
-    (Today.getMonth() + 1) +
-    '-' +
-    Today.getDate()
-  let date2 =
-    Today.getFullYear() +
-    '' +
-    (Today.getMonth() + 1) +
-    '' +
-    Today.getDate() +
-    ''
-  let rnd = Math.floor(Math.random() * 1000)
-  const [fields, setFields] = useState({
-    receiver: '',
-    mobile: '',
-    delivery_address: '',
-    card: '',
-    date: date,
-    order_id: date2 + rnd,
-  })
 
   // 專門用來處理每個欄位的輸入用
   const handleFieldChange = (e) => {
@@ -40,11 +18,11 @@ function Receive(props) {
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%90%8D
     const updatedFields = {
-      ...fields,
+      ...datacard,
       [e.target.name]: e.target.value,
     }
     // 3. 設定回原狀態物件
-    setFields(updatedFields)
+    setDatacard(updatedFields)
   }
 
   useEffect(() => {
@@ -126,7 +104,7 @@ function Receive(props) {
                   class="form-control col-4 inputstyle"
                   placeholder="姓名"
                   name="receiver"
-                  value={fields.receiver}
+                  value={datacard.receiver}
                   onChange={handleFieldChange}
                   required
                 />
@@ -143,7 +121,7 @@ function Receive(props) {
                   class="form-control col-4 inputstyle"
                   placeholder="手機"
                   name="mobile"
-                  value={fields.mobile}
+                  value={datacard.mobile}
                   onChange={handleFieldChange}
                   required
                 />
@@ -164,7 +142,7 @@ function Receive(props) {
                   type="text"
                   placeholder="地址"
                   name="delivery_address"
-                  value={fields.delivery_address}
+                  value={datacard.delivery_address}
                   onChange={handleFieldChange}
                   required
                 ></input>
@@ -223,7 +201,7 @@ function Receive(props) {
                     class="form-control col-8 inputstyle"
                     placeholder="卡號"
                     name="card"
-                    value={fields.card}
+                    value={datacard.card}
                     onChange={handleFieldChange}
                     required
                   />
@@ -291,9 +269,9 @@ function Receive(props) {
                 onChange={(e) => {
                   setReceipt(e.target.value)
                 }}
-                onClick={() => {
-                  props.setDatacard(fields)
-                }}
+                // onClick={() => {
+                //  setDatacard(fields)
+                // }}
               />
               <label
                 for=""
@@ -310,9 +288,9 @@ function Receive(props) {
                 onChange={(e) => {
                   setReceipt(e.target.value)
                 }}
-                onClick={() => {
-                  props.setDatacard(fields)
-                }}
+                // onClick={() => {
+                //   setDatacard(fields)
+                // }}
               />
               <label
                 for=""
