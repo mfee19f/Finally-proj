@@ -2,10 +2,10 @@ body {
   background-color: #f6f4e8;
 }
 .member_center {
-  height: 100vh;
+  height: 110vh;
 }
 .personalFormLine {
-  width: 70%;
+  width: 40%;
   border-bottom: 1px solid gray;
 }
 .centerLeft {
@@ -18,6 +18,8 @@ body {
 }
 .personalArea {
   margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,4 +45,7 @@ body {
 .picSize {
   height: 200px;
   width: 200px;
+}
+.rongcolor {
+  color: #1d3124;
 }

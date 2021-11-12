@@ -1,3 +1,5 @@
+// import logo from './logo.svg';
+
 import { useEffect, useState } from 'react'
 import conf, {
   IMG_PATH,
@@ -30,50 +32,6 @@ function Upload() {
 
   const mySubmit = async (e) => {
     e.preventDefault()
-
-    // urlencoded, json, formData
-
-    // 1. json
-    /*
-    const dataObj = {
-      avatar: document.fake_form.avatar.value,
-      name: document.fake_form.name.value,
-    };
-    const r = await fetch(TEST_AVATAR, {
-      method: 'POST',
-      body: JSON.stringify(dataObj),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await r.json();
-    console.log(data)
-*/
-
-    // 2. urlencoded
-    /*
-    const usp = new URLSearchParams(new FormData(document.fake_form));
-    // console.log(usp.toString());
-    const r = await fetch(TEST_AVATAR, {
-      method: 'POST',
-      body: usp.toString(),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-    const data = await r.json();
-    console.log(data);
-    */
-
-    // 3. FormData # 記後後端要使用 uoload.none(), # multer 的功能
-    /*
-    const r = await fetch(TEST_AVATAR, {
-      method: 'POST',
-      body: new FormData(document.fake_form),
-    });
-    const data = await r.json();
-    console.log(data);
-*/
 
     // ****** 修改 ******
     const r = await fetch(TEST_AVATAR + '/2', {
@@ -113,21 +71,6 @@ function Upload() {
           name="avatar"
           value={imgSrc}
         />
-
-        <div className="mb-3">
-          <label htmlFor="my_name" className="form-label">
-            name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={myName}
-            onChange={(e) => {
-              setMyName(e.target.value)
-            }}
-          />
-        </div>
 
         <button type="submit" className="btn btn-primary">
           Submit

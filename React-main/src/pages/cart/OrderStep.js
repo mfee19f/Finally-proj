@@ -15,13 +15,32 @@ function OrderSteps(props) {
   const [totalMoney, setTotalMoney] = useState(0)
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
-  const [mycartDisplay, setMycartDisplay] = useState([])
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   //運費
   const [freight, setFreight] = useState(0)
-
+  //日期
+  let Today = new Date()
+  let date =
+    Today.getFullYear() +
+    '-' +
+    (Today.getMonth() + 1) +
+    '-' +
+    Today.getDate()
+  let date2 =
+    Today.getFullYear() +
+    '' +
+    (Today.getMonth() + 1) +
+    '' +
+    Today.getDate() +
+    ''
+  let rnd = Math.floor(Math.random() * 1000)
+  //訂單編號
+  const [fields, setFields] = useState({
+    date: date,
+    order_id: date2 + rnd,
+  })
   const cart = (
     <>
       {/* <h2>購物車</h2> */}
@@ -47,7 +66,10 @@ function OrderSteps(props) {
   const receiveCard = (
     <>
       {/* <h2>付款表單</h2> */}
-      <ReceiveCard setDatacard={setDatacard} />
+      <ReceiveCard
+        datacard={datacard}
+        setDatacard={setDatacard}
+      />
     </>
   )
   const orderDetail = (
@@ -58,8 +80,8 @@ function OrderSteps(props) {
         datacard={datacard}
         totalMoney={totalMoney}
         freight={freight}
-        mycartDisplay={mycartDisplay}
-        setMycartDisplay={setMycartDisplay}
+        fields={fields}
+        setFields={setFields}
       />
     </>
   )
@@ -88,7 +110,7 @@ function OrderSteps(props) {
         method: 'POST',
         body: JSON.stringify({
           orderDetail: mycart,
-          order_id: datacard.order_id,
+          order_id: fields.order_id,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +122,7 @@ function OrderSteps(props) {
   const fetchOrder = async () => {
     const dataObj = {
       member_sid: member.sid,
-      order_sid: datacard.order_id,
+      order_sid: fields.order_id,
       nickname: member.name,
       mobile: datacard.mobile,
       orderprice: totalMoney,

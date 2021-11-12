@@ -246,7 +246,7 @@ function CheckOrder(props) {
                     訂單編號 :
                   </label>
                   <span className="rocky-fix6">
-                    {props.datacard.order_id}
+                    {props.fields.order_id}
                   </span>
                 </div>
                 <div className="form-group">
@@ -257,7 +257,7 @@ function CheckOrder(props) {
                     訂購日期 :
                   </label>
                   <span className="rocky-fix6">
-                    {props.datacard.date}
+                    {props.fields.date}
                   </span>
                 </div>
                 <div className="form-group">

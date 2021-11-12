@@ -178,8 +178,8 @@ app.get('/try-db', async (req, res)=>{
 });
 
 app.post('/test_avatar', uploadImg.none(), async (req, res)=>{
-    const sql = "INSERT INTO `test_avatar`(`avatar`, `name`) VALUES (?, ?)";
-    const [r] = await db.query(sql, [req.body.avatar, req.body.name]);
+    const sql = "INSERT INTO `test_avatar`(`avatar`) VALUES (?)";
+    const [r] = await db.query(sql, [req.body.avatar]);
     res.json(r);
 });
 app.get('/test_avatar/:id', async (req, res)=>{
