@@ -76,9 +76,14 @@ function Register(props) {
         </div>
         <div className="loginRight col-6">
           <form onSubmit={handleSubmit} name="form1">
-            <h4 className="pt-5 pl-5 font-weight-bold">註冊個人帳戶</h4>
+            <h4 className="pt-5 pl-5 font-weight-bold">
+              註冊個人帳戶
+            </h4>
             <div className="mb-3 pl-5 mt-5">
-              <label for="email" className="form-label mb-3">
+              <label
+                for="email"
+                className="form-label mb-3"
+              >
                 帳號(Email信箱)
               </label>
               <input
@@ -93,10 +98,12 @@ function Register(props) {
                   setAccount(e.target.value)
                 }}
               />
-
             </div>
             <div className="mb-3 pl-5 mt-5">
-              <label for="password" className="form-label mb-3">
+              <label
+                for="password"
+                className="form-label mb-3"
+              >
                 建立密碼
               </label>
               <input

@@ -85,7 +85,7 @@ function ProductDetail(props) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          繼續購物
+          <span className="rocky-fix">繼續購物</span>
         </Button>
         <Button
           variant="primary"

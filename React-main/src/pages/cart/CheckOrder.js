@@ -3,10 +3,10 @@ import './cartstyle.css'
 import { Link } from 'react-router-dom'
 
 function CheckOrder(props) {
-  const { mycartDisplay, setMycartDisplay } = props
   const [dataLoading, setDataLoading] = useState(false)
   const [member, setMember] = useState([])
   const [mycart, setMycart] = useState([])
+  const [mycartDisplay, setMycartDisplay] = useState([])
 
   function getMemberLocalStorage() {
     // 開啟載入的指示圖示
@@ -75,8 +75,8 @@ function CheckOrder(props) {
 
   const display = (
     <>
-      <div className="container mb-5 pb-5">
-        <div className="row">
+      <div class="container mb-5 pb-5">
+        <div class="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
               首頁
@@ -89,62 +89,62 @@ function CheckOrder(props) {
           </p>
         </div>
       </div>
-      <div className="container">
-        <div className="d-flex justify-content-between ">
-          <div className="rongboxborder ">
+      <div class="container">
+        <div class="d-flex justify-content-between ">
+          <div class="rongboxborder ">
             <p className="rocky-fix2">確認購買明細</p>
           </div>
-          <div className="rongboxborder">
+          <div class="rongboxborder">
             <p className="rocky-fix2"> 配送與付款方式</p>
           </div>
-          <div className="rongboxborder">
+          <div class="rongboxborder">
             <p className="rocky-fix2">填寫收件資料</p>
           </div>
-          <div className="rongboxborder rongboxbg">
-            <p className="rongtextcolor">確認訂單</p>
+          <div class="rongboxborder rongboxbg">
+            <p class="rongtextcolor">確認訂單</p>
           </div>
         </div>
       </div>
-      <div className="container mt-5 pt-5">
-        <div className="d-flex justify-content-center">
-          <div className="w875 borderbottom">
+      <div class="container mt-5 pt-5">
+        <div class="d-flex justify-content-center">
+          <div class="w875 borderbottom">
             <p className="rocky-fix2">
               Check Your Order 詳細訂單
             </p>
           </div>
         </div>
       </div>
-      <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="borderstyle w875">
-            <div className="rongorder">詳細訂單</div>
-            <table className="table  col ">
-              <thead className="">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="borderstyle w875">
+            <div class="rongorder">詳細訂單</div>
+            <table class="table  col ">
+              <thead class="">
                 <tr>
                   <th scope="col" className="rocky-fix2">
                     商品資訊
                   </th>
                   <th
                     scope="col"
-                    className="text-center rocky-fix2"
+                    class="text-center rocky-fix2"
                   >
                     尺寸
                   </th>
                   <th
                     scope="col"
-                    className="text-center rocky-fix2"
+                    class="text-center rocky-fix2"
                   >
                     數量
                   </th>
                   <th
                     scope="col"
-                    className="text-center rocky-fix2"
+                    class="text-center rocky-fix2"
                   >
                     單價
                   </th>
                   <th
                     scope="col"
-                    className="text-center rocky-fix2"
+                    class="text-center rocky-fix2"
                   >
                     小計
                   </th>
@@ -153,12 +153,12 @@ function CheckOrder(props) {
               <tbody>
                 {mycart.map((item, index) => {
                   return (
-                    <tr key={index}>
-                      <td className="d-flex">
+                    <tr>
+                      <td class="d-flex">
                         <div>
                           <img src={item.image} alt="" />
                         </div>
-                        <div className="ml-5 mt-4 rocky-fix2">
+                        <div class="ml-5 mt-4 rocky-fix2">
                           {item.name}
                         </div>
                       </td>
@@ -187,23 +187,23 @@ function CheckOrder(props) {
                 })}
               </tbody>
             </table>
-            <div className="borderbottom"></div>
-            <div className="container    w875 mt-5 mb-5 mr-3">
-              <div className="row justify-content-end rongtotal pr-5">
-                <div className="mr-5  pr-2">
+            <div class="borderbottom"></div>
+            <div class="container    w875 mt-5 mb-5 mr-3">
+              <div class="row justify-content-end rongtotal pr-5">
+                <div class="mr-5  pr-2">
                   <p className="rocky-fix2">總金額</p>
-                  <p className="rocky-fix2">運費</p>
+                  <p class="rocky-fix2">運費</p>
                 </div>
-                <div className="ml-5 mr-2 rocky-fix2">
+                <div class="ml-5 mr-2 rocky-fix2">
                   <p>NT$ {sum(mycartDisplay)}</p>
                   <p>NT$ {props.freight}</p>
                 </div>
               </div>
-              <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-4">
-                <div className="mr-3 rongsettotal ">
+              <div class="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-4">
+                <div class="mr-3 rongsettotal ">
                   <p className="rocky-fix2">總計</p>
                 </div>
-                <div className="rongsettotal">
+                <div class="rongsettotal">
                   <div className="rocky-fix2 rocky-fix5">
                     NT$ {props.totalMoney}
                   </div>
@@ -212,106 +212,106 @@ function CheckOrder(props) {
             </div>
           </div>
         </div>
-        <div className="container pt-3">
-          <div className="row justify-content-center ">
-            <div className="w875">
-              <form className="ml-5 rongorderdetail">
-                <div className="form-group">
+        <div class="container pt-3">
+          <div class="row justify-content-center ">
+            <div class="w875">
+              <form class="ml-5 rongorderdetail">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    會員帳號 :
+                    會員帳號 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {member.account}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    會員暱稱 :
+                    會員暱稱 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {member.name}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    訂單編號 :
+                    訂單編號 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.fields.order_id}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    訂購日期 :
+                    訂購日期 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.fields.date}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    付款方式 :
+                    付款方式 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.paydata}
                   </span>
                 </div>
 
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    收件人姓名 :
+                    收件人姓名 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.datacard.receiver}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    收件人手機 :
+                    收件人手機 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.datacard.mobile}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    收件人地址 :
+                    收件人地址 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {'新北市板橋區' +
                       props.datacard.delivery_address}
                   </span>
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                   <label
-                    htmlFor="name"
+                    for="name"
                     className="rocky-fix2 rocky-fix7"
                   >
-                    信用卡號 :
+                    信用卡號 :{' '}
                   </label>
                   <span className="rocky-fix6">
                     {props.datacard.card}
@@ -321,9 +321,9 @@ function CheckOrder(props) {
             </div>
           </div>
         </div>
-        {/* <div className="container mt-5 pt-4">
-          <div className="row justify-content-center ">
-            <button className="btn">
+        {/* <div class="container mt-5 pt-4">
+          <div class="row justify-content-center ">
+            <button class="btn">
               <span>送出</span>
             </button>
           </div>
