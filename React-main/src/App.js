@@ -178,6 +178,7 @@ function App() {
           </ScrollToTop>
         </MainContent>
         {/* 頁尾+版權訊息 */}
+        <div className="mb-5"></div>
         <MyFooter />
       </>
     </Router>

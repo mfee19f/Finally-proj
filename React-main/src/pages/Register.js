@@ -74,7 +74,7 @@ function Register(props) {
         <div className="loginLeft col-6">
           <img src="./image/login_left_pic.jpg" alt="" />
         </div>
-        <div className="loginRight col-6">
+        <div className="loginRight  col-xl-4 col-12">
           <form onSubmit={handleSubmit} name="form1">
             <h4 className="pt-5 pl-5 font-weight-bold">註冊個人帳戶</h4>
             <div className="mb-3 pl-5 mt-5">
@@ -83,7 +83,7 @@ function Register(props) {
               </label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control col-8"
                 id="email"
                 name="account"
                 min="3"
@@ -101,7 +101,7 @@ function Register(props) {
               </label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control col-8"
                 id="password"
                 name="password"
                 required
@@ -126,7 +126,7 @@ function Register(props) {
             </div>
             <div className="registerButton">
               <button
-                className="register btn mt-5 ml-5"
+                className="login btn btn-primary mt-4 ml-5"
                 onClick={add}
               >
                 註冊帳號

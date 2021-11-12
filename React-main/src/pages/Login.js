@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 import './Login.css'
 function Login(props) {
@@ -118,7 +118,7 @@ function Login(props) {
             </div>
             <div className="mb-3  pl-5 mt-5">
               <label
-                for="exampleInputPassword1"
+                for="password"
                 className="form-label mb-3"
               >
                 密碼
@@ -158,10 +158,13 @@ function Login(props) {
                 </button>
               </div>
               <div className="registerButton ml-3">
-                <button className="register btn btn-success">
-                  <a className="white" href="/register">
-                    註冊
-                  </a>
+                <button
+                  className="login btn btn-primary"
+                  onClick={() => {
+                    props.history.push('/register')
+                  }}
+                >
+                  註冊
                 </button>
               </div>
             </div>

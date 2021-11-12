@@ -145,6 +145,7 @@ function OrderSteps(props) {
     fetchOrderDetail()
     localStorage.removeItem('cart')
     handleShow()
+    localStorage.removeItem('step')
     // props.history.push('/')
   }
   const switchStep = (step) => {

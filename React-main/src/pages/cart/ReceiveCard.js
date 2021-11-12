@@ -13,8 +13,8 @@ function Receive(props) {
 
   // 存入錯誤訊息用
   const [fieldErrors, setFieldErrors] = useState({
-    username: '',
-    email: '',
+    name: '請填入姓名',
+    mobile: '請填入手機號碼',
     password: '',
     confirmPassword: '', // 有可能只是在瀏覽器檢查用而已
   })
@@ -154,8 +154,10 @@ function Receive(props) {
                     required
                   />
                   {fieldErrors.email !== '' && (
-          <div className="error">{fieldErrors.email}</div>
-        )}
+                    <div className="error">
+                      {fieldErrors.email}
+                    </div>
+                  )}
                 </div>
                 <div class="form-group">
                   <label
@@ -173,6 +175,11 @@ function Receive(props) {
                     onChange={handleFieldChange}
                     required
                   />
+                  {fieldErrors.mobile !== '' && (
+                    <div className="error">
+                      {fieldErrors.mobile}
+                    </div>
+                  )}
                 </div>
                 <div class="form-group">
                   <label

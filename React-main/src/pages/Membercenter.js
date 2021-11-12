@@ -146,7 +146,7 @@ function Member_center(props) {
             </div>
           </div>
         </div>
-        <div className="centerRight col-10">
+        <div className="centerRight col-4">
           <div className="personalForm ml-5 pl-5 mt-5">
             <h4 className="font-weight-bold rongcolor">
               個人資料
@@ -161,7 +161,7 @@ function Member_center(props) {
                 <input
                   name="password"
                   type="text"
-                  className="form-control col-4 inputstyle"
+                  className="form-control  inputstyle"
                   value={memberData.account}
                   disabled
                   // $2a$10$EueNGRr0woJujuwkQcrZDetEGg4unlPIFYKr1ElfZNinCXW4uh5MC
@@ -174,7 +174,7 @@ function Member_center(props) {
                 <input
                   name="password"
                   type="password"
-                  className="form-control col-4 inputstyle"
+                  className="form-control  inputstyle"
                   value="$2a$10$Ur601.zytpHQgfvCASbQXONbLf7SXgIsmGu4bykPUbk6QSzCmrP3O"
                   onChange={(e) => {
                     setPassword(e.target.value)
@@ -188,7 +188,7 @@ function Member_center(props) {
                 </label>
                 <input
                   type="text"
-                  className="form-control col-4 inputstyle"
+                  className="form-control  inputstyle"
                   id="name"
                   name="name"
                   required
@@ -203,7 +203,7 @@ function Member_center(props) {
                 </label>
                 <input
                   type="text"
-                  className="form-control col-4 inputstyle"
+                  className="form-control  inputstyle"
                   id="mobile"
                   name="mobile"
                   required
@@ -218,7 +218,7 @@ function Member_center(props) {
                 </label>
                 <input
                   type="date"
-                  className="form-control col-4 inputstyle"
+                  className="form-control  inputstyle"
                   id="birthday"
                   name="birthday"
                   required
@@ -297,7 +297,12 @@ function Member_center(props) {
             </form>
           </div>
         </div>
+        <div class="imglogo col-6">
+          <img src="http://localhost:3000/image/login_left_pic.jpg" alt="" />
+
+        </div>
       </div>
+      <div className="twae"></div>
     </>
   )
 }
