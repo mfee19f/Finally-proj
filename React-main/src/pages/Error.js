@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+
+
+
 function Error(props) {
   // 使用物件值作為狀態值，儲存所有欄位的值
   const [fields, setFields] = useState({
@@ -104,10 +107,7 @@ function Error(props) {
     console.log(formData.getAll('likeList')) //需要所有值
 
     // 檢查確認密碼&密碼欄位
-    if (
-      formData.get('password') !==
-      formData.get('confirmPassword')
-    ) {
+    if (formData.get('password') !== formData.get('confirmPassword')) {
       // 設定錯誤訊息狀態
       const updatedFieldErrors = {
         ...fieldErrors,
@@ -142,9 +142,7 @@ function Error(props) {
           required
         />
         {fieldErrors.username !== '' && (
-          <div className="error">
-            {fieldErrors.username}
-          </div>
+          <div className="error">{fieldErrors.username}</div>
         )}
         <br />
         <label>Email</label>
@@ -169,9 +167,7 @@ function Error(props) {
           minLength="5"
         />
         {fieldErrors.password !== '' && (
-          <div className="error">
-            {fieldErrors.password}
-          </div>
+          <div className="error">{fieldErrors.password}</div>
         )}
         <br />
         <label>確認密碼</label>
@@ -184,9 +180,7 @@ function Error(props) {
           minLength="5"
         />
         {fieldErrors.confirmPassword !== '' && (
-          <div className="error">
-            {fieldErrors.confirmPassword}
-          </div>
+          <div className="error">{fieldErrors.confirmPassword}</div>
         )}
         <br />
         <label>簡歷</label>

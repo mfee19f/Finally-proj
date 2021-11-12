@@ -76,28 +76,27 @@ function Register(props) {
         </div>
         <div className="loginRight col-6">
           <form onSubmit={handleSubmit} name="form1">
-            <p>註冊個人帳戶</p>
-            <div className="mb-3">
-              <label for="email" className="form-label">
-                Email信箱
+            <h4 className="pt-5 pl-5 font-weight-bold">註冊個人帳戶</h4>
+            <div className="mb-3 pl-5 mt-5">
+              <label for="email" className="form-label mb-3">
+                帳號(Email信箱)
               </label>
               <input
                 type="email"
                 class="form-control"
                 id="email"
                 name="account"
+                min="3"
                 required
                 value={account}
                 onChange={(e) => {
                   setAccount(e.target.value)
                 }}
               />
-              <div id="emailHelp" className="form-text">
-                提示字
-              </div>
+
             </div>
-            <div className="mb-3">
-              <label for="password" className="form-label">
+            <div className="mb-3 pl-5 mt-5">
+              <label for="password" className="form-label mb-3">
                 建立密碼
               </label>
               <input
@@ -113,13 +112,13 @@ function Register(props) {
               />
             </div>
 
-            <div className="mb-3 form-check">
+            <div className="mb-3 form-check ml-4">
               <input
                 type="radio"
                 className="rememberAccount"
               />
               <label
-                className="form-check-label"
+                className="form-check-label "
                 for="exampleCheck1"
               >
                 我同意XX條款
@@ -127,7 +126,7 @@ function Register(props) {
             </div>
             <div className="registerButton">
               <button
-                className="register btn"
+                className="register btn mt-5 ml-5"
                 onClick={add}
               >
                 註冊帳號

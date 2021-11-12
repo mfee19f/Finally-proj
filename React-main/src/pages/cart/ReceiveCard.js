@@ -14,7 +14,7 @@ function Receive(props) {
   // 存入錯誤訊息用
   const [fieldErrors, setFieldErrors] = useState({
     username: '',
-    email: '名字長度小於五個字',
+    email: '',
     password: '',
     confirmPassword: '', // 有可能只是在瀏覽器檢查用而已
   })
@@ -39,7 +39,7 @@ function Receive(props) {
   const handleFormChange = (e) => {
     // 設定錯誤訊息狀態
     const updatedFieldErrors = {
-      ...fieldErrors,
+      ...datacard,
       [e.target.name]: '',
     }
 

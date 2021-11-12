@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 // import { withRouter } from 'react-router-dom'
 import dayjs from 'dayjs'
-
+import conf, {
+  IMG_PATH,
+  UPLOAD_AVATAR,
+  TEST_AVATAR,
+} from './config'
+import axios from 'axios'
 import { withRouter, Link } from 'react-router-dom'
 import './Membercenter.css'
 function Member_center(props) {
@@ -14,6 +19,38 @@ function Member_center(props) {
     memberData
   )
   const { auth, setAuth } = props
+  let [imgSrc, setImgSrc] = useState('')
+  let [myName, setMyName] = useState('')
+
+  useEffect(() => {
+    ;(async () => {
+      const r = await fetch(TEST_AVATAR + '/2')
+      const obj = await r.json()
+      setMyName(obj.name)
+      setImgSrc(obj.avatar)
+    })()
+  }, [])
+
+  const doUpload = async () => {
+    const fd = new FormData(document.formup)
+    const r = await axios.post(UPLOAD_AVATAR, fd)
+
+    console.log(r.data)
+    setImgSrc(r.data.filename)
+  }
+
+  const mySubmit = async (e) => {
+    e.preventDefault()
+
+    // ****** 修改 ******
+    const r = await fetch(TEST_AVATAR + '/id', {
+      method: 'PUT',
+      body: new FormData(document.fake_form),
+    })
+    const data = await r.json()
+    console.log(data)
+  }
+
   const add = () => {
     // TODO: 欄位檢查
 
@@ -74,26 +111,30 @@ function Member_center(props) {
   }
   return (
     <>
-      <div className="member_center d-flex mt-5">
-        <div className="centerLeft col-2">
-          <div className="personalArea">
+      <div className="member_center d-flex ">
+        <div className="centerLeft col-2 ">
+          <div className="personalArea  mt-5 pt-1 ">
             <img
               className="personalAreaPic"
-              src="./image/IMG_6685.PNG"
+              src={
+                imgSrc
+                  ? IMG_PATH + '/' + imgSrc
+                  : IMG_PATH + '/default-avatar.png'
+              }
               alt=""
             />
             <div>
-              <label for="">{memberData.name}</label>
+              <label className="rongcolor" for="">{memberData.name}</label>
               <br />
-              <a href="">編輯個人資料</a>
+              <a href="" className="rongcolor">編輯個人資料</a>
             </div>
 
             <div></div>
           </div>
 
           <div className="functionList">
-            <div className="orderTrack">
-              <label for="orderTrack">
+            <div className="orderTrack ml-4">
+              <label for="orderTrack" className="rongcolor">
                 <Link to={'/order-list/' + id}>
                   訂單查詢
                 </Link>
@@ -102,25 +143,25 @@ function Member_center(props) {
           </div>
         </div>
         <div className="centerRight col-10">
-          <div className="personalForm">
-            <b>個人資料</b>
-            <br />
+          <div className="personalForm ml-5 pl-5 mt-5">
+            <h4 className="font-weight-bold rongcolor">個人資料</h4>
+
             <div className="personalFormLine"></div>
             <form name="form1" onSubmit={handleSubmit}>
-              <div className="form-group account">
-                <label for="name">
-                  帳號(Email address) :
-                </label>
-                <label name="email">
-                  {memberData.account}
-                </label>
-                <small className="form-text text-muted">
-                  此為您的登入帳號
-                </small>
+             
+              <div className="form-group password mt-4">
+                <label for="name" className="rongcolor">帳號 :</label>
+                <input
+                  name="password"
+                  type="text"
+                  className="form-control col-4 inputstyle"
+                  value={memberData.account}
+                  disabled
+                  // $2a$10$EueNGRr0woJujuwkQcrZDetEGg4unlPIFYKr1ElfZNinCXW4uh5MC
+                />
               </div>
-
               <div className="form-group password">
-                <label for="name">密碼 :</label>
+                <label for="name" className="rongcolor">密碼 :</label>
                 <input
                   name="password"
                   type="password"
@@ -131,13 +172,9 @@ function Member_center(props) {
                   }}
                   // $2a$10$EueNGRr0woJujuwkQcrZDetEGg4unlPIFYKr1ElfZNinCXW4uh5MC
                 />
-                <small className="form-text text-muted">
-                  We'll never share your password with
-                  anyone else.
-                </small>
               </div>
               <div className="form-group mobile">
-                <label for="name">姓名 :</label>
+                <label for="name" className="rongcolor">姓名 :</label>
                 <input
                   type="text"
                   class="form-control col-4 inputstyle"
@@ -150,7 +187,7 @@ function Member_center(props) {
               </div>
 
               <div className="form-group mobile">
-                <label for="mobile">手機 :</label>
+                <label for="mobile" className="rongcolor">手機 :</label>
                 <input
                   type="text"
                   class="form-control col-4 inputstyle"
@@ -163,7 +200,7 @@ function Member_center(props) {
               </div>
 
               <div className="form-group birthday">
-                <label for="birthday">生日 :</label>
+                <label for="birthday" className="rongcolor">生日 :</label>
                 <input
                   type="date"
                   class="form-control col-4 inputstyle"
@@ -177,37 +214,66 @@ function Member_center(props) {
                 />
               </div>
 
-              <div className="gender">
-                <label for="gender" className="gender">
-                  性別:
-                </label>
-                <input
-                  type="radio"
-                  className="male"
-                  name="male"
-                />
-                <label for="male">男</label>
-                <input
-                  type="radio"
-                  className="female"
-                  name="female"
-                />
-                <label for="female">女</label>
-              </div>
+            
 
               <div className="avatar">
-                <label for="avatar" className="avatar">
+                <label for="avatar" className="avatar rongcolor">
                   個人照片:
                 </label>
                 <br />
-                <img className="picSize" src="" alt="" />
-                <button className="btn avatarUpload btn-success">
-                  上傳
-                </button>
+                <form name="fake_form" onSubmit={mySubmit}>
+                  <img
+                    src={
+                      imgSrc
+                        ? IMG_PATH + '/' + imgSrc
+                        : IMG_PATH + '/default-avatar.png'
+                    }
+                    alt=""
+                    width="200px"
+                    height="200px"
+                    id="img01"
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-success ml-5 rongcolor"
+                    onClick={(e) =>
+                      document
+                        .querySelector('#avatar')
+                        .click()
+                    }
+                  >
+                    選擇大頭貼
+                  </button>
+
+                  <input
+                    type="hidden"
+                    className="form-control"
+                    name="avatar"
+                    value={imgSrc}
+                  />
+                  {/* <button
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    確認更改
+                  </button> */}
+                </form>
+                <form
+                  name="formup"
+                  style={{ display: 'none' }}
+                >
+                  <input
+                    type="file"
+                    id="avatar"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={doUpload}
+                  />
+                </form>
               </div>
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-primary mt-5  "
                 onClick={add}
               >
                 修改

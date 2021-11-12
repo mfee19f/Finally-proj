@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
-
+import './Login.css'
 function Login(props) {
   // console.log(props)
   const [account, setAccount] = useState('')
@@ -37,7 +37,7 @@ function Login(props) {
       })
     setAuth(true)
   }
-  
+
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()
@@ -81,24 +81,22 @@ function Login(props) {
   return (
     <>
       {messageModal}
-      <div className="d-flex mt-5">
+      <div className="d-flex  mt-5">
         <div className="loginLeft col-xl-6 d-none d-xl-block mt-5">
           <img src="./image/login_left_pic.jpg" alt="" />
         </div>
-        <div className="loginRight col-xl-6 col-12">
+        <div className="loginRight col-xl-4 col-12">
           <form name="form1" onSubmit={handleSubmit}>
-            <p>
-              歡迎!
-              <br />
-              登入帳戶
-            </p>
-            <div className="mb-3">
-              <label for="account" className="form-label">
-                帳號(Email address)
+            <h4 className="pt-5 pl-5 font-weight-bold">
+              歡迎 !
+            </h4>
+            <div className="mb-3 pl-5 mt-5 ">
+              <label for="account" className="form-label mb-3">
+                帳號{' '}
               </label>
               <input
                 type="email"
-                class="form-control"
+                class="form-control col-8"
                 id="account"
                 name="account"
                 value={account}
@@ -106,20 +104,17 @@ function Login(props) {
                   setAccount(e.target.value)
                 }}
               />
-              <div id="emailHelp" className="form-text">
-                提示字
-              </div>
             </div>
-            <div className="mb-3">
+            <div className="mb-3  pl-5 mt-5">
               <label
                 for="exampleInputPassword1"
-                className="form-label"
+                className="form-label mb-3"
               >
                 密碼
               </label>
               <input
                 type="password"
-                class="form-control"
+                class="form-control col-8"
                 id="password"
                 name="password"
                 value={password}
@@ -128,7 +123,7 @@ function Login(props) {
                 }}
               />
             </div>
-            <div className="mb-3 form-check">
+            <div className="mb-3 form-check ml-4">
               <input
                 type="radio"
                 className="rememberAccount"
@@ -140,7 +135,7 @@ function Login(props) {
                 記住帳號
               </label>
             </div>
-            <div className="loginButtonGroup">
+            <div className="d-flex loginButtonGroup mt-5 ml-5">
               <div className="loginButton">
                 <button
                   type="submit"
@@ -151,7 +146,7 @@ function Login(props) {
                   登入
                 </button>
               </div>
-              <div className="registerButton">
+              <div className="registerButton ml-3">
                 <button className="register btn btn-success">
                   <a className="white" href="/register">
                     註冊
