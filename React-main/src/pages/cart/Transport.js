@@ -259,41 +259,36 @@ function Transport(props) {
                 <tbody>
                   {mycartDisplay.map((item, index) => {
                     return (
-                      <>
-                        <tr>
-                          <td className="d-flex">
-                            <div>
-                              <img
-                                src={item.image}
-                                alt=""
-                              />
-                            </div>
-                            <div className="ml-5 mt-4 rocky-fix2">
-                              {item.name}
-                            </div>
-                          </td>
-                          <td className="text-center rocky-fix2">
-                            <div className=" mt-4">
-                              {item.size}
-                            </div>
-                          </td>
-                          <td className="text-center rocky-fix2">
-                            <div className=" mt-4">
-                              {item.amount}
-                            </div>
-                          </td>
-                          <td className="text-center mt-4 rocky-fix2">
-                            <div className=" mt-4">
-                              NT$ {item.price}
-                            </div>
-                          </td>
-                          <td className="text-center rocky-fix2">
-                            <div className=" mt-4">
-                              NT$ {item.amount * item.price}
-                            </div>
-                          </td>
-                        </tr>
-                      </>
+                      <tr key={index}>
+                        <td className="d-flex">
+                          <div>
+                            <img src={item.image} alt="" />
+                          </div>
+                          <div className="ml-5 mt-4 rocky-fix2">
+                            {item.name}
+                          </div>
+                        </td>
+                        <td className="text-center rocky-fix2">
+                          <div className=" mt-4">
+                            {item.size}
+                          </div>
+                        </td>
+                        <td className="text-center rocky-fix2">
+                          <div className=" mt-4">
+                            {item.amount}
+                          </div>
+                        </td>
+                        <td className="text-center mt-4 rocky-fix2">
+                          <div className=" mt-4">
+                            NT$ {item.price}
+                          </div>
+                        </td>
+                        <td className="text-center rocky-fix2">
+                          <div className=" mt-4">
+                            NT$ {item.amount * item.price}
+                          </div>
+                        </td>
+                      </tr>
                     )
                   })}
                 </tbody>

@@ -180,83 +180,78 @@ function Cart(props) {
               <tbody>
                 {mycartDisplay.map((item, i) => {
                   return (
-                    <>
-                      <tr>
-                        <td className="d-flex">
-                          <div>
-                            <img src={item.image} alt="" />
-                          </div>
-                          <div className="ml-5 mt-4 rocky-fix2">
-                            {item.name}
-                          </div>
-                        </td>
-                        <td className="text-center rocky-fix2">
-                          <div className=" mt-4">
-                            {item.size}
-                          </div>
-                        </td>
-                        <td className="text-center">
-                          <div className=" mt-4">
-                            <i
-                              style={{
-                                fontSize: '0.5rem',
-                                marginRight: '10px',
-                                color: '#1d3124',
-                              }}
-                              onClick={() => {
-                                if (item.amount === 1)
-                                  return
-                                updateCartToLocalStorage(
-                                  item,
-                                  false
-                                )
-                              }}
-                              className="fas fa-caret-square-left"
-                            ></i>
-                            <span className="">
-                              {item.amount}
-                            </span>
-                            <i
-                              style={{
-                                fontSize: '0.5rem',
-                                marginLeft: '10px',
-                                color: '#1d3124',
-                              }}
-                              onClick={() =>
-                                updateCartToLocalStorage(
-                                  item,
-                                  true
-                                )
-                              }
-                              className="fas fa-caret-square-right"
-                            ></i>
-                          </div>
-                        </td>
-                        <td className="text-center mt-4">
-                          <div className=" mt-4 rocky-fix2">
-                            NT$ {item.price}
-                          </div>
-                        </td>
-                        <td className="text-center">
-                          <div className=" mt-4 rocky-fix2">
-                            NT$ {item.amount * item.price}
-                          </div>
-                        </td>
-                        <td className="text-center">
-                          <div className=" mt-4">
-                            <i
-                              style={{ color: '#e59560' }}
-                              onClick={() =>
-                                deleteCartToLocalStorage(
-                                  item
-                                )
-                              }
-                              className="fas fa-trash"
-                            ></i>
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                    <tr key={i}>
+                      <td className="d-flex">
+                        <div>
+                          <img src={item.image} alt="" />
+                        </div>
+                        <div className="ml-5 mt-4 rocky-fix2">
+                          {item.name}
+                        </div>
+                      </td>
+                      <td className="text-center rocky-fix2">
+                        <div className=" mt-4">
+                          {item.size}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <div className=" mt-4">
+                          <i
+                            style={{
+                              fontSize: '0.5rem',
+                              marginRight: '10px',
+                              color: '#1d3124',
+                            }}
+                            onClick={() => {
+                              if (item.amount === 1) return
+                              updateCartToLocalStorage(
+                                item,
+                                false
+                              )
+                            }}
+                            className="fas fa-caret-square-left"
+                          ></i>
+                          <span className="">
+                            {item.amount}
+                          </span>
+                          <i
+                            style={{
+                              fontSize: '0.5rem',
+                              marginLeft: '10px',
+                              color: '#1d3124',
+                            }}
+                            onClick={() =>
+                              updateCartToLocalStorage(
+                                item,
+                                true
+                              )
+                            }
+                            className="fas fa-caret-square-right"
+                          ></i>
+                        </div>
+                      </td>
+                      <td className="text-center mt-4">
+                        <div className=" mt-4 rocky-fix2">
+                          NT$ {item.price}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <div className=" mt-4 rocky-fix2">
+                          NT$ {item.amount * item.price}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <div className=" mt-4">
+                          <i
+                            style={{ color: '#e59560' }}
+                            onClick={() =>
+                              deleteCartToLocalStorage(item)
+                            }
+                            className="fas fa-trash"
+                          ></i>
+                        </div>
+                      </td>
+                    </tr>
                   )
                 })}
               </tbody>

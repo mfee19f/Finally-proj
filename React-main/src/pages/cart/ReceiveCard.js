@@ -116,7 +116,7 @@ function Receive(props) {
             <form name="form1" className="ml-5 col-12">
               <div className="form-group">
                 <label
-                  for="receiver"
+                  htmlFor="receiver"
                   className="rocky-fix2"
                 >
                   收件姓名 :
@@ -133,7 +133,7 @@ function Receive(props) {
               </div>
               <div className="form-group">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="rocky-fix2"
                 >
                   手機號碼 :
@@ -150,7 +150,7 @@ function Receive(props) {
               </div>
               <div className="form-group">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="rocky-fix2"
                 >
                   收貨地址 :
@@ -171,7 +171,7 @@ function Receive(props) {
               </div>
               <div className="form-group">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="rocky-fix2"
                 >
                   備註說明 :
@@ -203,7 +203,10 @@ function Receive(props) {
           <div className="w875 ">
             <div className="form-group ml-5 visa">
               <form name="form2">
-                <label for="name" className="rocky-fix2">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   信用卡:{' '}
                 </label>
                 <input className="ml-5" type="radio" />
@@ -215,7 +218,10 @@ function Receive(props) {
                   alt=""
                 />
                 <div>
-                  <label for="name" className="rocky-fix2">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     信用卡號 :
                   </label>
                   <input
@@ -232,7 +238,10 @@ function Receive(props) {
             </div>
             <div className="d-flex mr-2 year">
               <div className="col-2 ">
-                <label for="name" className="rocky-fix2">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   月 :
                 </label>
                 <input
@@ -242,7 +251,10 @@ function Receive(props) {
                 />
               </div>
               <div className="col-2 ">
-                <label for="name" className="rocky-fix2">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   年 :
                 </label>
                 <input
@@ -252,7 +264,10 @@ function Receive(props) {
                 />
               </div>
               <div className="col-2">
-                <label for="name" className="rocky-fix2">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   末三碼 :
                 </label>
                 <input
@@ -279,7 +294,7 @@ function Receive(props) {
         <div className="d-flex justify-content-center">
           <div className="w875 ">
             <div className="form-group ml-5">
-              <label for="name" className="rocky-fix2">
+              <label htmlFor="name" className="rocky-fix2">
                 發票資訊 :
               </label>
               <input
@@ -296,7 +311,7 @@ function Receive(props) {
                 }}
               />
               <label
-                for=""
+                htmlFor=""
                 className="rocky-fix2 rocky-fix4"
               >
                 電子發票
@@ -315,7 +330,7 @@ function Receive(props) {
                 }}
               />
               <label
-                for=""
+                htmlFor=""
                 className="rocky-fix2 rocky-fix4"
               >
                 三聯式發票/收據

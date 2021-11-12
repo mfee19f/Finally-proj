@@ -76,14 +76,18 @@ function OrderSteps(props) {
     getCartFromLocalStorage()
     getMemberLocalStorage()
   }, [])
-  console.log('mycartDisplaymycartDisplaymycartDisplaymycartDisplay',mycartDisplay,datacard.order_id)
+  console.log(
+    'mycartDisplaymycartDisplaymycartDisplaymycartDisplay',
+    mycartDisplay,
+    datacard.order_id
+  )
   const fetchOrderDetail = async () => {
     const r = await fetch(
       'http://localhost:3001/order_detail',
       {
         method: 'POST',
         body: JSON.stringify({
-          orderDetail: mycartDisplay,
+          orderDetail: mycart,
           order_id: datacard.order_id,
         }),
         headers: {
@@ -91,7 +95,6 @@ function OrderSteps(props) {
         },
       }
     )
-    const orderDetail = await r.json()
   }
   console.log(
     member.sid,

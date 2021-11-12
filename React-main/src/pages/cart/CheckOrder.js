@@ -153,7 +153,7 @@ function CheckOrder(props) {
               <tbody>
                 {mycart.map((item, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td className="d-flex">
                         <div>
                           <img src={item.image} alt="" />
