@@ -237,19 +237,15 @@ function Receive(props) {
               <div class="form-group ml-5 visa">
                 <div name="form2">
                   <label for="name" className="rocky-fix2">
-                    信用卡:{' '}
+                    信用卡:
                   </label>
                   <input class="ml-5" type="radio" />
-                  <img
-                    src="./image/visa_PNG36.png"
-                    alt=""
-                  />
-                  <img src="./image/JCBLOGO.jfif" alt="" />
+                  <img src="./image/visa.png" alt="" />
+                  <span className="rocky-fix4">
+                    <img src="./image/JCB.jpeg" alt="" />
+                  </span>
                   <input class="ml-5 mr-2" type="radio" />
-                  <img
-                    src="./image/unionpaylogo.jfif"
-                    alt=""
-                  />
+                  <img src="./image/UnionPay.png" alt="" />
                   <div>
                     <label
                       for="name"

@@ -85,7 +85,10 @@ function CheckOrder(props) {
             <Link to="/" className="mr-1 ml-1">
               產品
             </Link>
-            / <span className="myfontcolor">確認訂單</span>
+            /{' '}
+            <span classNameName="myfontcolor">
+              確認訂單
+            </span>
           </p>
         </div>
       </div>
@@ -121,7 +124,10 @@ function CheckOrder(props) {
             <table class="table  col ">
               <thead class="">
                 <tr>
-                  <th scope="col" className="rocky-fix2">
+                  <th
+                    scope="col"
+                    classNameName="rocky-fix2"
+                  >
                     商品資訊
                   </th>
                   <th

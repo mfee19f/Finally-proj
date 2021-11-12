@@ -144,6 +144,7 @@ function OrderSteps(props) {
     fetchOrder()
     fetchOrderDetail()
     localStorage.removeItem('cart')
+    localStorage.removeItem('step')
     handleShow()
     localStorage.removeItem('step')
     // props.history.push('/')
