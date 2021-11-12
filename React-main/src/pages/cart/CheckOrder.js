@@ -65,9 +65,9 @@ function CheckOrder(props) {
 
   const loading = (
     <>
-      <div className="d-flex justify-content-center">
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
+      <div classNameName="d-flex justify-content-center">
+        <div classNameName="spinner-border" role="status">
+          <span classNameName="sr-only">Loading...</span>
         </div>
       </div>
     </>
@@ -82,10 +82,13 @@ function CheckOrder(props) {
               首頁
             </Link>
             /
-            <Link to="/" className="mr-1 ml-1">
+            <Link to="/" classNameName="mr-1 ml-1">
               產品
             </Link>
-            / <span className="myfontcolor">確認訂單</span>
+            /{' '}
+            <span classNameName="myfontcolor">
+              確認訂單
+            </span>
           </p>
         </div>
       </div>
@@ -121,7 +124,10 @@ function CheckOrder(props) {
             <table class="table  col ">
               <thead class="">
                 <tr>
-                  <th scope="col" className="rocky-fix2">
+                  <th
+                    scope="col"
+                    classNameName="rocky-fix2"
+                  >
                     商品資訊
                   </th>
                   <th
@@ -162,23 +168,23 @@ function CheckOrder(props) {
                           {item.name}
                         </div>
                       </td>
-                      <td className="text-center">
-                        <div className=" mt-4 rocky-fix2">
+                      <td classNameName="text-center">
+                        <div classNameName=" mt-4 rocky-fix2">
                           {item.size}
                         </div>
                       </td>
-                      <td className="text-center">
-                        <div className=" mt-4 rocky-fix2">
+                      <td classNameName="text-center">
+                        <div classNameName=" mt-4 rocky-fix2">
                           {item.amount}
                         </div>
                       </td>
-                      <td className="text-center mt-4">
-                        <div className=" mt-4 rocky-fix2">
+                      <td classNameName="text-center mt-4">
+                        <div classNameName=" mt-4 rocky-fix2">
                           NT$ {item.price}
                         </div>
                       </td>
-                      <td className="text-center">
-                        <div className=" mt-4 rocky-fix2">
+                      <td classNameName="text-center">
+                        <div classNameName=" mt-4 rocky-fix2">
                           NT$ {item.amount * item.price}
                         </div>
                       </td>
@@ -223,7 +229,7 @@ function CheckOrder(props) {
                   >
                     會員帳號 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {member.account}
                   </span>
                 </div>
@@ -234,7 +240,7 @@ function CheckOrder(props) {
                   >
                     會員暱稱 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {member.name}
                   </span>
                 </div>
@@ -245,7 +251,7 @@ function CheckOrder(props) {
                   >
                     訂單編號 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.fields.order_id}
                   </span>
                 </div>
@@ -256,7 +262,7 @@ function CheckOrder(props) {
                   >
                     訂購日期 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.fields.date}
                   </span>
                 </div>
@@ -267,7 +273,7 @@ function CheckOrder(props) {
                   >
                     付款方式 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.paydata}
                   </span>
                 </div>
@@ -279,7 +285,7 @@ function CheckOrder(props) {
                   >
                     收件人姓名 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.datacard.receiver}
                   </span>
                 </div>
@@ -290,7 +296,7 @@ function CheckOrder(props) {
                   >
                     收件人手機 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.datacard.mobile}
                   </span>
                 </div>
@@ -301,7 +307,7 @@ function CheckOrder(props) {
                   >
                     收件人地址 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {'新北市板橋區' +
                       props.datacard.delivery_address}
                   </span>
@@ -313,7 +319,7 @@ function CheckOrder(props) {
                   >
                     信用卡號 :{' '}
                   </label>
-                  <span className="rocky-fix6">
+                  <span classNameName="rocky-fix6">
                     {props.datacard.card}
                   </span>
                 </div>
@@ -329,7 +335,7 @@ function CheckOrder(props) {
           </div>
         </div> */}
       </div>
-      <div className="mb-5"></div>
+      <div classNameName="mb-5"></div>
     </>
   )
 
