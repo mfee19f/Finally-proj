@@ -6,7 +6,7 @@ import { IMG_PATH } from '../road'
 import { Link } from 'react-router-dom'
 
 function Home(props) {
-  const { track, setTrack, cartCount, setCartCount } = props
+  const { setTrack, setCartCount } = props
   let [data, setData] = useState({})
   // {
   //   id: '1',

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 
 function Login(props) {
   // console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const { auth, setAuth, memberData, setMemberData } = props
+  const { setAuth, setMemberData } = props
   // alert需要的狀態
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -37,7 +37,7 @@ function Login(props) {
       })
     setAuth(true)
   }
-  
+
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()
@@ -62,18 +62,26 @@ function Login(props) {
       backdrop="static"
       keyboard={false}
     >
-      <Modal.Header closeButton>
-        <Modal.Title>登入成功</Modal.Title>
+      <Modal.Header>
+        <Modal.Title>歡迎回來！</Modal.Title>
       </Modal.Header>
-      <Modal.Body>你好</Modal.Body>
+      <Modal.Body>已成功登入</Modal.Body>
       <Modal.Footer>
         <Button
-          variant="primary"
+          variant="secondary"
           onClick={() => {
             props.history.push('/')
           }}
         >
-          前往首頁
+          <span className="rocky-fix">到首頁</span>
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/order-steps')
+          }}
+        >
+          前往購物車
         </Button>
       </Modal.Footer>
     </Modal>

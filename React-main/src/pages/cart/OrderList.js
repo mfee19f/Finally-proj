@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import dayjs from 'dayjs'
 import './cartstyle.css'
 // import dayjs from 'dayjs'

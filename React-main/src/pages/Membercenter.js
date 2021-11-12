@@ -13,7 +13,7 @@ function Member_center(props) {
     'memberDatamemberDatamemberDatamemberDatamemberData',
     memberData
   )
-  const { auth, setAuth } = props
+  const { auth } = props
   const add = () => {
     // TODO: 欄位檢查
 
@@ -85,7 +85,7 @@ function Member_center(props) {
             <div>
               <label for="">{memberData.name}</label>
               <br />
-              <a href="">編輯個人資料</a>
+              <a href="/#">編輯個人資料</a>
             </div>
 
             <div></div>

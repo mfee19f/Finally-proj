@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import '../styles/navstyle.css'
 // 要使用能有active css效果的NavLink元件

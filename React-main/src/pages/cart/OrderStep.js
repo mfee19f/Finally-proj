@@ -63,7 +63,10 @@ function OrderSteps(props) {
       />
     </>
   )
-
+  function getStepLocalStorage() {
+    const newStep = localStorage.getItem('step') || 1
+    setStep(JSON.parse(newStep))
+  }
   function getMemberLocalStorage() {
     const newMember = localStorage.getItem('member') || '[]'
     setMember(JSON.parse(newMember))
@@ -75,12 +78,9 @@ function OrderSteps(props) {
   useEffect(() => {
     getCartFromLocalStorage()
     getMemberLocalStorage()
+    getStepLocalStorage()
   }, [])
-  console.log(
-    'mycartDisplaymycartDisplaymycartDisplaymycartDisplay',
-    mycartDisplay,
-    datacard.order_id
-  )
+
   const fetchOrderDetail = async () => {
     const r = await fetch(
       'http://localhost:3001/order_detail',
@@ -96,17 +96,7 @@ function OrderSteps(props) {
       }
     )
   }
-  console.log(
-    member.sid,
-    datacard.order_id,
-    member.name,
-    datacard.mobile,
-    totalMoney,
-    paydata,
-    datacard.receiver,
-    '新北市板橋區' + datacard.delivery_address,
-    datacard.card
-  )
+
   const fetchOrder = async () => {
     const dataObj = {
       member_sid: member.sid,
@@ -127,7 +117,6 @@ function OrderSteps(props) {
         'Content-Type': 'application/json',
       },
     })
-    const orderData = await r.json()
   }
   const onSubmit = () => {
     fetchOrder()
@@ -151,8 +140,14 @@ function OrderSteps(props) {
     }
   }
   const changeStep = (isAdded = true) => {
-    if (isAdded && step < 4) setStep(step + 1)
-    if (!isAdded && step > 1) setStep(step - 1)
+    if (isAdded && step < 4) {
+      localStorage.setItem('step', JSON.stringify(step + 1))
+      setStep(step + 1)
+    }
+    if (!isAdded && step > 1) {
+      localStorage.setItem('step', JSON.stringify(step - 1))
+      setStep(step - 1)
+    }
   }
 
   const login = (
@@ -233,7 +228,7 @@ function OrderSteps(props) {
             props.history.push('/')
           }}
         >
-          回首頁
+          <span className="rocky-fix">回首頁</span>
         </Button>
         <Button
           variant="primary"

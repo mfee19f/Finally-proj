@@ -60,7 +60,6 @@ function App() {
       const myAuth = localStorage.getItem('member')
         ? JSON.parse(localStorage.getItem('member'))
         : []
-
       // 設定為陣列的長度(成員數量)
       setAuth(true)
       setID(myAuth)
@@ -87,8 +86,8 @@ function App() {
           {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
           <ScrollToTop>
             <Switch>
-            <Route path="/upload">
-                <Upload  />
+              <Route path="/upload">
+                <Upload />
               </Route>
               <Route path="/list/:id">
                 <OrderListJOIN auth={auth} />
@@ -164,7 +163,6 @@ function App() {
                   setAuth={setAuth}
                   memberData={memberData}
                   setMemberData={setMemberData}
-                  setAuth={setAuth}
                 />
               </Route>
               {/* 一定要放在所有的Route最後面 */}

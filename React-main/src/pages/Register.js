@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 import './Register.css'
@@ -6,7 +6,7 @@ function Register(props) {
   console.log(props)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const { auth, setAuth } = props
+  const { auth } = props
 
   // alert需要的狀態
   const [show, setShow] = useState(false)

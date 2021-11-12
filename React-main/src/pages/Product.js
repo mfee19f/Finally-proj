@@ -11,7 +11,7 @@ import { CONNECT2 } from '../road'
 import { IMG_PATH } from '../road'
 
 function Product(props) {
-  const { track, setTrack, cartCount, setCartCount } = props
+  const { setTrack, setCartCount } = props
   const [data, setData] = useState({})
   const [displayData, setDisplayData] = useState({})
   const [keyWord, setKeyWord] = useState('')

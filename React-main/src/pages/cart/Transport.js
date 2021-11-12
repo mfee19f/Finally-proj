@@ -6,7 +6,6 @@ function Transport(props) {
   const {
     paydata,
     setPaydata,
-    totalMoney,
     setTotalMoney,
     freight,
     setFreight,

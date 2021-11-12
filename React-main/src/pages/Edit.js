@@ -7,7 +7,7 @@ function Edit(props) {
     'memberDatamemberDatamemberDatamemberDatamemberData',
     memberData
   )
-  const { auth, setAuth } = props
+  const { auth } = props
   const add = () => {
     // TODO: 欄位檢查
 
