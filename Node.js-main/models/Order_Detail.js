@@ -1,6 +1,6 @@
 const db = require('./../modules/connect-mysql');
 
-const tableName = 'order_detail';
+const tableName = 'trunk_detail';
 const pkField = 'sid';
 
 
