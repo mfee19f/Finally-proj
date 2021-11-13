@@ -8,6 +8,7 @@ function Receive(props) {
   // 發票資訊
   const [receipt, setReceipt] = useState('')
   //載入
+  const [cardType, setCardType] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   // 使用物件值作為狀態值，儲存所有欄位的值
 
@@ -31,6 +32,17 @@ function Receive(props) {
     }
     // 3. 設定回原狀態物件
     setDatacard(updatedFields)
+  }
+
+  function getReceiptFromLocalStorage() {
+    const newReceipt = localStorage.getItem('receipt') || ''
+    setReceipt(newReceipt)
+  }
+
+  function getCardTypeFromLocalStorage() {
+    const newCardType =
+      localStorage.getItem('cardType') || ''
+    setCardType(newCardType)
   }
 
   // 當整個表單有變動時觸發
@@ -68,12 +80,14 @@ function Receive(props) {
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true)
+    getReceiptFromLocalStorage()
+    getCardTypeFromLocalStorage()
     // 3秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false)
     }, 1000)
   }, [])
-
+  console.log('datacarddatacarddatacarddatacard', datacard)
   const loading = (
     <>
       <div className="d-flex justify-content-center">
@@ -211,11 +225,13 @@ function Receive(props) {
                   </label>
                   <br />
                   <textarea
-                    className="inputstyle"
-                    name=""
-                    id=""
+                    class="inputstyle p-2"
+                    name="into"
+                    id="into"
                     cols="84"
                     rows="10"
+                    value={datacard.into}
+                    onChange={handleFieldChange}
                   />
                 </div>
               </div>
@@ -242,7 +258,19 @@ function Receive(props) {
                   >
                     信用卡:
                   </label>
-                  <input className="ml-5" type="radio" />
+                  <input
+                    className="ml-5"
+                    type="radio"
+                    value="VISA"
+                    checked={cardType === 'VISA'}
+                    onChange={(e) => {
+                      setCardType(e.target.value)
+                      localStorage.setItem(
+                        'cardType',
+                        e.target.value
+                      )
+                    }}
+                  />
                   <img src="./image/visa.png" alt="" />
                   <span className="rocky-fix4">
                     <img src="./image/JCB.jpeg" alt="" />
@@ -250,6 +278,15 @@ function Receive(props) {
                   <input
                     className="ml-5 mr-2"
                     type="radio"
+                    value="Union"
+                    checked={cardType === 'Union'}
+                    onChange={(e) => {
+                      setCardType(e.target.value)
+                      localStorage.setItem(
+                        'cardType',
+                        e.target.value
+                      )
+                    }}
                   />
                   <img src="./image/UnionPay.png" alt="" />
                   <div>
@@ -280,9 +317,12 @@ function Receive(props) {
                     月 :
                   </label>
                   <input
+                    name="mon"
                     type="number"
                     className="form-control  "
                     placeholder="月"
+                    value={datacard.mon}
+                    onChange={handleFieldChange}
                   />
                 </div>
                 <div className="col-2 ">
@@ -293,9 +333,12 @@ function Receive(props) {
                     年 :
                   </label>
                   <input
+                    name="year"
                     type="number"
                     className="form-control "
                     placeholder="年"
+                    value={datacard.year}
+                    onChange={handleFieldChange}
                   />
                 </div>
                 <div className="col-2">
@@ -306,10 +349,13 @@ function Receive(props) {
                     末三碼 :
                   </label>
                   <input
+                    name="three"
                     type="number"
                     className="form-control "
                     min="3"
                     placeholder="末三碼"
+                    value={datacard.three}
+                    onChange={handleFieldChange}
                   />
                 </div>
               </div>
@@ -343,6 +389,10 @@ function Receive(props) {
                   checked={receipt === '電子發票'}
                   onChange={(e) => {
                     setReceipt(e.target.value)
+                    localStorage.setItem(
+                      'receipt',
+                      e.target.value
+                    )
                   }}
                   // onClick={() => {
                   //  setDatacard(fields)
@@ -362,6 +412,11 @@ function Receive(props) {
                   checked={receipt === '三聯式發票/收據'}
                   onChange={(e) => {
                     setReceipt(e.target.value)
+
+                    localStorage.setItem(
+                      'receipt',
+                      e.target.value
+                    )
                   }}
                   // onClick={() => {
                   //   setDatacard(fields)

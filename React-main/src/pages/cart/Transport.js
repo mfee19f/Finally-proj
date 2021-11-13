@@ -20,7 +20,7 @@ function Transport(props) {
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-    const newCart = localStorage.getItem('cart') || []
+    const newCart = localStorage.getItem('cart') || '[]'
     setMycart(JSON.parse(newCart))
   }
   function getFreightFromLocalStorage() {
@@ -104,7 +104,10 @@ function Transport(props) {
       </div>
     </>
   )
-
+  console.log(
+    'selectedOptionselectedOptionselectedOptionselectedOption',
+    selectedOption
+  )
   const display = (
     <>
       <div className="container mb-5 pb-5">
@@ -156,6 +159,7 @@ function Transport(props) {
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
+              checked={selectedOption}
               value={selectedOption}
               onChange={(e) => {
                 setSelectedOption(e.target.value)
@@ -175,6 +179,7 @@ function Transport(props) {
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
+              checked={freight}
               value={freight}
               onChange={(e) => {
                 setFreight(e.target.value)
@@ -344,7 +349,7 @@ function Transport(props) {
                 <p className="rocky-fix2">NT$ {freight}</p>
               </div>
             </div>
-            <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney">
+            <div className="row justify-content-end rongtotal ml-auto mr-2 pt-1 rongmoney">
               <div className="mr-3 rongsettotal">
                 <p className="rocky-fix2">總計</p>
               </div>

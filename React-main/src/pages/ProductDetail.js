@@ -36,6 +36,16 @@ function ProductDetail(props) {
     setProductName(value.name)
     handleShow()
   }
+  const [mylist, setList] = useState([])
+  const updateCartListToLocalStorage = (value) => {
+    const newList =
+      JSON.parse(localStorage.getItem('list')) || []
+    const newCart = [...newList, value]
+    localStorage.setItem('list', JSON.stringify(newCart))
+    // 設定資料
+    setList(newCart)
+    handleShow()
+  }
 
   useEffect(() => {
     ;(async () => {
@@ -77,7 +87,7 @@ function ProductDetail(props) {
       backdrop="static"
       keyboard={false}
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>加入購物車訊息</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -178,6 +188,14 @@ function ProductDetail(props) {
               className="btn btn-dark btn-lg rocky-in"
               onClick={() => {
                 updateCartToLocalStorage({
+                  id: singleData.sid,
+                  name: singleData.name,
+                  amount: buyNumber,
+                  price: singleData.price,
+                  size: singleData.size,
+                  image: IMG_PATH + '/' + singleData.image,
+                })
+                updateCartListToLocalStorage({
                   id: singleData.sid,
                   name: singleData.name,
                   amount: buyNumber,

@@ -41,6 +41,7 @@ function Register(props) {
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()
+    add()
   }
   // alert提示訊息
   const messageModal = (
@@ -111,6 +112,7 @@ function Register(props) {
                 className="form-control col-8"
                 id="password"
                 name="password"
+                min="8"
                 required
                 value={password}
                 onChange={(e) => {
@@ -133,8 +135,9 @@ function Register(props) {
             </div>
             <div className="registerButton">
               <button
+                type="submit"
                 className="login btn btn-primary mt-4 ml-5"
-                onClick={add}
+                // onClick={add}
               >
                 註冊帳號
               </button>
