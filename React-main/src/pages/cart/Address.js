@@ -6,8 +6,8 @@ class Address extends React.Component {
     super(props)
     this.state = {
       displayType: 'text',
-      county: '新北市',
-      district: '板橋區',
+      county: '台北市',
+      district: '大同區',
       zipCode: '220',
     }
   }
@@ -38,6 +38,7 @@ class Address extends React.Component {
         <div className="form-group">
           <div className="form-inline">
             <ZipCodeTW
+            zipStyle={{'width': '55px'}}
               displayType={this.state.displayType}
               countyValue={this.state.county}
               districtValue={this.state.district}
