@@ -11,7 +11,7 @@ function OrderSteps(props) {
   const { auth, cartCount, setCartCount } = props
   const [member, setMember] = useState([])
   const [datacard, setDatacard] = useState({})
-  const [paydata, setPaydata] = useState()
+  const [paydata, setPaydata] = useState('')
   const [totalMoney, setTotalMoney] = useState(0)
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)

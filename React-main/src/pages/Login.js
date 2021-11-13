@@ -100,14 +100,14 @@ function Login(props) {
             </h4>
             <div className="mb-3 pl-5 mt-5 ">
               <label
-                for="account"
+                htmlFor="account"
                 className="form-label mb-3"
               >
                 帳號{' '}
               </label>
               <input
                 type="email"
-                class="form-control col-8"
+                className="form-control col-8"
                 id="account"
                 name="account"
                 value={account}
@@ -118,14 +118,14 @@ function Login(props) {
             </div>
             <div className="mb-3  pl-5 mt-5">
               <label
-                for="password"
+                htmlFor="password"
                 className="form-label mb-3"
               >
                 密碼
               </label>
               <input
                 type="password"
-                class="form-control col-8"
+                className="form-control col-8"
                 id="password"
                 name="password"
                 value={password}
@@ -141,7 +141,7 @@ function Login(props) {
               />
               <label
                 className="form-check-label"
-                for="exampleCheck1"
+                htmlFor="exampleCheck1"
               >
                 記住帳號
               </label>

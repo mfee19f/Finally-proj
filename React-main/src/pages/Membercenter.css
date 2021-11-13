@@ -2,7 +2,7 @@ body {
   background-color: #f6f4e8;
 }
 .member_center {
-  height: 90vh;
+  height: 120vh;
 }
 .personalFormLine {
   width: 40%;
@@ -50,10 +50,16 @@ body {
   color: #1d3124;
 }
 
-.imglogo img{
+.imglogo img {
   width: 100%;
   /* height: 100%; */
 }
-.twae{
+.twae {
   margin-bottom: -48px;
+}
+.rocky-fix8 {
+  display: flex;
+}
+.rocky-fix9 {
+  margin-left: 28px;
 }

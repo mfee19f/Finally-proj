@@ -20,12 +20,29 @@ function Transport(props) {
   function getCartFromLocalStorage() {
     // 開啟載入的指示圖示
     setDataLoading(true)
-    const newCart = localStorage.getItem('cart') || '[]'
+    const newCart = localStorage.getItem('cart') || []
     setMycart(JSON.parse(newCart))
+  }
+  function getFreightFromLocalStorage() {
+    const newFreight = localStorage.getItem('freight') || 0
+    setFreight(JSON.parse(newFreight))
+  }
+  function getPaydataFromLocalStorage() {
+    const newPaydata = localStorage.getItem('paydata') || ''
+    setPaydata(newPaydata)
+  }
+  function getSelectedOptionFromLocalStorage() {
+    const newSelectedOption =
+      localStorage.getItem('selectedOption') || ''
+    setSelectedOption(newSelectedOption)
   }
   useEffect(() => {
     getCartFromLocalStorage()
+    getFreightFromLocalStorage()
+    getPaydataFromLocalStorage()
+    getSelectedOptionFromLocalStorage()
   }, [])
+
   useEffect(() => {
     setTimeout(() => setDataLoading(false), 1000)
 
@@ -142,6 +159,10 @@ function Transport(props) {
               value={selectedOption}
               onChange={(e) => {
                 setSelectedOption(e.target.value)
+                localStorage.setItem(
+                  'selectedOption',
+                  e.target.value
+                )
               }}
             >
               <option value="">請選擇</option>
@@ -157,6 +178,10 @@ function Transport(props) {
               value={freight}
               onChange={(e) => {
                 setFreight(e.target.value)
+                localStorage.setItem(
+                  'freight',
+                  JSON.stringify(e.target.value)
+                )
               }}
             >
               <option value="">請選擇</option>
@@ -173,6 +198,10 @@ function Transport(props) {
               checked={paydata === '宅配到貨付款'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  JSON.stringify(e.target.value)
+                )
               }}
             />
             <label htmlFor="">
@@ -193,6 +222,10 @@ function Transport(props) {
               checked={paydata === '7-11超商取貨'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  e.target.value
+                )
               }}
             />
             <label htmlFor="">
@@ -213,6 +246,10 @@ function Transport(props) {
               checked={paydata === '信用卡'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  e.target.value
+                )
               }}
             />
             <label htmlFor="">

@@ -91,8 +91,8 @@ function Receive(props) {
         onChange={handleFormChange}
         onInvalid={handleFormInvalid}
       >
-        <div class="container mb-5 pb-5">
-          <div class="row">
+        <div className="container mb-5 pb-5">
+          <div className="row">
             <p className="ml-3">
               <Link to="/" className="mr-1">
                 首頁
@@ -108,45 +108,45 @@ function Receive(props) {
             </p>
           </div>
         </div>
-        <div class="container">
-          <div class="d-flex justify-content-between ">
-            <div class="rongboxborder ">
+        <div className="container">
+          <div className="d-flex justify-content-between ">
+            <div className="rongboxborder ">
               <p className="rocky-fix2">確認購買明細</p>
             </div>
-            <div class="rongboxborder">
+            <div className="rongboxborder">
               <p className="rocky-fix2"> 配送與付款方式</p>
             </div>
-            <div class="rongboxborder rongboxbg">
-              <p class="rongtextcolor">填寫收件資料</p>
+            <div className="rongboxborder rongboxbg">
+              <p className="rongtextcolor">填寫收件資料</p>
             </div>
-            <div class="rongboxborder">
+            <div className="rongboxborder">
               <p className="rocky-fix2">確認訂單</p>
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="row justify-content-center">
-            <div class="w875 borderbottom">
+        <div className="container mt-5 pt-5">
+          <div className="row justify-content-center">
+            <div className="w875 borderbottom">
               <p className="rocky-fix2">
                 Delivery Information 請填寫收件資料
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="row justify-content-center ">
-            <div class="w875 ">
-              <div name="form1" class="ml-5 col-12">
-                <div class="form-group">
+        <div className="container pt-5">
+          <div className="row justify-content-center ">
+            <div className="w875 ">
+              <div name="form1" className="ml-5 col-12">
+                <div className="form-group">
                   <label
-                    for="receiver"
+                    htmlFor="receiver"
                     className="rocky-fix2"
                   >
                     收件姓名 :
                   </label>
                   <input
                     type="text"
-                    class="form-control col-4 inputstyle"
+                    className="form-control col-4 inputstyle"
                     placeholder="姓名"
                     name="receiver"
                     value={datacard.receiver}
@@ -159,16 +159,16 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
+                    htmlFor="exampleInputEmail1"
                     className="rocky-fix2"
                   >
                     手機號碼 :
                   </label>
                   <input
                     type="number"
-                    class="form-control col-4 inputstyle"
+                    className="form-control col-4 inputstyle"
                     placeholder="手機"
                     name="mobile"
                     value={datacard.mobile}
@@ -181,19 +181,19 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
+                    htmlFor="exampleInputEmail1"
                     className="rocky-fix2"
                   >
                     收貨地址 :
                   </label>
                   <div className="form-inline"></div>
-                  <div class="d-flex">
+                  <div className="d-flex">
                     <Address />
                   </div>
                   <input
-                    class="form-control col-9"
+                    className="form-control col-9"
                     type="text"
                     placeholder="地址"
                     name="delivery_address"
@@ -202,16 +202,16 @@ function Receive(props) {
                     required
                   ></input>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
+                    htmlFor="exampleInputEmail1"
                     className="rocky-fix2"
                   >
                     備註說明 :
                   </label>
                   <br />
                   <textarea
-                    class="inputstyle"
+                    className="inputstyle"
                     name=""
                     id=""
                     cols="84"
@@ -222,40 +222,46 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 borderbottom">
+        <div className="container mt-5 pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 borderbottom">
               <p className="rocky-fix2">
                 Payment Options 請選擇卡別
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 ">
-              <div class="form-group ml-5 visa">
+        <div className="container pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 ">
+              <div className="form-group ml-5 visa">
                 <div name="form2">
-                  <label for="name" className="rocky-fix2">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     信用卡:
                   </label>
-                  <input class="ml-5" type="radio" />
+                  <input className="ml-5" type="radio" />
                   <img src="./image/visa.png" alt="" />
                   <span className="rocky-fix4">
                     <img src="./image/JCB.jpeg" alt="" />
                   </span>
-                  <input class="ml-5 mr-2" type="radio" />
+                  <input
+                    className="ml-5 mr-2"
+                    type="radio"
+                  />
                   <img src="./image/UnionPay.png" alt="" />
                   <div>
                     <label
-                      for="name"
+                      htmlFor="name"
                       className="rocky-fix2"
                     >
                       信用卡號 :
                     </label>
                     <input
                       type="number"
-                      class="form-control col-8 inputstyle"
+                      className="form-control col-8 inputstyle"
                       placeholder="卡號"
                       name="card"
                       value={datacard.card}
@@ -265,34 +271,43 @@ function Receive(props) {
                   </div>
                 </div>
               </div>
-              <div class="d-flex mr-2 year">
-                <div class="col-2 ">
-                  <label for="name" className="rocky-fix2">
+              <div className="d-flex mr-2 year">
+                <div className="col-2 ">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     月 :
                   </label>
                   <input
                     type="number"
-                    class="form-control  "
+                    className="form-control  "
                     placeholder="月"
                   />
                 </div>
-                <div class="col-2 ">
-                  <label for="name" className="rocky-fix2">
+                <div className="col-2 ">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     年 :
                   </label>
                   <input
                     type="number"
-                    class="form-control "
+                    className="form-control "
                     placeholder="年"
                   />
                 </div>
-                <div class="col-2">
-                  <label for="name" className="rocky-fix2">
+                <div className="col-2">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     末三碼 :
                   </label>
                   <input
                     type="number"
-                    class="form-control "
+                    className="form-control "
                     min="3"
                     placeholder="末三碼"
                   />
@@ -301,24 +316,27 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 borderbottom">
+        <div className="container mt-5 pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 borderbottom">
               <p className="rocky-fix2">
                 Invoice 請選擇發票格式
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 ">
-              <div class="form-group ml-5">
-                <label for="name" className="rocky-fix2">
+        <div className="container pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 ">
+              <div className="form-group ml-5">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   發票資訊 :
                 </label>
                 <input
-                  class="ml-5"
+                  className="ml-5"
                   type="radio"
                   placeholder="姓名"
                   value="電子發票"
@@ -331,13 +349,13 @@ function Receive(props) {
                   // }}
                 />
                 <label
-                  for=""
+                  htmlFor=""
                   className="rocky-fix2 rocky-fix4"
                 >
                   電子發票
                 </label>
                 <input
-                  class="ml-5"
+                  className="ml-5"
                   type="radio"
                   placeholder="姓名"
                   value="三聯式發票/收據"
@@ -350,7 +368,7 @@ function Receive(props) {
                   // }}
                 />
                 <label
-                  for=""
+                  htmlFor=""
                   className="rocky-fix2 rocky-fix4"
                 >
                   三聯式發票/收據
@@ -359,7 +377,7 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-4"></div>
+        <div className="container mt-5 pt-4"></div>
         <div className="mb-5"></div>
         <button type="submit">檢查 </button>
       </form>

@@ -75,8 +75,8 @@ function CheckOrder(props) {
 
   const display = (
     <>
-      <div class="container mb-5 pb-5">
-        <div class="row">
+      <div className="container mb-5 pb-5">
+        <div className="row">
           <p className="ml-3">
             <Link to="/" className="mr-1">
               首頁
@@ -85,72 +85,66 @@ function CheckOrder(props) {
             <Link to="/" className="mr-1 ml-1">
               產品
             </Link>
-            /{' '}
-            <span classNameName="myfontcolor">
-              確認訂單
-            </span>
+            / <span className="myfontcolor">確認訂單</span>
           </p>
         </div>
       </div>
-      <div class="container">
-        <div class="d-flex justify-content-between ">
-          <div class="rongboxborder ">
+      <div className="container">
+        <div className="d-flex justify-content-between ">
+          <div className="rongboxborder ">
             <p className="rocky-fix2">確認購買明細</p>
           </div>
-          <div class="rongboxborder">
+          <div className="rongboxborder">
             <p className="rocky-fix2"> 配送與付款方式</p>
           </div>
-          <div class="rongboxborder">
+          <div className="rongboxborder">
             <p className="rocky-fix2">填寫收件資料</p>
           </div>
-          <div class="rongboxborder rongboxbg">
-            <p class="rongtextcolor">確認訂單</p>
+          <div className="rongboxborder rongboxbg">
+            <p className="rongtextcolor">確認訂單</p>
           </div>
         </div>
       </div>
-      <div class="container mt-5 pt-5">
-        <div class="d-flex justify-content-center">
-          <div class="w875 borderbottom">
+      <div className="container mt-5 pt-5">
+        <div className="d-flex justify-content-center">
+          <div className="w875 borderbottom">
             <p className="rocky-fix2">
               Check Your Order 詳細訂單
             </p>
           </div>
         </div>
       </div>
-      <div class="container mt-5">
-        <div class="row justify-content-center">
-          <div class="borderstyle w875">
-            <div class="rongorder">詳細訂單</div>
-            <table class="table  col ">
-              <thead class="">
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="borderstyle w875">
+            <div className="rongorder">詳細訂單</div>
+            <table className="table  col ">
+              <thead className="">
                 <tr>
-                  <th
-                    scope="col"
-                    classNameName="rocky-fix2"
-                  >
+                  <th scope="col" className="rocky-fix2">
                     商品資訊
                   </th>
                   <th
                     scope="col"
-                    class="text-center rocky-fix2"
+                    className="text-center rocky-fix2"
                   >
                     尺寸
                   </th>
                   <th
                     scope="col"
-                    class="text-center rocky-fix2"
+                    className="text-center rocky-fix2"
                   >
                     數量
                   </th>
                   <th
                     scope="col"
-                    class="text-center rocky-fix2"
+                    className="text-center rocky-fix2"
                   >
                     單價
                   </th>
                   <th
                     scope="col"
-                    class="text-center rocky-fix2"
+                    className="text-center rocky-fix2"
                   >
                     小計
                   </th>
@@ -159,12 +153,12 @@ function CheckOrder(props) {
               <tbody>
                 {mycart.map((item, index) => {
                   return (
-                    <tr>
-                      <td class="d-flex">
+                    <tr key={index}>
+                      <td className="d-flex">
                         <div>
                           <img src={item.image} alt="" />
                         </div>
-                        <div class="ml-5 mt-4 rocky-fix2">
+                        <div className="ml-5 mt-4 rocky-fix2">
                           {item.name}
                         </div>
                       </td>
@@ -193,23 +187,23 @@ function CheckOrder(props) {
                 })}
               </tbody>
             </table>
-            <div class="borderbottom"></div>
-            <div class="container    w875 mt-5 mb-5 mr-3">
-              <div class="row justify-content-end rongtotal pr-5">
-                <div class="mr-5  pr-2">
+            <div className="borderbottom"></div>
+            <div className="container    w875 mt-5 mb-5 mr-3">
+              <div className="row justify-content-end rongtotal pr-5">
+                <div className="mr-5  pr-2">
                   <p className="rocky-fix2">總金額</p>
-                  <p class="rocky-fix2">運費</p>
+                  <p className="rocky-fix2">運費</p>
                 </div>
-                <div class="ml-5 mr-2 rocky-fix2">
+                <div className="ml-5 mr-2 rocky-fix2">
                   <p>NT$ {sum(mycartDisplay)}</p>
                   <p>NT$ {props.freight}</p>
                 </div>
               </div>
-              <div class="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-4">
-                <div class="mr-3 rongsettotal ">
+              <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney pr-4">
+                <div className="mr-3 rongsettotal ">
                   <p className="rocky-fix2">總計</p>
                 </div>
-                <div class="rongsettotal">
+                <div className="rongsettotal">
                   <div className="rocky-fix2 rocky-fix5">
                     NT$ {props.totalMoney}
                   </div>
@@ -218,13 +212,13 @@ function CheckOrder(props) {
             </div>
           </div>
         </div>
-        <div class="container pt-3">
-          <div class="row justify-content-center ">
-            <div class="w875">
-              <form class="ml-5 rongorderdetail">
-                <div class="form-group">
+        <div className="container pt-3">
+          <div className="row justify-content-center ">
+            <div className="w875">
+              <form className="ml-5 rongorderdetail">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     會員帳號 :{' '}
@@ -233,9 +227,9 @@ function CheckOrder(props) {
                     {member.account}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     會員暱稱 :{' '}
@@ -244,9 +238,9 @@ function CheckOrder(props) {
                     {member.name}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     訂單編號 :{' '}
@@ -255,9 +249,9 @@ function CheckOrder(props) {
                     {props.fields.order_id}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     訂購日期 :{' '}
@@ -266,9 +260,9 @@ function CheckOrder(props) {
                     {props.fields.date}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     付款方式 :{' '}
@@ -278,9 +272,9 @@ function CheckOrder(props) {
                   </span>
                 </div>
 
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     收件人姓名 :{' '}
@@ -289,9 +283,9 @@ function CheckOrder(props) {
                     {props.datacard.receiver}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     收件人手機 :{' '}
@@ -300,9 +294,9 @@ function CheckOrder(props) {
                     {props.datacard.mobile}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     收件人地址 :{' '}
@@ -312,9 +306,9 @@ function CheckOrder(props) {
                       props.datacard.delivery_address}
                   </span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="rocky-fix2 rocky-fix7"
                   >
                     信用卡號 :{' '}
@@ -327,9 +321,9 @@ function CheckOrder(props) {
             </div>
           </div>
         </div>
-        {/* <div class="container mt-5 pt-4">
-          <div class="row justify-content-center ">
-            <button class="btn">
+        {/* <div className="container mt-5 pt-4">
+          <div className="row justify-content-center ">
+            <button className="btn">
               <span>送出</span>
             </button>
           </div>
