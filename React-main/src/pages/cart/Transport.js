@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
 import { Link } from 'react-router-dom'
+import {Form,Button } from 'react-bootstrap'
 
 function Transport(props) {
   const {
@@ -87,7 +88,10 @@ function Transport(props) {
       </div>
     </>
   )
-console.log('selectedOptionselectedOptionselectedOptionselectedOption',selectedOption);
+  console.log(
+    'selectedOptionselectedOptionselectedOptionselectedOption',
+    selectedOption
+  )
   const display = (
     <>
       <div className="container mb-5 pb-5">
@@ -136,6 +140,7 @@ console.log('selectedOptionselectedOptionselectedOptionselectedOption',selectedO
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex .select">
             <p className="mt-1 rocky-fix2">運送區域 : </p>
+          
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"

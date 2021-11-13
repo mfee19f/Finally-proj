@@ -13,10 +13,14 @@ function Receive(props) {
 
   // 存入錯誤訊息用
   const [fieldErrors, setFieldErrors] = useState({
-    name: '請填入姓名',
-    mobile: '請填入手機號碼',
+    receiver: '請填入姓名',
+    mobile: '請輸入手機號碼',
     password: '',
-    confirmPassword: '', // 有可能只是在瀏覽器檢查用而已
+    card: '請填入正確卡號', 
+    delivery_address: '請填入地址',
+    three: '末三碼',
+    year: '年',
+    mon: '月',
   })
 
   // 專門用來處理每個欄位的輸入用
@@ -39,7 +43,7 @@ function Receive(props) {
   const handleFormChange = (e) => {
     // 設定錯誤訊息狀態
     const updatedFieldErrors = {
-      ...datacard,
+      ...fieldErrors,
       [e.target.name]: '',
     }
 
@@ -142,7 +146,7 @@ function Receive(props) {
                     for="receiver"
                     className="rocky-fix2"
                   >
-                    收件姓名 :
+                    收件人 :
                   </label>
                   <input
                     type="text"
@@ -151,11 +155,12 @@ function Receive(props) {
                     name="receiver"
                     value={datacard.receiver}
                     onChange={handleFieldChange}
+                    minlength="3"
                     required
                   />
-                  {fieldErrors.email !== '' && (
-                    <div className="error">
-                      {fieldErrors.email}
+                  {fieldErrors.receiver !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.receiver}
                     </div>
                   )}
                 </div>
@@ -174,9 +179,10 @@ function Receive(props) {
                     value={datacard.mobile}
                     onChange={handleFieldChange}
                     required
+                    min="10"
                   />
                   {fieldErrors.mobile !== '' && (
-                    <div className="error">
+                    <div className="error mt-1 ml-1">
                       {fieldErrors.mobile}
                     </div>
                   )}
@@ -201,6 +207,11 @@ function Receive(props) {
                     onChange={handleFieldChange}
                     required
                   ></input>
+                  {fieldErrors.delivery_address !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.delivery_address}
+                    </div>
+                  )}
                 </div>
                 <div class="form-group">
                   <label
@@ -211,6 +222,7 @@ function Receive(props) {
                   </label>
                   <br />
                   <textarea
+                  placeholder="說明..."
                     class="inputstyle p-2"
                     name="into"
                     id="into"
@@ -258,12 +270,17 @@ function Receive(props) {
                     <input
                       type="number"
                       class="form-control col-8 inputstyle"
-                      placeholder="卡號"
+                      placeholder="卡號 16位數字"
                       name="card"
                       value={datacard.card}
                       onChange={handleFieldChange}
                       required
                     />
+                    {fieldErrors.card !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.card}
+                    </div>
+                  )}
                   </div>
                 </div>
               </div>
@@ -276,10 +293,15 @@ function Receive(props) {
                     name="mon"
                     type="number"
                     class="form-control  "
-                    placeholder="月"
+                    placeholder=""
                     value={datacard.mon}
                     onChange={handleFieldChange}
                   />
+                  {fieldErrors.mon !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.mon}
+                    </div>
+                  )}
                 </div>
                 <div class="col-2 ">
                   <label for="name" className="rocky-fix2">
@@ -289,10 +311,15 @@ function Receive(props) {
                     name="year"
                     type="number"
                     class="form-control "
-                    placeholder="年"
+                    placeholder=""
                     value={datacard.year}
                     onChange={handleFieldChange}
                   />
+                  {fieldErrors.year !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.year}
+                    </div>
+                  )}
                 </div>
                 <div class="col-2">
                   <label for="name" className="rocky-fix2">
@@ -303,10 +330,15 @@ function Receive(props) {
                     type="number"
                     class="form-control "
                     min="3"
-                    placeholder="末三碼"
+                    placeholder=""
                     value={datacard.three}
                     onChange={handleFieldChange}
                   />
+                  {fieldErrors.three !== '' && (
+                    <div className="error mt-1 ml-1">
+                      {fieldErrors.three}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -372,7 +404,7 @@ function Receive(props) {
         </div>
         <div class="container mt-5 pt-4"></div>
         <div className="mb-5"></div>
-        <button type="submit">檢查 </button>
+        {/* <button type="submit">檢查 </button> */}
       </form>
     </>
   )

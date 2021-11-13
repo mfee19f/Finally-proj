@@ -225,6 +225,7 @@ table img {
 }
 .rocky-fix2 {
   color: #1d3124;
+  font-size: 1.1rem;
 }
 .rocky-fix3 {
   background-color: #1d3124;
@@ -251,4 +252,8 @@ table img {
 }
 .cardbg{
   background-color: #f5f1d5;
+}
+.error{
+  color: red;
+  font-size: 0.3rem;
 }
