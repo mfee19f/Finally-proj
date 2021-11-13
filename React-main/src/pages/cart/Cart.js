@@ -87,6 +87,33 @@ function Cart(props) {
     // 設定資料
     setMycart(currentCart)
   }
+  // 更新購物車 list中的商品數量
+  const updateListToLocalStorage = (
+    item,
+    isAdded = true
+  ) => {
+    // console.log(item, isAdded)
+    const currentList =
+      JSON.parse(localStorage.getItem('list')) || []
+
+    // find if the product in the localstorage with its id
+    const index = currentList.findIndex(
+      (v) => v.id === item.id
+    )
+
+    // console.log('index:', index)
+    // found: index! == -1
+    if (index > -1) {
+      isAdded
+        ? currentList[index].amount++
+        : currentList[index].amount--
+    }
+
+    localStorage.setItem(
+      'list',
+      JSON.stringify(currentList)
+    )
+  }
   const deleteCartToLocalStorage = (item) => {
     const currentCart =
       JSON.parse(localStorage.getItem('cart')) || []
@@ -216,6 +243,11 @@ function Cart(props) {
                                 item,
                                 false
                               )
+                              if (item.amount === 1) return
+                              updateListToLocalStorage(
+                                item,
+                                false
+                              )
                             }}
                             className="fas fa-caret-square-left"
                           ></i>
@@ -228,12 +260,16 @@ function Cart(props) {
                               marginLeft: '10px',
                               color: '#1d3124',
                             }}
-                            onClick={() =>
+                            onClick={() => {
                               updateCartToLocalStorage(
                                 item,
                                 true
                               )
-                            }
+                              updateListToLocalStorage(
+                                item,
+                                true
+                              )
+                            }}
                             className="fas fa-caret-square-right"
                           ></i>
                         </div>
@@ -268,17 +304,12 @@ function Cart(props) {
         </div>
       </div>
       <div className="container mt-5  w875 ">
-        
         <div className="row justify-content-end rongtotal ml-auto mr-4 pt-1 rongmoney2">
           <div className="mr-3 rongsettotal">
             <p className="rocky-fix2">總計</p>
           </div>
           <div className="rongsettotal">
-            
-            <span>
-              
-            NT ${parseInt(sum(mycartDisplay))}
-            </span>
+            <span>NT ${parseInt(sum(mycartDisplay))}</span>
           </div>
         </div>
       </div>

@@ -105,14 +105,15 @@ function Register(props) {
                 for="password"
                 className="form-label mb-3"
               >
-                建立密碼
+                建立密碼 (6~8位數)
               </label>
               <input
                 type="password"
                 className="form-control col-8"
                 id="password"
                 name="password"
-                min="8"
+                minLength="6"
+                maxLength="8"
                 required
                 value={password}
                 onChange={(e) => {

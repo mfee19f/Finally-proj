@@ -41,6 +41,7 @@ function Login(props) {
   const handleSubmit = (e) => {
     //阻擋FORM 預設送出行為
     e.preventDefault()
+    login()
   }
 
   function getMemberLocalStorage() {
@@ -87,6 +88,29 @@ function Login(props) {
           前往購物車
         </Button>
         </a>
+      </Modal.Footer>
+    </Modal>
+  )
+  const errorModal = (
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>註冊成功</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>你好</Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/login')
+          }}
+        >
+          前往登入頁
+        </Button>
       </Modal.Footer>
     </Modal>
   )
@@ -156,7 +180,7 @@ function Login(props) {
                   type="submit"
                   className="login btn btn-primary"
                   variant="primary"
-                  onClick={login}
+                  // onClick={login}
                 >
                   登入
                 </button>
