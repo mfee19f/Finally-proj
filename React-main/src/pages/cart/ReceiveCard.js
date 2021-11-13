@@ -73,7 +73,7 @@ function Receive(props) {
       setIsLoading(false)
     }, 1000)
   }, [])
-
+  console.log('datacarddatacarddatacarddatacard', datacard)
   const loading = (
     <>
       <div className="d-flex justify-content-center">
@@ -211,11 +211,13 @@ function Receive(props) {
                   </label>
                   <br />
                   <textarea
-                    class="inputstyle"
-                    name=""
-                    id=""
+                    class="inputstyle p-2"
+                    name="into"
+                    id="into"
                     cols="84"
                     rows="10"
+                    value={datacard.into}
+                    onChange={handleFieldChange}
                   />
                 </div>
               </div>
@@ -271,9 +273,12 @@ function Receive(props) {
                     月 :
                   </label>
                   <input
+                    name="mon"
                     type="number"
                     class="form-control  "
                     placeholder="月"
+                    value={datacard.mon}
+                    onChange={handleFieldChange}
                   />
                 </div>
                 <div class="col-2 ">
@@ -281,9 +286,12 @@ function Receive(props) {
                     年 :
                   </label>
                   <input
+                    name="year"
                     type="number"
                     class="form-control "
                     placeholder="年"
+                    value={datacard.year}
+                    onChange={handleFieldChange}
                   />
                 </div>
                 <div class="col-2">
@@ -291,10 +299,13 @@ function Receive(props) {
                     末三碼 :
                   </label>
                   <input
+                    name="three"
                     type="number"
                     class="form-control "
                     min="3"
                     placeholder="末三碼"
+                    value={datacard.three}
+                    onChange={handleFieldChange}
                   />
                 </div>
               </div>

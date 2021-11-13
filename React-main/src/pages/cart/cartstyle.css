@@ -89,11 +89,14 @@ body {
 .rongsettotal p {
   font-size: medium;
   font-weight: bold;
+  font-size: 1.5rem;
+  
 }
 .rongsettotal span {
   font-size: medium;
   font-weight: bold;
   color: #1d3124;
+  font-size: 1.5rem;
 }
 .rong {
   margin-left: 15px;
@@ -147,18 +150,21 @@ body {
   margin-left: 8px;
 }
 .red {
-  color: red;
+  color: rgb(246, 50, 50);
 }
 .rongdash {
   border-top: 1px dashed #ccc;
   /* position: relative; */
 }
 .rongorderlist {
-  background-color: #bacec1;
+  background-color: #1d3124;
   width: 150px;
   text-align: center;
   /* position: absolute; */
   color: #fff;
+}
+.rongorderlist p {
+  font-size: 1.0rem;
 }
 .bo {
   margin-bottom: -30px;
@@ -202,6 +208,10 @@ td {
   width: 300px;
   border-top: 1px solid black;
 }
+.rongmoney2 {
+  width: 300px;
+  /* border-top: 1px solid black; */
+}
 table img {
   width: 100px;
   height: 100px;
@@ -235,4 +245,10 @@ table img {
 }
 .rocky-fix7 {
   font-size: medium;
+}
+.bg {
+  background-color: #bacec1;
+}
+.cardbg{
+  background-color: #f5f1d5;
 }

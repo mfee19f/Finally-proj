@@ -67,22 +67,26 @@ function Login(props) {
       </Modal.Header>
       <Modal.Body>已成功登入</Modal.Body>
       <Modal.Footer>
+        <a href="/">
+          <Button
+            variant="secondary"
+            // onClick={() => {
+            //   props.history.push('/')
+            // }}
+          >
+            <span className="rocky-fix">到首頁</span>
+          </Button>
+        </a>
+        <a href="/order-steps">
         <Button
-          variant="secondary"
-          onClick={() => {
-            props.history.push('/')
-          }}
-        >
-          <span className="rocky-fix">到首頁</span>
-        </Button>
-        <Button
-          variant="primary"
-          onClick={() => {
-            props.history.push('/order-steps')
-          }}
+          // variant="primary"
+          // onClick={() => {
+          //   props.history.push('/order-steps')
+          // }}
         >
           前往購物車
         </Button>
+        </a>
       </Modal.Footer>
     </Modal>
   )

@@ -19,6 +19,7 @@ function MyNavbar(props) {
     const newMember =
       localStorage.removeItem('member') || '[]'
     setMember(JSON.parse(newMember))
+    localStorage.removeItem('list')
   }
 
   return (

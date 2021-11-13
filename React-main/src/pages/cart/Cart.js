@@ -48,6 +48,14 @@ function Cart(props) {
     // console.log(newMycartDisplay)
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
+  // 計算總價用的函式
+  const sum = (items) => {
+    let total = 0
+    for (let i = 0; i < items.length; i++) {
+      total += items[i].amount * items[i].price
+    }
+    return total
+  }
 
   // 更新購物車中的商品數量
   const updateCartToLocalStorage = (
@@ -259,9 +267,19 @@ function Cart(props) {
           </div>
         </div>
       </div>
-      <div className="container mt-5 pt-4">
-        <div className="row justify-content-end">
-          {/* <p>小計金額 : {sum(mycartDisplay)}</p> */}
+      <div className="container mt-5  w875 ">
+        
+        <div className="row justify-content-end rongtotal ml-auto mr-4 pt-1 rongmoney2">
+          <div className="mr-3 rongsettotal">
+            <p className="rocky-fix2">總計</p>
+          </div>
+          <div className="rongsettotal">
+            
+            <span>
+              
+            NT ${parseInt(sum(mycartDisplay))}
+            </span>
+          </div>
         </div>
       </div>
       <div className="mb-5"></div>

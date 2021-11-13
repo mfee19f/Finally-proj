@@ -87,7 +87,7 @@ function Transport(props) {
       </div>
     </>
   )
-
+console.log('selectedOptionselectedOptionselectedOptionselectedOption',selectedOption);
   const display = (
     <>
       <div className="container mb-5 pb-5">
@@ -139,6 +139,7 @@ function Transport(props) {
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
+              checked={selectedOption}
               value={selectedOption}
               onChange={(e) => {
                 setSelectedOption(e.target.value)
@@ -154,6 +155,7 @@ function Transport(props) {
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
+              checked={freight}
               value={freight}
               onChange={(e) => {
                 setFreight(e.target.value)

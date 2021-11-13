@@ -237,7 +237,7 @@ function Member_center(props) {
                   個人照片:
                 </label>
                 <br />
-                <form name="fake_form" onSubmit={mySubmit}>
+                <form name="fake_form" onSubmit={mySubmit} className="">
                   <img
                     src={
                       imgSrc
@@ -251,7 +251,7 @@ function Member_center(props) {
                   />
                   <button
                     type="button"
-                    className="btn btn-success ml-5 rongcolor"
+                    className="btn btn-primary ml-5 rongcolor"
                     onClick={(e) =>
                       document
                         .querySelector('#avatar')
@@ -289,7 +289,7 @@ function Member_center(props) {
               </div>
               <button
                 type="submit"
-                class="btn btn-primary mt-5  "
+                class="btn btn-primary mt-4 "
                 onClick={add}
               >
                 修改

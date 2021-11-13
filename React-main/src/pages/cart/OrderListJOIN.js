@@ -49,7 +49,7 @@ function OrderListJOIN(props) {
                           <div class="">
                             訂單編號 :{' '}
                             <span class="red">
-                              {el.order_sid}
+                              {el.name}
                             </span>
                           </div>
                         </Accordion.Toggle>
@@ -201,7 +201,7 @@ function OrderListJOIN(props) {
           </div>
         </div>
       </div>
-      {test}
+      {test()}
       <div class="container mt-5 ">
         <div class="container mt-5 pt-4">
           <div class="row justify-content-center ">

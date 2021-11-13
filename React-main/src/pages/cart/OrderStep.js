@@ -181,6 +181,16 @@ function OrderSteps(props) {
         {switchStep(step)}
         <div className="container">
           <div className="row justify-content-center mt-5">
+          {step === 1 && (
+              <button
+                className="btn bg-primary mr-4"
+                onClick={()=>{
+                  props.history.push('/product')
+                }}
+              >
+                <div className="rocky-fix">繼續購買</div>
+              </button>
+            )}
             {step !== 1 && (
               <button
                 className="btn bg-primary mr-4"
