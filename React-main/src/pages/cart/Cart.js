@@ -132,6 +132,20 @@ function Cart(props) {
     // 設定資料
     setMycart(currentCart)
     setCartCount(cartCount - 1)
+
+    const currentList =
+      JSON.parse(localStorage.getItem('list')) || []
+
+    const Listindex = currentList.findIndex(
+      (v) => v.id === item.id
+    )
+    currentList.splice(Listindex, 1)
+    // console.log('index', index)
+
+    localStorage.setItem(
+      'list',
+      JSON.stringify(currentList)
+    )
   }
 
   const loading = (
