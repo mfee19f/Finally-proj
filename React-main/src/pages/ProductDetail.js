@@ -87,7 +87,7 @@ function ProductDetail(props) {
       backdrop="static"
       keyboard={false}
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>加入購物車訊息</Modal.Title>
       </Modal.Header>
       <Modal.Body>

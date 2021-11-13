@@ -8,6 +8,7 @@ function Receive(props) {
   // 發票資訊
   const [receipt, setReceipt] = useState('')
   //載入
+  const [cardType, setCardType] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   // 使用物件值作為狀態值，儲存所有欄位的值
 
@@ -16,7 +17,7 @@ function Receive(props) {
     receiver: '請填入姓名',
     mobile: '請輸入手機號碼',
     password: '',
-    card: '請填入正確卡號', 
+    card: '請填入正確卡號',
     delivery_address: '請填入地址',
     three: '末三碼',
     year: '年',
@@ -35,6 +36,17 @@ function Receive(props) {
     }
     // 3. 設定回原狀態物件
     setDatacard(updatedFields)
+  }
+
+  function getReceiptFromLocalStorage() {
+    const newReceipt = localStorage.getItem('receipt') || ''
+    setReceipt(newReceipt)
+  }
+
+  function getCardTypeFromLocalStorage() {
+    const newCardType =
+      localStorage.getItem('cardType') || ''
+    setCardType(newCardType)
   }
 
   // 當整個表單有變動時觸發
@@ -72,6 +84,8 @@ function Receive(props) {
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true)
+    getReceiptFromLocalStorage()
+    getCardTypeFromLocalStorage()
     // 3秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false)
@@ -95,8 +109,8 @@ function Receive(props) {
         onChange={handleFormChange}
         onInvalid={handleFormInvalid}
       >
-        <div class="container mb-5 pb-5">
-          <div class="row">
+        <div className="container mb-5 pb-5">
+          <div className="row">
             <p className="ml-3">
               <Link to="/" className="mr-1">
                 首頁
@@ -112,45 +126,45 @@ function Receive(props) {
             </p>
           </div>
         </div>
-        <div class="container">
-          <div class="d-flex justify-content-between ">
-            <div class="rongboxborder ">
+        <div className="container">
+          <div className="d-flex justify-content-between ">
+            <div className="rongboxborder ">
               <p className="rocky-fix2">確認購買明細</p>
             </div>
-            <div class="rongboxborder">
+            <div className="rongboxborder">
               <p className="rocky-fix2"> 配送與付款方式</p>
             </div>
-            <div class="rongboxborder rongboxbg">
-              <p class="rongtextcolor">填寫收件資料</p>
+            <div className="rongboxborder rongboxbg">
+              <p className="rongtextcolor">填寫收件資料</p>
             </div>
-            <div class="rongboxborder">
+            <div className="rongboxborder">
               <p className="rocky-fix2">確認訂單</p>
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="row justify-content-center">
-            <div class="w875 borderbottom">
+        <div className="container mt-5 pt-5">
+          <div className="row justify-content-center">
+            <div className="w875 borderbottom">
               <p className="rocky-fix2">
                 Delivery Information 請填寫收件資料
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="row justify-content-center ">
-            <div class="w875 ">
-              <div name="form1" class="ml-5 col-12">
-                <div class="form-group">
+        <div className="container pt-5">
+          <div className="row justify-content-center ">
+            <div className="w875 ">
+              <div name="form1" className="ml-5 col-12">
+                <div className="form-group">
                   <label
-                    for="receiver"
-                    className="rong-fix2"
+                    htmlFor="receiver"
+                    className="rocky-fix2"
                   >
                     收件人 :
                   </label>
                   <input
                     type="text"
-                    class="form-control col-4 inputstyle"
+                    className="form-control col-4 inputstyle"
                     placeholder="姓名"
                     name="receiver"
                     value={datacard.receiver}
@@ -164,16 +178,16 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
-                    className="rong-fix2"
+                    htmlFor="exampleInputEmail1"
+                    className="rocky-fix2"
                   >
                     手機號碼 :
                   </label>
                   <input
                     type="number"
-                    class="form-control col-4 inputstyle"
+                    className="form-control col-4 inputstyle"
                     placeholder="手機"
                     name="mobile"
                     value={datacard.mobile}
@@ -187,19 +201,19 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
-                    className="rong-fix2"
+                    htmlFor="exampleInputEmail1"
+                    className="rocky-fix2"
                   >
                     收貨地址 :
                   </label>
                   <div className="form-inline"></div>
-                  <div class="d-flex">
+                  <div className="d-flex">
                     <Address />
                   </div>
                   <input
-                    class="form-control col-9"
+                    className="form-control col-9"
                     type="text"
                     placeholder="地址"
                     name="delivery_address"
@@ -213,16 +227,16 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleInputEmail1"
-                    className="rong-fix2"
+                    htmlFor="exampleInputEmail1"
+                    className="rocky-fix2"
                   >
                     備註說明 :
                   </label>
                   <br />
                   <textarea
-                  placeholder="說明..."
+                    placeholder="說明..."
                     class="inputstyle p-2"
                     name="into"
                     id="into"
@@ -236,34 +250,61 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 borderbottom">
-              <p className="rong-fix2">
+        <div className="container mt-5 pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 borderbottom">
+              <p className="rocky-fix2">
                 Payment Options 請選擇卡別
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 ">
-              <div class="form-group ml-5 visa">
+        <div className="container pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 ">
+              <div className="form-group ml-5 visa">
                 <div name="form2">
-                  <label for="name" className="rong-fix2">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     信用卡:
                   </label>
-                  <input class="ml-5" type="radio" />
+                  <input
+                    className="ml-5"
+                    type="radio"
+                    value="VISA"
+                    checked={cardType === 'VISA'}
+                    onChange={(e) => {
+                      setCardType(e.target.value)
+                      localStorage.setItem(
+                        'cardType',
+                        e.target.value
+                      )
+                    }}
+                  />
                   <img src="./image/visa.png" alt="" />
                   <span className="rocky-fix4">
                     <img src="./image/JCB.jpeg" alt="" />
                   </span>
-                  <input class="ml-5 mr-2" type="radio" />
+                  <input
+                    className="ml-5 mr-2"
+                    type="radio"
+                    value="Union"
+                    checked={cardType === 'Union'}
+                    onChange={(e) => {
+                      setCardType(e.target.value)
+                      localStorage.setItem(
+                        'cardType',
+                        e.target.value
+                      )
+                    }}
+                  />
                   <img src="./image/UnionPay.png" alt="" />
                   <div>
                     <label
-                      for="name"
-                      className="rong-fix2"
+                      htmlFor="name"
+                      className="rocky-fix2"
                     >
                       信用卡號 :
                     </label>
@@ -277,16 +318,19 @@ function Receive(props) {
                       required
                     />
                     {fieldErrors.card !== '' && (
-                    <div className="error mt-1 ml-1">
-                      {fieldErrors.card}
-                    </div>
-                  )}
+                      <div className="error mt-1 ml-1">
+                        {fieldErrors.card}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              <div class="d-flex mr-2 year">
-                <div class="col-2 ">
-                  <label for="name" className="rong-fix2">
+              <div className="d-flex mr-2 year">
+                <div className="col-2 ">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     月 :
                   </label>
                   <input
@@ -303,8 +347,11 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="col-2 ">
-                  <label for="name" className="rong-fix2">
+                <div className="col-2 ">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     年 :
                   </label>
                   <input
@@ -321,14 +368,17 @@ function Receive(props) {
                     </div>
                   )}
                 </div>
-                <div class="col-2">
-                  <label for="name" className="rong-fix2">
+                <div className="col-2">
+                  <label
+                    htmlFor="name"
+                    className="rocky-fix2"
+                  >
                     末三碼 :
                   </label>
                   <input
                     name="three"
                     type="number"
-                    class="form-control "
+                    className="form-control "
                     min="3"
                     placeholder=""
                     value={datacard.three}
@@ -344,56 +394,68 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 borderbottom">
-              <p className="rong-fix2">
+        <div className="container mt-5 pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 borderbottom">
+              <p className="rocky-fix2">
                 Invoice 請選擇發票格式
               </p>
             </div>
           </div>
         </div>
-        <div class="container pt-5">
-          <div class="d-flex justify-content-center">
-            <div class="w875 ">
-              <div class="form-group ml-5">
-                <label for="name" className="rong-fix2">
+        <div className="container pt-5">
+          <div className="d-flex justify-content-center">
+            <div className="w875 ">
+              <div className="form-group ml-5">
+                <label
+                  htmlFor="name"
+                  className="rocky-fix2"
+                >
                   發票資訊 :
                 </label>
                 <input
-                  class="ml-5"
+                  className="ml-5"
                   type="radio"
                   placeholder="姓名"
                   value="電子發票"
                   checked={receipt === '電子發票'}
                   onChange={(e) => {
                     setReceipt(e.target.value)
+                    localStorage.setItem(
+                      'receipt',
+                      e.target.value
+                    )
                   }}
                   // onClick={() => {
                   //  setDatacard(fields)
                   // }}
                 />
                 <label
-                  for=""
-                  className="rong-fix2 rocky-fix4"
+                  htmlFor=""
+                  className="rocky-fix2 rocky-fix4"
                 >
                   電子發票
                 </label>
                 <input
-                  class="ml-5"
+                  className="ml-5"
                   type="radio"
                   placeholder="姓名"
                   value="三聯式發票/收據"
                   checked={receipt === '三聯式發票/收據'}
                   onChange={(e) => {
                     setReceipt(e.target.value)
+
+                    localStorage.setItem(
+                      'receipt',
+                      e.target.value
+                    )
                   }}
                   // onClick={() => {
                   //   setDatacard(fields)
                   // }}
                 />
                 <label
-                  for=""
+                  htmlFor=""
                   className="rocky-fix2 rocky-fix4"
                 >
                   三聯式發票/收據
@@ -402,7 +464,7 @@ function Receive(props) {
             </div>
           </div>
         </div>
-        <div class="container mt-5 pt-4"></div>
+        <div className="container mt-5 pt-4"></div>
         <div className="mb-5"></div>
         {/* <button type="submit">檢查 </button> */}
       </form>

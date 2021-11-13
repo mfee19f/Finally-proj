@@ -124,25 +124,19 @@ function Member_center(props) {
               alt=""
             />
             <div>
-              <label className="rongcolor" for="">
+              <label className="rongcolor" htmlFor="">
                 {memberData.name}
               </label>
               <br />
-              <a href="" className="rongcolor">
-                編輯個人資料
-              </a>
+              <Link to="/#">編輯個人資料</Link>
             </div>
 
             <div></div>
           </div>
 
           <div className="functionList">
-            <div className="orderTrack ml-4">
-              <label for="orderTrack" className="rongcolor">
-                <Link to={'/order-list/' + id}>
-                  訂單查詢
-                </Link>
-              </label>
+            <div className="orderTrack rocky-fix9">
+              <Link to={'/order-list/' + id}>訂單查詢</Link>
             </div>
           </div>
         </div>
@@ -155,7 +149,7 @@ function Member_center(props) {
             <div className="personalFormLine"></div>
             <form name="form1" onSubmit={handleSubmit}>
               <div className="form-group password mt-4">
-                <label for="name" className="rongcolor">
+                <label htmlFor="name" className="rongcolor">
                   帳號 :
                 </label>
                 <input
@@ -168,7 +162,7 @@ function Member_center(props) {
                 />
               </div>
               <div className="form-group password">
-                <label for="name" className="rongcolor">
+                <label htmlFor="name" className="rongcolor">
                   密碼 :
                 </label>
                 <input
@@ -183,7 +177,7 @@ function Member_center(props) {
                 />
               </div>
               <div className="form-group mobile">
-                <label for="name" className="rongcolor">
+                <label htmlFor="name" className="rongcolor">
                   姓名 :
                 </label>
                 <input
@@ -198,7 +192,10 @@ function Member_center(props) {
               </div>
 
               <div className="form-group mobile">
-                <label for="mobile" className="rongcolor">
+                <label
+                  htmlFor="mobile"
+                  className="rongcolor"
+                >
                   手機 :
                 </label>
                 <input
@@ -213,7 +210,10 @@ function Member_center(props) {
               </div>
 
               <div className="form-group birthday">
-                <label for="birthday" className="rongcolor">
+                <label
+                  htmlFor="birthday"
+                  className="rongcolor"
+                >
                   生日 :
                 </label>
                 <input
@@ -231,36 +231,46 @@ function Member_center(props) {
 
               <div className="avatar">
                 <label
-                  for="avatar"
+                  htmlFor="avatar"
                   className="avatar rongcolor"
                 >
                   個人照片:
                 </label>
                 <br />
-                <form name="fake_form" onSubmit={mySubmit} className="">
-                  <img
-                    src={
-                      imgSrc
-                        ? IMG_PATH + '/' + imgSrc
-                        : IMG_PATH + '/default-avatar.png'
-                    }
-                    alt=""
-                    width="200px"
-                    height="200px"
-                    id="img01"
-                  />
-                  <button
-                    type="button"
-                    className="btn btn-primary ml-5 rongcolor"
-                    onClick={(e) =>
-                      document
-                        .querySelector('#avatar')
-                        .click()
-                    }
-                  >
-                    選擇大頭貼
-                  </button>
-
+                <form
+                  name="fake_form"
+                  onSubmit={mySubmit}
+                  className=""
+                >
+                  <div className="rocky-fix8">
+                    <div>
+                      <img
+                        src={
+                          imgSrc
+                            ? IMG_PATH + '/' + imgSrc
+                            : IMG_PATH +
+                              '/default-avatar.png'
+                        }
+                        alt=""
+                        width="150px"
+                        height="150px"
+                        id="img01"
+                      />
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn btn-primary ml-2 rongcolor"
+                        onClick={(e) =>
+                          document
+                            .querySelector('#avatar')
+                            .click()
+                        }
+                      >
+                        選擇大頭貼
+                      </button>
+                    </div>
+                  </div>
                   <input
                     type="hidden"
                     className="form-control"
@@ -289,17 +299,19 @@ function Member_center(props) {
               </div>
               <button
                 type="submit"
-                class="btn btn-primary mt-4 "
+                className="btn btn-primary mt-2  "
                 onClick={add}
               >
-                修改
+                確認修改
               </button>
             </form>
           </div>
         </div>
-        <div class="imglogo col-6">
-          <img src="http://localhost:3000/image/login_left_pic.jpg" alt="" />
-
+        <div className="imglogo col-6">
+          <img
+            src="http://localhost:3000/image/login_left_pic.jpg"
+            alt=""
+          />
         </div>
       </div>
       <div className="twae"></div>

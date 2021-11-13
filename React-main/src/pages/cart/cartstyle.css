@@ -90,7 +90,6 @@ body {
   font-size: medium;
   font-weight: bold;
   font-size: 1.5rem;
-  
 }
 .rongsettotal span {
   font-size: medium;
@@ -164,7 +163,7 @@ body {
   color: #fff;
 }
 .rongorderlist p {
-  font-size: 1.0rem;
+  font-size: 1rem;
 }
 .bo {
   margin-bottom: -30px;
@@ -250,10 +249,10 @@ table img {
 .bg {
   background-color: #bacec1;
 }
-.cardbg{
+.cardbg {
   background-color: #f5f1d5;
 }
-.error{
+.error {
   color: red;
   font-size: 0.3rem;
 }

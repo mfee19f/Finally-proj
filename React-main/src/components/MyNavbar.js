@@ -132,7 +132,7 @@ function MyNavbar(props) {
             </Nav.Link>
             <div className="cart-circle mt-2">
               <div className="cart-number ">
-                <p>{cartCount ? cartCount : 0}</p>
+                <p>{auth && cartCount ? cartCount : 0}</p>
               </div>
             </div>
           </Nav>

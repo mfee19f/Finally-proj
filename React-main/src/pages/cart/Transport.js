@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './cartstyle.css'
 import { Link } from 'react-router-dom'
-import {Form,Button } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 
 function Transport(props) {
   const {
@@ -24,9 +24,26 @@ function Transport(props) {
     const newCart = localStorage.getItem('cart') || '[]'
     setMycart(JSON.parse(newCart))
   }
+  function getFreightFromLocalStorage() {
+    const newFreight = localStorage.getItem('freight') || 0
+    setFreight(JSON.parse(newFreight))
+  }
+  function getPaydataFromLocalStorage() {
+    const newPaydata = localStorage.getItem('paydata') || ''
+    setPaydata(newPaydata)
+  }
+  function getSelectedOptionFromLocalStorage() {
+    const newSelectedOption =
+      localStorage.getItem('selectedOption') || ''
+    setSelectedOption(newSelectedOption)
+  }
   useEffect(() => {
     getCartFromLocalStorage()
+    getFreightFromLocalStorage()
+    getPaydataFromLocalStorage()
+    getSelectedOptionFromLocalStorage()
   }, [])
+
   useEffect(() => {
     setTimeout(() => setDataLoading(false), 1000)
 
@@ -140,7 +157,7 @@ function Transport(props) {
         <div className="row justify-content-center">
           <div className="rongproducttype d-flex .select">
             <p className="mt-1 rocky-fix2">運送區域 : </p>
-          
+
             <select
               className="ml-3 p-1  form-select form-select-lg mb-3 rongbodybg"
               aria-label=".form-select-lg example"
@@ -148,6 +165,10 @@ function Transport(props) {
               value={selectedOption}
               onChange={(e) => {
                 setSelectedOption(e.target.value)
+                localStorage.setItem(
+                  'selectedOption',
+                  e.target.value
+                )
               }}
             >
               <option value="">請選擇</option>
@@ -164,6 +185,10 @@ function Transport(props) {
               value={freight}
               onChange={(e) => {
                 setFreight(e.target.value)
+                localStorage.setItem(
+                  'freight',
+                  JSON.stringify(e.target.value)
+                )
               }}
             >
               <option value="">請選擇</option>
@@ -180,6 +205,10 @@ function Transport(props) {
               checked={paydata === '宅配到貨付款'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  JSON.stringify(e.target.value)
+                )
               }}
             />
             <label htmlFor="">
@@ -200,6 +229,10 @@ function Transport(props) {
               checked={paydata === '7-11超商取貨'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  e.target.value
+                )
               }}
             />
             <label htmlFor="">
@@ -220,6 +253,10 @@ function Transport(props) {
               checked={paydata === '信用卡'}
               onChange={(e) => {
                 setPaydata(e.target.value)
+                localStorage.setItem(
+                  'paydata',
+                  e.target.value
+                )
               }}
             />
             <label htmlFor="">
@@ -314,7 +351,7 @@ function Transport(props) {
                 <p className="rocky-fix2">NT$ {freight}</p>
               </div>
             </div>
-            <div className="row justify-content-end rongtotal ml-auto mr-2 pt-3 rongmoney">
+            <div className="row justify-content-end rongtotal ml-auto mr-2 pt-1 rongmoney">
               <div className="mr-3 rongsettotal">
                 <p className="rocky-fix2">總計</p>
               </div>

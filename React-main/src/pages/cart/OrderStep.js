@@ -11,7 +11,7 @@ function OrderSteps(props) {
   const { auth, cartCount, setCartCount } = props
   const [member, setMember] = useState([])
   const [datacard, setDatacard] = useState({})
-  const [paydata, setPaydata] = useState()
+  const [paydata, setPaydata] = useState('')
   const [totalMoney, setTotalMoney] = useState(0)
   const [mycart, setMycart] = useState([])
   const [step, setStep] = useState(1)
@@ -146,7 +146,11 @@ function OrderSteps(props) {
     localStorage.removeItem('cart')
     localStorage.removeItem('step')
     handleShow()
-    localStorage.removeItem('step')
+    localStorage.removeItem('freight')
+    localStorage.removeItem('paydata')
+    localStorage.removeItem('receipt')
+    localStorage.removeItem('selectedOption')
+    localStorage.removeItem('cardType')
     // props.history.push('/')
   }
   const switchStep = (step) => {
@@ -181,10 +185,10 @@ function OrderSteps(props) {
         {switchStep(step)}
         <div className="container">
           <div className="row justify-content-center mt-5">
-          {step === 1 && (
+            {step === 1 && (
               <button
                 className="btn bg-primary mr-4"
-                onClick={()=>{
+                onClick={() => {
                   props.history.push('/product')
                 }}
               >
@@ -227,7 +231,7 @@ function OrderSteps(props) {
   const myalert = (
     <>
       <Modal show={true} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>您未登錄</Modal.Title>
         </Modal.Header>
         <Modal.Body>請先登入</Modal.Body>

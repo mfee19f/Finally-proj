@@ -82,7 +82,7 @@ function Register(props) {
             </h4>
             <div className="mb-3 pl-5 mt-5">
               <label
-                for="email"
+                htmlFor="email"
                 className="form-label mb-3"
               >
                 帳號(Email信箱)
@@ -102,7 +102,7 @@ function Register(props) {
             </div>
             <div className="mb-3 pl-5 mt-5">
               <label
-                for="password"
+                htmlFor="password"
                 className="form-label mb-3"
               >
                 建立密碼 (6~8位數)
@@ -129,7 +129,7 @@ function Register(props) {
               />
               <label
                 className="form-check-label "
-                for="exampleCheck1"
+                htmlFor="exampleCheck1"
               >
                 我同意XX條款
               </label>

@@ -303,9 +303,9 @@ function Cart(props) {
           </div>
         </div>
       </div>
-      <div className="container mt-5  w875 ">
-        <div className="row justify-content-end rongtotal ml-auto mr-4 pt-1 rongmoney2">
-          <div className="mr-3 rongsettotal">
+      <div className="container mt-1  w875 ">
+        <div className="row justify-content-end rongtotal ml-auto mr-1 pt-1 rongmoney2">
+          <div className="rongsettotal">
             <p className="rocky-fix2">總計</p>
           </div>
           <div className="rongsettotal">
