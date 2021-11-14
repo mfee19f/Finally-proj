@@ -22,10 +22,13 @@ function ProductDetail(props) {
   const [singleData, setSingleData] = useState({})
   const [mycart, setMycart] = useState([])
   const [show, setShow] = useState(false)
+  const [show2, setShow2] = useState(false)
+  const [show3, setShow3] = useState(false)
   const [productName, setProductName] = useState('')
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
   const updateCartToLocalStorage = (value) => {
     const currentCart =
       JSON.parse(localStorage.getItem('cart')) || []
@@ -95,6 +98,76 @@ function ProductDetail(props) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
+          <span className="rocky-fix">繼續購物</span>
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/order-steps')
+          }}
+        >
+          前往購物車結帳
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+  const messageModal2 = (
+    <Modal
+      show={show2}
+      onHide={() => {
+        setShow2(false)
+      }}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header>
+        <Modal.Title>加入收藏訊息</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        產品：{productName} 已成功加入收藏
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setShow2(false)
+          }}
+        >
+          <span className="rocky-fix">繼續購物</span>
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.history.push('/order-steps')
+          }}
+        >
+          前往購物車結帳
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+  const messageModal3 = (
+    <Modal
+      show={show3}
+      onHide={() => {
+        setShow3(false)
+      }}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header>
+        <Modal.Title>提醒</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        產品：{productName} 已加入過收藏
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setShow3(false)
+          }}
+        >
           <span className="rocky-fix">繼續購物</span>
         </Button>
         <Button
@@ -229,6 +302,8 @@ function ProductDetail(props) {
                   // 關鍵在於myTrack裡面不能有singleData
                   for (let e of myTrack) {
                     if (e.sid === singleData.sid) {
+                      setProductName(singleData.name)
+                      setShow3(true)
                       return
                     }
                   }
@@ -244,6 +319,8 @@ function ProductDetail(props) {
                   )
                   setTrack(track + 1)
                 }
+                setProductName(singleData.name)
+                setShow2(true)
               }}
             >
               <i className="far fa-heart"></i> 加入追蹤
@@ -346,6 +423,8 @@ function ProductDetail(props) {
   return (
     <>
       {messageModal}
+      {messageModal2}
+      {messageModal3}
       {display}
     </>
   )

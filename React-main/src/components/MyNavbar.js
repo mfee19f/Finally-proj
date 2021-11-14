@@ -122,7 +122,7 @@ function MyNavbar(props) {
             </Nav.Link>
             <div className="cart-circle mt-2">
               <div className="cart-number ">
-                <p>{track ? track : 0}</p>
+                <p>{auth && track ? track : 0}</p>
               </div>
             </div>
             <Nav.Link as={NavLink} to="/order-steps">
