@@ -1,6 +1,6 @@
 const db = require('./../modules/connect-mysql');
 
-const tableName = 'Trunk';
+const tableName = 'trunk';
 const pkField = 'sid';
 
 class Product {
@@ -166,8 +166,8 @@ class Product {
     /* 為啥不行的版本 */
     static async getListData(options={}){
         let perPage = 9;
-        let page = parseInt(req.query.page) || 1;
-        let keyword = req.query.keyword || '';
+        let page = parseInt(options.page) || 1;
+        let keyword = options.keyword || '';
         keyword = keyword.trim(); // 去掉頭尾的空白
 
         // res.locals.keyword = keyword; // 傳給 template
@@ -185,14 +185,15 @@ class Product {
 
         const t_sql = `SELECT COUNT(1) totalRows FROM ${tableName} ${where}`;
         const [t_rs] = await db.query(t_sql);
+        // console.log([t_rs]);
         output.totalRows = t_rs[0].totalRows;
-        output.totalPages = Math.ceil(totalRows/perPage);
+        output.totalPages = Math.ceil(output.totalRows/perPage);
         output.perPage = perPage;
         output.rows = [];
         output.page = page;
 
         // 如果有資料才去取得分頁的資料
-        if(totalRows > 0){
+        if(output.totalRows > 0){
             if(page < 1){
                 output.page = 1;
                 return output;
