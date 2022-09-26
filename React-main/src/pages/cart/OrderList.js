@@ -102,8 +102,7 @@ function OrderList(props) {
                       <Accordion.Toggle
                         as={Card.Header}
                         eventKey="0"
-                      className=" bg"
-
+                        className=" bg"
                       >
                         <div className="">
                           訂單編號 :{' '}
@@ -268,7 +267,11 @@ function OrderList(props) {
           : ''}
         <Accordion defaultActiveKey="1">
           <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="0" className=" bg">
+            <Accordion.Toggle
+              as={Card.Header}
+              eventKey="0"
+              className=" bg"
+            >
               <div className="">
                 訂單編號 :{' '}
                 <span className="red">202111100698</span>
